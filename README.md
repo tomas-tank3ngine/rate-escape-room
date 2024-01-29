@@ -1,10 +1,10 @@
-# Room Ranker
+# Rate Escape Room
 
 ## Overview
 
-Room Ranker is the one-stop collection of escape rooms sourced and ranked by the escape room community. Each room has a number of criteria by which it is ranked, and community members that play the rooms can leave a review and comment on what they liked/disliked about it.
+Rate Escape Room is the one-stop collection of escape rooms sourced, rated, and ranked by the escape room community. Room owners add their rooms to the site and players can rate, review, and share the rooms to their friends and family.
 
-Room Ranker is a fullstack web application that allows users to create, read, update, and delete content served from a database.
+Rate Escape Room is a fullstack web application that allows users to create, read, update, and delete content served from a database.
 
 ### Problem Space
 
@@ -15,9 +15,9 @@ There is one website that attempts to be a central source for ranking escape roo
 
 ### User Profile
 
-People who will use Room Ranker include:
-- Escape room owners looking to increase traffic and get the word out about their new rooms.
-- Beginner players looking to find affordable rooms that are right for them.
+People who will use Rate Escape Room include:
+- Escape room owners looking to increase traffic and get the word out about new rooms or old rooms that are being updated.
+- Beginner players looking to find affordable rooms at a difficulty level that's right for them.
 - Escape room enthusiasts looking for a challenge and bragging rights.
 
 
