@@ -1,0 +1,71 @@
+@use "../../styles/partials/global.scss" as *;
+@use "../../styles/partials/variables.scss" as *;
+@use "../../styles/partials/mixins.scss" as *;
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    position: relative;
+
+    @extend .format-padding;
+    
+    background-color: black;
+    color: white;
+
+    .nav-bar{
+        display: flex;
+        align-items: center;
+
+        .menu{
+            display: flex;
+            align-items: center;
+            
+            @include tablet{
+                display: none;
+            }
+    
+            &__icon{    
+                
+            }
+        }
+
+        .pages{
+            display: none;
+            @include tablet{
+                display: flex;
+                gap: 8px;
+            }
+            &__link{
+                &--text{
+                    @extend .body-copy;
+                }
+            }
+        }
+
+    }
+
+    .logo{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        &__image{
+
+        }
+    }
+
+    .login{
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        &__link{
+            
+        }
+    }
+}

@@ -1,0 +1,22 @@
+@use "../../styles/partials/global.scss" as *;
+@use "../../styles/partials/variables.scss" as *;
+@use "../../styles/partials/mixins.scss" as *;
+
+.profile-headshot__container{
+    display: flex;
+
+    .profile-headshot__frame{
+        position:relative;
+        overflow: hidden;
+        border-radius: 50%;
+        width: 2.5rem;
+        height: 2.5rem;
+        background-color: $color-secondary-mercury;
+        background-size: cover;
+
+        .profile-headshot__image{
+            height: 100%;
+            width: auto;                                      
+        }
+    }
+}
