@@ -111,8 +111,8 @@ Describe your data and the relationships between them. You can show this visuall
 List endpoints that your server will implement, including HTTP methods, parameters, and example responses.
 - Homepage: "/"
 - Rooms Page: "/rooms"
-- Room Details Page: "/rooms:id"
-- Rate this Room Page: "/rooms:id/rate"
+- Room Details Page: "/rooms/:id"
+- Rate this Room Page: "/rooms/:id/rate"
 - Login Page: "/login"
 - Create Account Page: "/create-account"
 - Rooms Near Me: "/rooms-nearby"
