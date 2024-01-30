@@ -1,0 +1,25 @@
+@use "../../styles/partials/global.scss" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins.scss" as *;
+
+.not-found-page{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    &__title{
+        @extend .page-header;
+        padding:2.25rem;
+    }
+
+    &__p{
+        @extend .subheader;
+    }
+
+    &__link{
+        color: $color-primary-blue;
+        text-decoration: underline;
+    }
+}
