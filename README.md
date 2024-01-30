@@ -130,7 +130,7 @@ Does your project include any login or user profile functionality? If so, descri
     - Room page
     - Room details page
     - Login Page
-    - Create Accounts page
+    - Create Account page
     - Rooms near me page
     - 'add room' page for owner accounts
     - rate this room page

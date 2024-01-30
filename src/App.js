@@ -7,6 +7,8 @@ import Homepage from "./assets/pages/HomePage/Homepage.js"
 import NotFoundPage from "./assets/pages/NotFoundPage/NotFoundPage.js"
 import RoomsPage from "./assets/pages/RoomsPage/RoomsPage.js";
 import RoomDetailsPage from "./assets/pages/RoomDetailsPage/RoomDetailsPage.js";
+import LoginPage from "./assets/pages/LoginPage/LoginPage.js";
+import CreateAccountPage from "./assets/pages/CreateAccountPage/CreateAccountPage.js";
 
 
 function App() {
@@ -19,8 +21,8 @@ function App() {
           <Route path="/rooms" element={<RoomsPage />} />
           <Route path="/rooms:roomId" element={<RoomDetailsPage />} />
           {/* <Route path="/rooms:roomId/rate" element={<Homepage />} /> */}
-          {/* <Route path="/login" element={<Homepage />} /> */}
-          {/* <Route path="/create-account" element={<Homepage />} /> */}
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/create-account" element={<CreateAccountPage />} />
           {/* <Route path="/rooms-nearby" element={<Homepage />} /> */}
 
 
