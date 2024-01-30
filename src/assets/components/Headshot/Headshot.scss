@@ -4,13 +4,14 @@
 
 .profile-headshot__container{
     display: flex;
+    
 
     .profile-headshot__frame{
         position:relative;
         overflow: hidden;
         border-radius: 50%;
-        width: 2.5rem;
-        height: 2.5rem;
+        width: 36px;
+        height: 36px;
         background-color: $color-secondary-mercury;
         background-size: cover;
 
