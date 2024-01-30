@@ -1,0 +1,109 @@
+@use "../../styles/partials/global.scss" as *;
+@use "../../styles/partials/variables.scss" as *;
+@use "../../styles/partials/mixins.scss" as *;
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 48px;
+    position: relative;
+
+    @extend .format-padding;
+    
+    background-color: black;
+    color: #F8F8FF;
+
+    @include tablet{
+        height: 60px;
+    }
+
+    .nav-bar{
+        display: flex;
+        align-items: center;
+
+        .menu{
+            display: flex;
+            align-items: center;
+            
+            @include tablet{
+                display: none;
+            }
+    
+            &__icon{    
+                
+            }
+        }
+        .menu-active{
+
+        }
+
+        .pages{
+            display: none;
+            @include tablet{
+                display: flex;
+                gap: 8px;
+            }
+            &__link{
+                &--text{
+                    @extend .body-copy;
+                }
+            }
+        }
+
+    }
+
+    .logo{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        &__image{
+
+        }
+    }
+
+    .login{
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        
+
+        &__link{
+            
+        }
+
+        &__profile{
+            
+        }
+    }
+}
+
+.mobile-menu-active{
+    
+    display: flex;
+    background-color: gray;
+    color: #F8F8FF;
+    @extend .format-padding;
+
+    @include tablet{
+        display: none;
+    }
+    .mobile-menu-pages{
+
+        &__link{
+            margin: 8px 0;
+            &--text{
+
+            }
+        }
+    }
+}
+
+.mobile-menu-inactive{
+    display: none;
+}

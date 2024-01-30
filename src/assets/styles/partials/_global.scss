@@ -126,7 +126,7 @@
     width:fit-content;
 }
 
-.margin-format{
+.format-margin{
     margin: 0 1rem;    
 
     @include tablet {
@@ -138,7 +138,7 @@
     }    
 }
 
-.padding-format{
+.format-padding{
     padding: 0 1rem;    
 
     @include tablet {
