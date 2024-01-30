@@ -14,6 +14,12 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Homepage />} />
+          {/* <Route path="/rooms" element={<Homepage />} />
+          <Route path="/rooms:roomId" element={<Homepage />} />
+          <Route path="/rooms:roomId/rate" element={<Homepage />} />
+          <Route path="/login" element={<Homepage />} />
+          <Route path="/create-account" element={<Homepage />} />
+          <Route path="/rooms-nearby" element={<Homepage />} /> */}
 
 
           <Route path="*" element={<NotFoundPage />} />
