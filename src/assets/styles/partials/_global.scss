@@ -101,9 +101,9 @@
     height: 2.5rem;
     border-radius: 0.25rem;
     padding: 0 2rem;
-    background-color: $color-primary-blue;
-    color: $color-primary-white;
-    border: 0.0625rem solid $color-primary-blue;
+    background-color: blue;
+    color: white;
+    border: 0.0625rem solid blue;
     width: 100%;
     position: relative;
     text-transform: uppercase;
@@ -113,8 +113,8 @@
     }
 
     &:hover{
-        background-color: $color-secondary-dark-blue;
-        border: 0.0625rem solid $color-secondary-dark-blue;
+        background-color: darkblue;
+        border: 0.0625rem solid darkblue;
     }
 }
 
@@ -156,23 +156,23 @@
 }
 
 .form-input-field{
-    background-color: $color-secondary-alabaster;
+    background-color: white;
 
     width: 100%;
     min-height: 2.25rem;
     border-radius: 0.25rem;
     padding: 0.75rem;
     
-    border: 0.0625rem solid $color-secondary-mercury;
+    border: 0.0625rem solid white;
     @extend .body-copy;
 
     &::placeholder{
-        color: $color-primary-black;
+        color: black;
         @extend .body-copy;
     }
 
     &:focus{
-        border-color: $color-primary-blue;
+        border-color: blue;
     }
 
     &:user-invalid{
