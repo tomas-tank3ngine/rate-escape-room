@@ -1,3 +1,43 @@
 @use "../../styles/partials/global.scss" as *;
 @use "../../styles/partials/variables.scss" as *;
 @use "../../styles/partials/mixins.scss" as *;
+
+.hero{
+    // background-image: url(../../images/b&wherokeys2.png);
+    // background-image: url(../../images/bluekeyshero2.png);
+    background-image: url(../../images/RusticHero4.png);
+    background-size: cover;
+    background-position: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    color: white;
+    width: 100%;
+    height: 30vh;
+
+    &__container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+
+        .cta{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-width: 140px;
+            min-height: 40px;
+            text-align: center;
+            border: 1px solid white;
+            background-color: rgba(black, 0.8);
+            border-radius: 4px;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+            &__p{
+                @extend .body-copy;
+
+            }
+        }
+    }
+}
