@@ -4,22 +4,70 @@
 
 .info{
     background-color: $color-black;
+    background-image: url(../../images/RusticImage5.png);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    // justify-content: center;
+    align-items: center;
+    gap: 16px;
+    @extend .format-padding;
+    padding-top: 24px;
+    padding-bottom: 24px;
+    
     &__header{
-
+        @extend .section-header;
+        font-size: larger;
+        text-transform: uppercase;
+        color: $color-eggshell;
     }
 
     &__child-container{
-        
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 80vw;
+        gap: 16px;
+
+        @include tablet{
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 100%;
+            padding: unset;
+            gap: 24px;
+        }
+
         .why-play{
+            display: flex;
+            flex-direction: column;
+            background-color: rgba($color-black, 0.9);
+            border: 1px solid black;
+            border-radius: 20px;
+            padding: 16px;
+            width: 300px;
+            gap: 8px;
 
-            &__image{
-
+            &__image-container{
+                width: 80px;
+                text-align: center;
+                margin: auto;
+                .why-play__image{
+                    width: 100%;
+                    height: 100%;
+                }
             }
             &__header{
-
+                text-align: center;
+                @extend .section-header;
+                font-size:larger;
+                color: $color-light-red;
             }
             &__p{
-
+                @extend .body-copy;
+                color: $color-eggshell;
+                line-height: 24px;
             }
         }
     }
