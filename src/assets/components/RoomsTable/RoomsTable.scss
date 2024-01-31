@@ -1,0 +1,33 @@
+@use "../../styles/partials/global.scss" as *;
+@use "../../styles/partials/variables.scss" as *;
+@use "../../styles/partials/mixins.scss" as *;
+
+.rooms-table-section{
+    display: flex;
+    flex-direction: column;
+
+    .filter-section{
+        width: 100%;
+        border: 1px solid $color-black;
+        .filter{
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    .table-section{
+
+        .table-header{
+            border: 1px solid $color-black;
+            background-color: grey;
+        }
+
+        .table-list{
+
+            .table-item{
+
+            }
+        }
+    }
+}
+

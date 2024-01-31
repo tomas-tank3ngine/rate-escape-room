@@ -3,8 +3,3 @@
 @use "../../styles/partials/mixins.scss" as *;
 
 
-.rooms-page{
-    @extend .format-padding;
-    background-color: lightcoral;
-    
-}
