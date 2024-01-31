@@ -18,8 +18,38 @@
     .table-section{
 
         .table-header{
+            display: flex;
+
+            
             border: 1px solid $color-black;
             background-color: grey;
+            
+
+
+            .sort-label{
+                display: flex;
+                align-items: center;
+                // border: 1px solid white;
+                flex: 1;
+                max-height: 24px;
+
+                &.fav-label{
+                    flex: 0.5;
+                    // width: 2px;
+                }
+                
+                &__fav-icon{
+                    max-height: 24px;
+                }
+                
+                &__p{
+
+                }
+
+                &__sort-icon{
+                    width: 16px;
+                }
+            }
         }
 
         .table-list{

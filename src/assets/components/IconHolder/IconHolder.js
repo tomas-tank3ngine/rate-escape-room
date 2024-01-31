@@ -11,9 +11,10 @@ import StarEmptyIcon from '../../icons/star_line.svg'
 import StarHalfIcon from '../../icons/star_half_fill.svg'
 import StarFullIcon from '../../icons/star_fill.svg'
 import FilterEmptyIcon from '../../icons/filter_line.svg'
-import FilterFull from '../../icons/filter_fill.svg'
-import HeartEmpty from '../../icons/heart_line.svg'
-import HeartFull from '../../icons/heart_fill.svg'
+import FilterFullIcon from '../../icons/filter_fill.svg'
+import HeartEmptyIcon from '../../icons/heart_line.svg'
+import HeartFullIcon from '../../icons/heart_fill.svg'
+import SortIcon from '../../icons/transfer_4_line.svg'
 
 
 function Icons() {
@@ -31,9 +32,11 @@ function Icons() {
     StarHalfIcon: StarHalfIcon,
     StarFullIcon: StarFullIcon,
     FilterEmptyIcon: FilterEmptyIcon,
-    FilterFull: FilterFull,
-    HeartEmpty: HeartEmpty,
-    HeartFull: HeartFull,
+    FilterFullIcon: FilterFullIcon,
+    HeartEmptyIcon: HeartEmptyIcon,
+    HeartFullIcon: HeartFullIcon,
+    SortIcon: SortIcon,
+
   };
 
   return icons;
