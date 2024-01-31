@@ -1,5 +1,4 @@
 import './Hero.scss';
-import HeroImage from '../../images/b&wherokeys2.png'
 import { Link } from 'react-router-dom';
 
 function Hero(){
