@@ -22,7 +22,7 @@ function RoomOverview(){
                     <p className="selected-info__description-text">DESCRIPTION</p>
                     <section className="selected-info__bottom-section">
                         <Link className="selected-info__website-link">WEBSITE URL</Link>
-                        <Link className="selected-info__share-link">WEBSITE URL</Link>
+                        <Link className="selected-info__share-link">SHARE URL</Link>
                     </section>
                 </section>
             </section>

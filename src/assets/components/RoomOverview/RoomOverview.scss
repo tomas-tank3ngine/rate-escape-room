@@ -6,6 +6,7 @@
 .room-overview{
     display: flex;
     background-color: $color-eggshell;
+    border-radius: 8px;
 
     .details-link{
         min-width: 180px;

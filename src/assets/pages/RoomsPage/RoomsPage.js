@@ -6,10 +6,9 @@ function RoomsPage({responsive}){
     return(
         <main className="rooms-page">
             <RoomOverview/>
-            <hr></hr>
+            <hr className='rooms-page__line-break'></hr>
             <RoomsTable responsive={responsive}/>
-        </main>
-        
+        </main>        
     )
 }
 
