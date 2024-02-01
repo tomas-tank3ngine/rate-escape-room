@@ -1,0 +1,76 @@
+@use "../../styles/partials/global.scss" as *;
+@use "../../styles/partials/variables.scss" as *;
+@use "../../styles/partials/mixins.scss" as *;
+
+.table-item-mobile{
+    border: 1px solid black;
+    background-color: $color-eggshell;
+    border-radius: 6px;
+    flex-direction: column;
+    
+
+    .item-container-top{
+        display: flex;
+        justify-content: space-between;
+
+        @include tablet{
+            flex-direction: row;
+        }
+
+        &__left{
+            display: flex;
+
+            .fav-button{
+                
+                &__fav-icon{
+
+                }
+            }
+            .item-name{
+
+            }
+        }
+        &__right{
+            display: flex;
+            .star-rating{
+                width: 24px;
+            }
+        }
+    }
+    .item-container-middle{
+            display: flex;
+            justify-content: space-between;
+            gap: 8px;
+        &__theme{
+            flex-grow: 1;
+            text-align: center;
+            border-radius: 6px;
+            border: 1px solid $color-black;
+        }
+        &__difficulty{
+            flex-grow: 1;
+            text-align: center;
+            border-radius: 6px;
+            border: 1px solid $color-black;
+        }
+        &__completion-rate{
+            flex-grow: 0.25;
+            text-align: center;
+            border-radius: 6px;
+            border: 1px solid $color-black;
+
+        }
+    }
+    .item-container-bottom{
+        display: flex;
+        &__thumbnail{
+            width: 64px;
+            height: 64px;
+            border: 1px solid red;
+        }
+        &__description{
+            flex-grow: 1;
+            
+        }
+    }
+}
