@@ -44,6 +44,15 @@
                     flex: 0.5;
                     // width: 2px;
                 }
+
+                &.rating-label{
+                    flex: 1.2
+                }
+
+                &.completion-label{
+                    flex: 0.8;
+                }
+                
                 
                 &__fav-icon{
                     max-height: 24px;

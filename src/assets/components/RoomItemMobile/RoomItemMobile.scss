@@ -26,29 +26,18 @@
             display: flex;
             align-items: flex-end;
             gap: 4px;
-            .fav-button{
-                
-                &__fav-icon{
-                    width: 24px;
-                }
-            }
+
             .item-name{
                 @extend .section-header;
                 font-size: 18px;
             }
         }
-        &__right{
-            display: flex;
-            .star-rating{
-                width: 24px;
-            }
-        }
     }
     .item-container-middle{
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 8px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 8px;
             
         &__theme{
             flex-grow: 1;

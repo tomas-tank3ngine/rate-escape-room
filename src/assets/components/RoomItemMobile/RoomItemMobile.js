@@ -1,47 +1,17 @@
 import "./RoomItemMobile.scss";
 import Icons from "../IconHolder/IconHolder";
+import StarRating from "../StarRating/StarRating";
+import FavRoomButton from "../FavRoomButton/FavRoomButton";
 
 function RoomItemMobile() {
   return (
     <li className="table-item-mobile">
       <section className="item-container-top">
         <div className="item-container-top__left">
-          <button className="fav-button">
-            <img
-              src={Icons().HeartEmptyIcon}
-              alt="favourites icon"
-              className="fav-button__fav-icon"
-            />
-          </button>
+          <FavRoomButton />
           <p className="item-name">Room Name</p>
         </div>
-        <div className="item-container-top__right">
-          <img
-            src={Icons().StarEmptyIcon}
-            alt="star icon"
-            className="star-rating"
-          />
-          <img
-            src={Icons().StarEmptyIcon}
-            alt="star icon"
-            className="star-rating"
-          />
-          <img
-            src={Icons().StarEmptyIcon}
-            alt="star icon"
-            className="star-rating"
-          />
-          <img
-            src={Icons().StarEmptyIcon}
-            alt="star icon"
-            className="star-rating"
-          />
-          <img
-            src={Icons().StarEmptyIcon}
-            alt="star icon"
-            className="star-rating"
-          />
-        </div>
+        <StarRating />
       </section>
       <section className="item-container-middle">
         <p className="item-container-middle__theme">Ancient Egypt</p>

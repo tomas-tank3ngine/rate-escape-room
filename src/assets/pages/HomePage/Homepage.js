@@ -6,13 +6,13 @@ import InfoSection from '../../components/InfoSection/InfoSection';
 
 function Homepage(){
     return(
-        <>
+        <main className="homepage">
             <Hero />
             
             <Banner />
             
             <InfoSection />
-        </>
+        </main>        
     )
 }
 

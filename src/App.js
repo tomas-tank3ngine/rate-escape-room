@@ -21,8 +21,7 @@ function App() {
   }, []);
   const updateDimensions = () => {
     const width = window.innerWidth;
-    setWindowWidth(width);
-    
+    setWindowWidth(width);    
   };
 
   const responsive = {

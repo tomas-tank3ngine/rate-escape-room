@@ -5,11 +5,11 @@ import RoomItemTabletPlus from "../RoomItemTabletPlus/RoomItemTabletPlus";
 
 function RoomsTable({responsive}) {
 
-    console.log("is tablet?: "+ responsive.isTablet)
+    // console.log("is tablet?: "+ responsive.isTablet)
 
     return (
     <section className="rooms-table-section">
-      <section className="filter-section">
+      <aside className="filter-section">
         <button className="filter">
           <img
             src={Icons().FilterEmptyIcon}
@@ -18,7 +18,7 @@ function RoomsTable({responsive}) {
           />
           <p className="filter__label">Filters</p>
         </button>
-      </section>
+      </aside>
 
       <section className="table-section">
         <section className="table-header">
@@ -45,7 +45,7 @@ function RoomsTable({responsive}) {
               className="sort-label__sort-icon"
             />
           </button>
-          <button className="sort-label">
+          <button className="sort-label rating-label">
             <p className="sort-label__p">Rating</p>
             <img
               src={Icons().SortIcon}
@@ -53,7 +53,7 @@ function RoomsTable({responsive}) {
               className="sort-label__sort-icon"
             />
           </button>
-          <button className="sort-label">
+          <button className="sort-label completion-label">
             <p className="sort-label__p">Completion</p>
             <img
               src={Icons().SortIcon}

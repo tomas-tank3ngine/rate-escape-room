@@ -5,13 +5,7 @@
 .table-item-tablet-plus{
     display: flex;
     flex-direction: row;
-    .fav-button{
-        flex: 0.5;
-        &__fav-icon{
-            max-height: 24px;
-        }
-    }
-
+    
     &__label{
         display: flex;
         align-items: flex-start;
@@ -22,13 +16,18 @@
         .table-item-tablet-plus__text{
 
         }
+    }
 
-        .table-item-tablet-plus__rating-container{
-            display: flex;
-
-            .star-rating{
-                max-height: 24px;
-            }
-        }
+    & .fav-label{
+        justify-content: center;
+        flex: 0.5;
+    }
+    & .rating-label{
+        justify-content: flex-start;
+        flex: 1.2;
+    }
+    & .completion-label{
+        justify-content: flex-start;
+        flex: 0.8;
     }
 }
