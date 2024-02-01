@@ -1,26 +1,32 @@
 import { Link } from 'react-router-dom';
 import './RoomOverview.scss'
 import StarRating from '../StarRating/StarRating';
+import FavRoomButton from '../FavRoomButton/FavRoomButton';
 
 function RoomOverview(){
     // Dont forget to link the room id properly in the return()
     return(
-        <section className="room-overview">
-            <Link to="//rooms/:roomId"className="details-link">
-                <h2 className="details-link__text">Room Details</h2>
-                <img src="" alt="thumbnail" className="details-link__thumbnail" />
-            </Link>
-            <section className="selected-info">
-                <section className="selected-info__top-section">
-                    
-                    <StarRating />
-                </section>
-                <p className="selected-info__description-text">DESCRIPTION</p>
-                <section className="selected-info__top-section">
-                    
+        <>
+            <section className="room-overview">
+                <Link to="//rooms/:roomId"className="details-link">
+                    <p className="details-link__text">Room Details</p>
+                    <img src="" alt="thumbnail" className="details-link__thumbnail" />
+                </Link>
+                <section className="selected-info">
+                    <section className="selected-info__top-section">
+                        
+                        <FavRoomButton />
+                        <h2 className="selected-info__name">ROOM NAME</h2>
+                        <StarRating />
+                    </section>
+                    <p className="selected-info__description-text">DESCRIPTION</p>
+                    <section className="selected-info__bottom-section">
+                        <Link className="selected-info__website-link">WEBSITE URL</Link>
+                        <Link className="selected-info__share-link">WEBSITE URL</Link>
+                    </section>
                 </section>
             </section>
-        </section>
+        </>
     );
 }
 
