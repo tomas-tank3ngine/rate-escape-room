@@ -6,17 +6,27 @@
     display: flex;
     flex-direction: column;
 
+    @include tablet{
+        flex-direction: row;
+    }
     .filter-section{
-        width: 100%;
+        min-width: 100%;
         border: 1px solid $color-black;
         .filter{
             display: flex;
             align-items: center;
         }
+        @include tablet{
+            flex-direction: row;
+            width: 20vw;
+            min-width: 180px;
+        }
     }
 
     .table-section{
-
+        @include tablet{
+            flex-grow: 1;
+        }
         .table-header{
             display: flex;
             border: 1px solid $color-black;

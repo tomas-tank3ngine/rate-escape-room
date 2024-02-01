@@ -49,11 +49,6 @@ function RoomItemMobile() {
         <p className="item-container-middle__completion-rate">78%</p>
       </section>
       <section className="item-container-bottom">
-        {/* <img
-          src=""
-          alt="thumbnail"
-          className="item-container-bottom__thumbnail"
-        /> */}
         <p className="item-container-bottom__description">Description</p>
       </section>
     </li>
