@@ -2,11 +2,11 @@ import './RoomsPage.scss'
 import RoomsTable from '../../components/RoomsTable/RoomsTable';
 import RoomOverview from '../../components/RoomOverview/RoomOverview';
 
-function RoomsPage(){
+function RoomsPage({responsive}){
     return(
         <section className="rooms-page">
             <RoomOverview/>
-            <RoomsTable />
+            <RoomsTable responsive={responsive}/>
         </section>
         
     )

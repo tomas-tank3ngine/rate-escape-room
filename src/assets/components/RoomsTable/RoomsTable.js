@@ -1,8 +1,11 @@
 import "./RoomsTable.scss";
 import Icons from "../IconHolder/IconHolder";
 
-function RoomsTable() {
-  return (
+function RoomsTable({responsive}) {
+
+    console.log("is tablet?: "+ responsive.isTablet)
+
+    return (
     <section className="rooms-table-section">
       <section className="filter-section">
         <button className="filter">
