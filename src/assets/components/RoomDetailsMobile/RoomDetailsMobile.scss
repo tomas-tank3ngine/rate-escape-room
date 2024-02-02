@@ -5,6 +5,11 @@
 .room-details-mobile{
     display: flex;
     flex-direction: column;
+    padding: 8px;
+    border: 1px $color-black solid;
+    border-radius: 6px;
+    background-color: $color-eggshell;
+    box-shadow: 0px 0px 8px 4px rgba(0,0,0,0.14);
     gap: 8px;
     .section-one{
         display: flex;
@@ -73,9 +78,9 @@
 
     .section-three{
         display: flex;
-        padding: 8px;
+        // padding: 8px;
         justify-content: space-between;
-        border: 1px solid red;
+        // border: 1px solid red;
         &__wrapper{
             display: flex;
             flex-direction: column;
@@ -97,8 +102,8 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
-        border: 1px solid red;
-        padding: 0 8px;
+        // border: 1px solid red;
+        // padding: 0 8px;
         &__rating-container{
             display: flex;
             flex-direction: column;
@@ -112,16 +117,51 @@
 
     .section-five{
         display: flex;
-
+        justify-content: space-between;
         &__website-link{
-            flex: 1;
-        }
-        &__share-link-icon{
-            max-width: 16px;
+            
         }
         &__share-url-button{
-
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            @extend .body-copy;
+            &--icon{
+                max-width: 16px;
+            }
+            &--p{
+                @extend .body-copy;
+            }
         }
-        
     }
+
+    .rate-room-button{
+        display: flex;
+        width: 100%;
+        position: relative;
+        text-transform: uppercase;
+        align-items: center;
+        justify-content: center;
+        background-color: $color-light-red;
+        border-radius: 6px;
+        padding: 8px 0;
+        gap: 8px;
+        
+
+        &__icon{
+            max-width: 1.5rem;
+            align-items: center;
+        }
+        &__p{
+            @extend .label;
+            line-height: 0;
+            font-size: 1.125rem;
+            color: $color-eggshell;
+            line-height: unset;
+            margin-top: 0.25rem;
+            
+        }
+    }
+        
+    
 }
