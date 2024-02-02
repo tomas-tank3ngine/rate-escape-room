@@ -8,7 +8,7 @@ function RoomOverview(){
     return(
         <>
             <section className="room-overview">
-                <Link to="//rooms/:roomId"className="details-link">
+                <Link to="/rooms/:1"className="details-link">
                     <p className="details-link__text">Room Details</p>
                     <img src="" alt="thumbnail" className="details-link__thumbnail" />
                 </Link>
