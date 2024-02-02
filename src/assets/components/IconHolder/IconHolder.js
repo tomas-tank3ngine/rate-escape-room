@@ -16,6 +16,7 @@ import HeartEmptyIcon from '../../icons/heart_line.svg'
 import HeartFullIcon from '../../icons/heart_fill.svg'
 import SortIcon from '../../icons/transfer_4_line.svg'
 import AddCircleIcon from '../../icons/add_circle_line.svg'
+import ShareUrlIcon from '../../icons/link_line.svg'
 
 
 function Icons() {
@@ -38,6 +39,7 @@ function Icons() {
     HeartFullIcon: HeartFullIcon,
     SortIcon: SortIcon,
     AddCircleIcon: AddCircleIcon,
+    ShareUrlIcon: ShareUrlIcon,
   };
 
   return icons;

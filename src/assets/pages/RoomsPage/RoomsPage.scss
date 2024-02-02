@@ -9,7 +9,11 @@
     min-height: 90vh;
 
     &__line-break{
+        display: none;
         border: 2px solid $color-eggshell;
         border-radius: 20px;
+        @include tablet{
+            display: block;
+        }
     }
 }
