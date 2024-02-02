@@ -1,0 +1,15 @@
+@use "../../styles/partials/global.scss" as *;
+@use "../../styles/partials/variables.scss" as *;
+@use "../../styles/partials/mixins.scss" as *;
+
+
+.rooms-page{
+    @extend .format-padding;
+    background-color: $color-light-red;
+    min-height: 90vh;
+
+    &__line-break{
+        border: 2px solid $color-eggshell;
+        border-radius: 20px;
+    }
+}

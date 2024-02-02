@@ -1,0 +1,33 @@
+@use "../../styles/partials/global.scss" as *;
+@use "../../styles/partials/variables.scss" as *;
+@use "../../styles/partials/mixins.scss" as *;
+
+.table-item-tablet-plus{
+    display: flex;
+    flex-direction: row;
+    
+    &__label{
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-direction: row;
+        flex: 1;
+
+        .table-item-tablet-plus__text{
+
+        }
+    }
+
+    & .fav-label{
+        justify-content: center;
+        flex: 0.5;
+    }
+    & .rating-label{
+        justify-content: flex-start;
+        flex: 1.2;
+    }
+    & .completion-label{
+        justify-content: flex-start;
+        flex: 0.8;
+    }
+}

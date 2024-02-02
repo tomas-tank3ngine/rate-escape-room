@@ -1,10 +1,14 @@
 import './RoomsPage.scss'
+import RoomsTable from '../../components/RoomsTable/RoomsTable';
+import RoomOverview from '../../components/RoomOverview/RoomOverview';
 
-function RoomsPage(){
+function RoomsPage({responsive}){
     return(
-        <>
-        RoomsPage
-        </>
+        <main className="rooms-page">
+            <RoomOverview/>
+            <hr className='rooms-page__line-break'></hr>
+            <RoomsTable responsive={responsive}/>
+        </main>        
     )
 }
 

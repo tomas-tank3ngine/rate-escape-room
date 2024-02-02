@@ -1,0 +1,61 @@
+@use "../../styles/partials/global.scss" as *;
+@use "../../styles/partials/variables.scss" as *;
+@use "../../styles/partials/mixins.scss" as *;
+
+
+.room-overview{
+    display: flex;
+    background-color: $color-eggshell;
+    border-radius: 8px;
+
+    .details-link{
+        min-width: 180px;
+        padding: 16px;
+        &__text{
+
+        }
+
+        &__thumbnail{
+
+        }
+    }
+
+    .selected-info{
+        padding: 16px;
+        display: flex;
+        flex-grow: 1;
+        flex-direction: column;
+        gap: 8px;
+
+        &__top-section{
+            display: flex;
+            gap: 8px;
+            .selected-info__name{
+                display: flex;
+                flex: 1;
+                align-items: flex-end;
+                @extend .section-header;
+                font-size: 18px;
+            }
+        }
+
+        &__description-text{
+            @extend .body-copy;
+            border: 1px solid $color-black;
+            padding: 8px;
+            min-height: 100px;
+        }
+
+        &__bottom-section{
+            display: flex;
+            justify-content: space-between;
+            padding: 0 8px;
+            .selected-info__website-link{
+
+            }
+            .selected-info__share-link{
+
+            }
+        }
+    }
+}

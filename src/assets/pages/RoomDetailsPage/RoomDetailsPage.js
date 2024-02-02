@@ -2,9 +2,14 @@ import './RoomDetailsPage.scss'
 
 function RoomDetailsPage(){
     return(
-        <>
-        RoomDetailsPage
-        </>
+        <main className="room-details-page">
+            <section className="room-details">
+
+            </section>
+            <section className="room-reviews">
+                room-reviews__
+            </section>
+        </main>
     )
 }
 

@@ -1,0 +1,10 @@
+@use "../../styles/partials/global.scss" as *;
+@use "../../styles/partials/variables.scss" as *;
+@use "../../styles/partials/mixins.scss" as *;
+
+.fav-room-button{
+
+    &__icon{
+        max-height: 24px;
+    }
+}
