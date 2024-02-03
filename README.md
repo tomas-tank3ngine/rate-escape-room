@@ -68,57 +68,73 @@ Google APIs
 
 ### Mockups
 
-#### Homepage
+#### Homepage (/)
 ![Homepage desktop mockup](./proposal-assets/Desktop_Homepage.png)
 ![Homepage mobile mockup](./proposal-assets/Mobile_Homepage.png)
 
-#### Rooms Page
+#### Rooms Page (/rooms)
 ![Rooms Page desktop mockup](./proposal-assets/Desktop_Rooms.png)
 ![Rooms Page mobile mockup](./proposal-assets/Mobile_Rooms.png)
 
-#### Room Details Page
+#### Room Details Page (/rooms/:roomId)
 ![Room Details Page desktop mockup](./proposal-assets/Desktop_Room-Details.png)
 ![Room Details Page mobile mockup](./proposal-assets/Mobile_Room-Details.png)
 
-
-#### Login Page
-![Login Page desktop mockup](./proposal-assets/Desktop_Log-In.png)
-![Login Page mobile mockup](./proposal-assets/Mobile_Log-In.png)
-
-#### Create Account Page
-![Create Account desktop mockup](./proposal-assets/Desktop_Create-Account.png)
-![Create Account mobile mockup](./proposal-assets/Mobile_Create-Account.png)
-
-#### Rate this Room Page
+#### Rate this Room Page (/rooms/:roomId/rate)
 ![Rate this Room Page desktop mockup](./proposal-assets/Desktop_Rate-Room.png)
 ![Rate this Room Page mobile mockup](./proposal-assets/Mobile_Rate-Room.png)
 
-#### Rooms Near Me Page
+#### Login Page (/accountLogin)
+![Login Page desktop mockup](./proposal-assets/Desktop_Log-In.png)
+![Login Page mobile mockup](./proposal-assets/Mobile_Log-In.png)
+
+#### Create Account Page (/accountCreate)
+![Create Account desktop mockup](./proposal-assets/Desktop_Create-Account.png)
+![Create Account mobile mockup](./proposal-assets/Mobile_Create-Account.png)
+
+
+#### Rooms Near Me Page (/nearbyRooms)
 ![Rooms Near Me Page desktop mockup](./proposal-assets/Desktop_Search-Nearby.png)
 ![Rooms Near Me Page mobile mockup](./proposal-assets/Mobile_Search-Nearby.png)
 
-#### Add New Room
+#### Add New Room (/roomCreate)
 ![Add New Room desktop mockup](./proposal-assets/Desktop_Add-Room.png)
 ![Add New Room mobile mockup](./proposal-assets/Mobile_Add-Room.png)
 
 
 ### Data
 
-Describe your data and the relationships between them. You can show this visually using diagrams, or write it out. 
+![Rooms Page mobile mockup](./drawSQL-rate-escape-room-export-2024-02-03.png)
 
 ### Endpoints
 
 List endpoints that your server will implement, including HTTP methods, parameters, and example responses.
-- Homepage: "/"
-- Rooms Page: "/rooms"
-- Room Details Page: "/rooms/:id"
-- Rate this Room Page: "/rooms/:id/rate"
-- Login Page: "/login"
-- Create Account Page: "/create-account"
-- Rooms Near Me: "/rooms-nearby"
+- All rooms: "/rooms"
+    - get
+    - post
+- Single room: "/rooms/:id"
+    - get
+    - patch
+    - delete
+- Room Reviews: "/rooms/:id/reviews"
+    - get
+    - post
+- All Users: "/users"
+    - get
+    - post
+- Single User: "/users/:id"
+    - get
+    - patch
+    - delete
+- Favorites: "/favorites"
+    - get
+    - post
+    - delete
 
-### Auth TBD
+### Authorization
 
+Authentication functionality will be implemented through validation on client and server side.
+Authorization functionality will be implemented through validation on client and server side. Users will have a boolean value (is_owner) that will be assigned at account creation. Owners will be able to upload rooms to the site but will not be able to review rooms. Non-owners, i.e. regular users, will be able to review rooms but will not be able to upload rooms.
 Does your project include any login or user profile functionality? If so, describe how authentication/authorization will be implemented.
 
 ## Roadmap
