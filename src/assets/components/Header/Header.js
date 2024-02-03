@@ -47,7 +47,7 @@ function Header() {
         </Link>
         <section className="login">
           <Link to="/login" className="login__link">
-            sign-in
+            log-in
           </Link>
           <div className="login__profile">
             <Headshot />
