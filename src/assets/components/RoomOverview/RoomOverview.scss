@@ -4,9 +4,13 @@
 
 
 .room-overview{
-    display: flex;
+    display: none;
     background-color: $color-eggshell;
     border-radius: 8px;
+
+    @include tablet{
+        display: flex;
+    }
 
     .details-link{
         min-width: 180px;

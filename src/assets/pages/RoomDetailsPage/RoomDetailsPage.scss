@@ -1,3 +1,9 @@
 @use "../../styles/partials/global.scss" as *;
 @use "../../styles/partials/variables.scss" as *;
 @use "../../styles/partials/mixins.scss" as *;
+
+.room-details-page{
+    display: flex;
+    flex-direction: column;
+    @extend .format-padding;
+}

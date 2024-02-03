@@ -4,8 +4,12 @@
 
 .star-rating{
     display: flex;
-    max-width: fit-content;
     &__icon{
-        max-height: 24px;
+        max-width: 16px;
+        
+        width: 20%;
+        @include tablet{
+            max-width: 24px;
+        }
     }
 }
