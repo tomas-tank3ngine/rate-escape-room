@@ -104,7 +104,7 @@ Google APIs
 
 ### Data
 
-![Rooms Page mobile mockup](./drawSQL-rate-escape-room-export-2024-02-03.png)
+![DrawSQL database](./proposal-assets/drawSQL-rate-escape-room-export-2024-02-03.png)
 
 ### Endpoints
 
