@@ -63,8 +63,7 @@ function RoomsTable({responsive}) {
           </button>
         </section>
         <ul className="table-list">
-          {responsive.isTablet ? <RoomItemTabletPlus /> : <RoomItemMobile />}
-          
+          {responsive.isTablet ? <RoomItemTabletPlus /> : <RoomItemMobile />}          
         </ul>
       </section>
     </section>

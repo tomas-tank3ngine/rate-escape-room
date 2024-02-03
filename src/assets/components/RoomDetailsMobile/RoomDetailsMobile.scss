@@ -102,11 +102,13 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
+
         // border: 1px solid red;
         // padding: 0 8px;
         &__rating-container{
             display: flex;
             flex-direction: column;
+            align-items: center;
             width: 30%;
             
             &--header{
