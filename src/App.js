@@ -12,42 +12,51 @@ import LoginPage from "./assets/pages/LoginPage/LoginPage.js";
 import CreateAccountPage from "./assets/pages/CreateAccountPage/CreateAccountPage.js";
 
 function App() {
-  const [width, setWindowWidth] = useState(0);
-  useEffect(() => {
-    updateDimensions();
+    const [width, setWindowWidth] = useState(0);
+    useEffect(() => {
+        updateDimensions();
 
-    window.addEventListener("resize", updateDimensions);
-    return () => window.removeEventListener("resize", updateDimensions);
-  }, []);
-  const updateDimensions = () => {
-    const width = window.innerWidth;
-    setWindowWidth(width);    
-  };
+        window.addEventListener("resize", updateDimensions);
+        return () => window.removeEventListener("resize", updateDimensions);
+    }, []);
+    const updateDimensions = () => {
+        const width = window.innerWidth;
+        setWindowWidth(width);
+    };
 
-  const responsive = {
-    isTablet: width > 767,
-    isDesktop: width > 1279
-  }
-  return (
-    <>
-      <BrowserRouter>
-        <Header />
-        <Routes>
-          <Route path="/" element={<Homepage />} />
-          <Route path="/rooms" element={<RoomsPage responsive={responsive}/>} />
-          <Route path="/rooms/:roomId" element={<RoomDetailsPage />} />
-          <Route path="/rooms/:roomId/rate" element={<Homepage />} />
-          <Route path="/accountLogin" element={<LoginPage />} />
-          <Route path="/accountCreate" element={<CreateAccountPage />} />
-          <Route path="/nearbyRooms" element={<Homepage />} />
-          <Route path="/roomCreate" element={<Homepage />} />
+    const responsive = {
+        isTablet: width > 767,
+        isDesktop: width > 1279,
+    };
+    return (
+        <>
+            <BrowserRouter>
+                <Header />
+                <Routes>
+                    <Route path="/" element={<Homepage />} />
+                    <Route
+                        path="/rooms"
+                        element={<RoomsPage responsive={responsive} />}
+                    />
+                    <Route
+                        path="/rooms/:roomId"
+                        element={<RoomDetailsPage responsive={responsive} />}
+                    />
+                    <Route path="/rooms/:roomId/rate" element={<Homepage />} />
+                    <Route path="/accountLogin" element={<LoginPage />} />
+                    <Route
+                        path="/accountCreate"
+                        element={<CreateAccountPage />}
+                    />
+                    <Route path="/nearbyRooms" element={<Homepage />} />
+                    <Route path="/roomCreate" element={<Homepage />} />
 
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-        <Footer />
-      </BrowserRouter>
-    </>
-  );
+                    <Route path="*" element={<NotFoundPage />} />
+                </Routes>
+                <Footer />
+            </BrowserRouter>
+        </>
+    );
 }
 
 export default App;

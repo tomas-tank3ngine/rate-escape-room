@@ -2,15 +2,134 @@
 @use "../../styles/partials/variables.scss" as *;
 @use "../../styles/partials/mixins.scss" as *;
 
-.room-details-mobile{
+.room-details-tablet-plus{
     display: flex;
-    flex-direction: column;
-    padding: 8px;
+    flex-direction: row;
+    padding: 24px;
     border: 1px $color-black solid;
     border-radius: 6px;
     background-color: $color-eggshell;
     box-shadow: 0px 0px 8px 4px rgba(0,0,0,0.14);
-    gap: 8px;
+    gap: 16px;
+
+    .left-wrapper{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        &__thumbnail{
+            // min-width: 180px;
+            border: 1px solid red;
+            min-height: 80px;;
+        }
+        &__theme{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid $color-black;
+            width: 100%;
+            min-height: 16px;
+            border-radius: 6px;
+            // height: 10%;
+        }
+        &__review-room-button{
+            display: flex;
+            width: 100%;
+            position: relative;
+            text-transform: uppercase;
+            align-items: center;
+            justify-content: center;
+            background-color: $color-light-red;
+            border-radius: 6px;
+            padding: 8px 8px;
+            color: $color-eggshell;
+
+        }
+        &__address{
+
+        }
+    }
+    .right-wrapper{
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        gap: 16px;
+        // justify-content: flex-start;
+        &__header-section{
+            display: flex;
+            width: 100%;
+            // gap: 8px;
+            .room-name{
+                flex: 1;
+            }
+    
+            .fav-button{
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                &__p{
+    
+                }
+                &__icon{
+                    max-width: 24px;
+                }
+            }
+        }
+        &__description{
+            min-height: 100px;
+            border: 1px solid red;
+        }
+        &__room-details{
+            display: flex;
+            // padding: 16px;
+            min-height: 25vh;
+            gap: 16px;
+            
+            .room-info{
+                display: flex;
+                flex-direction: column;
+                width:max-content;
+                min-width:fit-content;
+                
+                justify-content: space-between;
+            }
+            .room-ratings{
+                flex-grow: 1;
+                display: flex;
+                gap: 16px;
+                // flex-wrap: wrap;
+                // justify-content: space-around;
+                // width: 100%;
+                justify-content: space-evenly;
+                &__wrapper{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                }
+
+                &__rating-container{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 8px;
+                    // flex-grow: 1;
+                    // padding
+
+                    // width: 50%;
+                    &--header{
+
+                    }
+                }
+            }
+            .room-links{
+                min-width: 100px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: center;
+            }
+        }
+    }
+
+
     .section-one{
         display: flex;
         &__room-name{
@@ -102,13 +221,11 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
-
         // border: 1px solid red;
         // padding: 0 8px;
         &__rating-container{
             display: flex;
             flex-direction: column;
-            align-items: center;
             width: 30%;
             
             &--header{
