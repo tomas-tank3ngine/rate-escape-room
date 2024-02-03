@@ -39,7 +39,8 @@ function App() {
           <Route path="/rooms/:roomId/rate" element={<Homepage />} />
           <Route path="/accountLogin" element={<LoginPage />} />
           <Route path="/accountCreate" element={<CreateAccountPage />} />
-          <Route path="/rooms-nearby" element={<Homepage />} />
+          <Route path="/nearbyRooms" element={<Homepage />} />
+          <Route path="/roomCreate" element={<Homepage />} />
 
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
