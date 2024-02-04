@@ -4,7 +4,7 @@ import StarRating from "../StarRating/StarRating";
 import FavRoomButton from "../FavRoomButton/FavRoomButton";
 import { useEffect } from "react";
 
-function RoomOverview() {
+function RoomOverview({ room }) {
     // Dont forget to link the room id properly in the return()
 
     <>
@@ -21,7 +21,7 @@ function RoomOverview() {
                 <section className="selected-info__top-section">
                     <FavRoomButton />
                     <h2 className="selected-info__name">ROOM NAME</h2>
-                    <StarRating />
+                    <StarRating rating={room.overall_rating}/>
                 </section>
                 <p className="selected-info__description-text">DESCRIPTION</p>
                 <section className="selected-info__bottom-section">

@@ -11,7 +11,7 @@ function RoomItemMobile({room}) {
           <FavRoomButton />
           <p className="item-name">{`${room.name}`}</p>
         </div>
-        <StarRating />
+        <StarRating rating={room.overall_rating}/>
       </section>
       <section className="item-container-middle">
         <p className="item-container-middle__theme">{`${room.theme}`}</p>

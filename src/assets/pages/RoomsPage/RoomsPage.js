@@ -26,7 +26,7 @@ function RoomsPage({responsive, user}){
       }, []);
     return(
         <main className="rooms-page">
-            <RoomOverview/>
+            <RoomOverview room={selectedRoom}/>
             <hr className='rooms-page__line-break'></hr>
             <RoomsTable responsive={responsive} allRooms={allRooms}/>
         </main>        

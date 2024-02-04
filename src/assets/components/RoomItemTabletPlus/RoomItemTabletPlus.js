@@ -16,7 +16,7 @@ function RoomItemTabletPlus({room}) {
         <p className="table-item-tablet-plus__text">{`${room.theme}`}</p>
       </div>
       <div className="table-item-tablet-plus__label rating-label">
-        <StarRating />
+        <StarRating rating={room.overall_rating}/>
       </div>
       <div className="table-item-tablet-plus__label completion-label">
         <p className="table-item-tablet-plus__text">{`${room.completion_rate}`}%</p>
