@@ -20,6 +20,8 @@ function App() {
 
     const [failedAuth, setFailedAuth] = useState(false);
 
+    
+
 
     useEffect(() => {
         updateDimensions();

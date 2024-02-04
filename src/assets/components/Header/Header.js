@@ -5,7 +5,7 @@ import { useState } from "react";
 import menuIcon from "../../icons/menu_fill.svg";
 import closeIcon from "../../icons/close_fill.svg";
 
-function Header({ setFailedAuth, failedAuth, setUser, user }) {
+function Header({ setUser, user }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const menuHandler = () => {
@@ -19,7 +19,6 @@ function Header({ setFailedAuth, failedAuth, setUser, user }) {
     // and the token is being sent to the backend on each page request via useEffect
     sessionStorage.removeItem("token");
     setUser(null);
-    setFailedAuth(true);
   };
 
   return (

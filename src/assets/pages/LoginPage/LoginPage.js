@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import "./LoginPage.scss";
-import { loginUserEndpoint, currentUserEndpoint, singleUserEndpoint } from "../../utils/api-utils";
+import {
+    loginUserEndpoint,
+    currentUserEndpoint,
+    singleUserEndpoint,
+} from "../../utils/api-utils";
 import { useNavigate } from "react-router";
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -22,18 +26,18 @@ const LoginForm = ({ setUser }) => {
             //Below works!
             // const res = await axios.get(singleUserEndpoint(response.data.id))
             // const res = await axios.get("http://localhost:8080/api/users/account/current";
-            const res = await axios.get(
+            const userResponse = await axios.get(
                 "http://localhost:8080/api/users/account/current", // this route is proteced, so need to pass headers with authorization (see backend
                 {
-                  headers: {
-                    Authorization: `Bearer ${response.data.token}`,
-                  },
+                    headers: {
+                        Authorization: `Bearer ${response.data.token}`,
+                    },
                 }
-              );
-            
-            console.log(res.data.id)
+            );
 
-            // navigate("/");
+            setUser(userResponse.data);
+
+            navigate("/");
         } catch (error) {
             console.log("Login failed: " + error);
         }
