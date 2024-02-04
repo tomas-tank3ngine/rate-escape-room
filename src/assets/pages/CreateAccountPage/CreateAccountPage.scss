@@ -1,0 +1,84 @@
+@use "../../styles/partials/global.scss" as *;
+@use "../../styles/partials/variables.scss" as *;
+@use "../../styles/partials/mixins.scss" as *;
+
+.create-user-page {
+    background-color: $color-black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+}
+
+.create-user-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: $color-eggshell;
+    width: 300px;
+    padding: 24px;
+    border: 1px solid $color-eggshell;
+    border-radius: 6px;
+
+    &__title {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+    }
+
+    &__input-group {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 15px;
+
+        &--label {
+            margin-bottom: 5px;
+        }
+
+        &--input {
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        &__label {
+            margin-bottom: 5px;
+        }
+
+        &__input {
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        &--checkbox {
+            margin-top: 5px;
+        }
+    }
+
+    &__button {
+        background-color: $color-light-red;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+
+        &:hover {
+            background-color: $color-dark-red;
+        }
+    }
+
+    &__link {
+        margin-top: 15px;
+        color: #3498db;
+        text-decoration: none;
+        cursor: pointer;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
