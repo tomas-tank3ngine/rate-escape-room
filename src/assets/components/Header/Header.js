@@ -5,12 +5,20 @@ import { useState } from "react";
 import menuIcon from "../../icons/menu_fill.svg";
 import closeIcon from "../../icons/close_fill.svg";
 
-function Header() {
+function Header({ setUser, user }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const menuHandler = () => {
     console.log("menu button clicked");
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handleLogout = () => {
+    // IMPORTANT: when logging out remove the token from sessionStorage
+    // or else the user will still be authenticated because the token is in sessionStorage
+    // and the token is being sent to the backend on each page request via useEffect
+    sessionStorage.removeItem("token");
+    setUser(null);
   };
 
   return (
@@ -46,9 +54,12 @@ function Header() {
           <img src="" alt="Rate Escape Rooms" className="logo__image" />
         </Link>
         <section className="login">
-          <Link to="/login" className="login__link">
-            sign-in
-          </Link>
+          {user? 
+            <button onClick={handleLogout} className="login__link">log out</button>
+            :
+            <Link to="/accountLogin" className="login__link">log in</Link>
+          }
+          
           <div className="login__profile">
             <Headshot />
           </div>

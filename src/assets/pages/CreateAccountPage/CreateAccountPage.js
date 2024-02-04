@@ -1,5 +1,6 @@
 import './CreateAccountPage.scss'
 
+
 function CreateAccountPage(){
     return(
         <>
