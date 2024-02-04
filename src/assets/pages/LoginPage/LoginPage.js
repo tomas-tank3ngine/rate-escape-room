@@ -22,8 +22,10 @@ const LoginForm = ({ setUserId }) => {
 
         if (existingUser && existingUser.password === password) {
             // Successful login
-            console.log("Login successful! User id is: "+ existingUser.id);
-            setUserId(existingUser.id)
+            localStorage.setItem('token', response.token);
+            console.log("token is:: "+ response.token);
+            // console.log("Login successful! User id is: "+ existingUser.id);
+            // setUserId(existingUser.id)
         } else {
             // Unsuccessful login 
             console.log("Invalid credentials. Please try again.");
