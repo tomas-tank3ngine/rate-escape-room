@@ -3,9 +3,12 @@ import Icons from "../IconHolder/IconHolder";
 import StarRating from "../StarRating/StarRating";
 import FavRoomButton from "../FavRoomButton/FavRoomButton";
 
-function RoomItemTabletPlus({room}) {
+function RoomItemTabletPlus({room, setSelectedRoom}) {
+    const handleSelected = ()=>{
+        setSelectedRoom(room);
+      }
   return (
-    <li className="table-item-tablet-plus">
+    <li onClick={handleSelected} className="table-item-tablet-plus">
       <div className="table-item-tablet-plus__label fav-label">
         <FavRoomButton />
       </div>

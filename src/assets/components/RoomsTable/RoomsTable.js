@@ -3,7 +3,7 @@ import Icons from "../IconHolder/IconHolder";
 import RoomItemMobile from "../RoomItemMobile/RoomItemMobile";
 import RoomItemTabletPlus from "../RoomItemTabletPlus/RoomItemTabletPlus";
 
-function RoomsTable({ responsive, allRooms }) {
+function RoomsTable({ responsive, allRooms, setSelectedRoom }) {
     return (
         <section className="rooms-table-section">
             <aside className="filter-section">
@@ -62,9 +62,17 @@ function RoomsTable({ responsive, allRooms }) {
                 <ul className="table-list">
                     {allRooms.map((room) =>
                         responsive.isTablet ? (
-                            <RoomItemTabletPlus key={room.id} room={room}/>
+                            <RoomItemTabletPlus
+                                key={room.id}
+                                room={room}
+                                setSelectedRoom={setSelectedRoom}
+                            />
                         ) : (
-                            <RoomItemMobile key={room.id} room={room}/>
+                            <RoomItemMobile
+                                key={room.id}
+                                room={room}
+                                setSelectedRoom={setSelectedRoom}
+                            />
                         )
                     )}
                 </ul>

@@ -8,7 +8,11 @@ import { allRoomsEndpoint } from '../../utils/api-utils';
 function RoomsPage({responsive, user}){
     const [allRooms, setAllRooms] = useState([]);
     const [selectedRoom, setSelectedRoom] = useState({});
+    useEffect(() =>{
+        console.log(selectedRoom);
+    },[selectedRoom])
 
+    
     
     useEffect(() => {
         const fetchData = async () => {
@@ -28,7 +32,7 @@ function RoomsPage({responsive, user}){
         <main className="rooms-page">
             <RoomOverview room={selectedRoom}/>
             <hr className='rooms-page__line-break'></hr>
-            <RoomsTable responsive={responsive} allRooms={allRooms}/>
+            <RoomsTable responsive={responsive} allRooms={allRooms} setSelectedRoom={setSelectedRoom}/>
         </main>        
     )
 }

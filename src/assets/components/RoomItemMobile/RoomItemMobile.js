@@ -3,9 +3,13 @@ import Icons from "../IconHolder/IconHolder";
 import StarRating from "../StarRating/StarRating";
 import FavRoomButton from "../FavRoomButton/FavRoomButton";
 
-function RoomItemMobile({room}) {
-  return (
-    <li className="table-item-mobile">
+function RoomItemMobile({room, setSelectedRoom}) {
+  const handleSelected = ()=>{
+    setSelectedRoom(room);
+  }
+  
+    return (
+    <li onClick={handleSelected} className="table-item-mobile">
       <section className="item-container-top">
         <div className="item-container-top__left">
           <FavRoomButton />

@@ -2,13 +2,31 @@ import "./RoomDetailsMobile.scss";
 // import FavRoomButton from "../FavRoomButton/FavRoomButton";
 import Icons from "../IconHolder/IconHolder";
 import StarRating from "../StarRating/StarRating";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
 
-function RoomDetailsMobile() {
+function RoomDetailsMobile({room}) {
+    const location = useLocation();
+
+    const [currentURL, setCurrentURL] = useState("");
+
+    useEffect(() => {
+        setCurrentURL(window.location.href);
+      }, [location.pathname]);
+
+      const handleShare = async () => {
+        try {
+          await navigator.clipboard.writeText(currentURL);
+          alert(currentURL+" URL copied to clipboard!");
+        } catch (error) {
+          console.error("Error copying to clipboard: ", error);
+        }
+      };
+
     return (
         <section className="room-details-mobile">
             <section className="section-one">
-                <h2 className="section-one__room-name">ROOM NAME</h2>
+                <h2 className="section-one__room-name">{`${room.name}`}</h2>
                 <button className="section-one__fav-button">
                     <p className="section-one__fav-button--p">
                         Add to Favourites
@@ -23,19 +41,15 @@ function RoomDetailsMobile() {
             <section className="section-two">
                 <section className="section-two__left-wrapper">
                     <img
-                        src=""
-                        alt="room thumbnail"
+                        src={`${room.thumbnail}`}
+                        alt={`${room.thumbnail}`}
                         className="room-thumbnail"
                     />
-                    <p className="room-theme">THEME</p>
+                    <p className="room-theme">{`${room.theme}`}</p>
                 </section>
                 <section className="section-two__right-wrapper">
-                    <p className="section-two__right-wrapper--room-description">
-                        DESCRIPTION DESCRIPTION
-                    </p>
-                    <p className="section-two__right-wrapper--address">
-                        Address
-                    </p>
+                    <p className="section-two__right-wrapper--room-description">{`${room.description}`}</p>
+                    <p className="section-two__right-wrapper--address">{`${room.description}`}</p>
                 </section>
             </section>
             <section className="section-three">
