@@ -55,8 +55,8 @@
       transition: background-color 0.3s;
   
       &:hover {
-        background-color: #2980b9;
-      }
+        background-color: $color-dark-red;
+    }
     }
   
     &__link {

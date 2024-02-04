@@ -19,6 +19,7 @@ function Header({ setUser, user }) {
     // and the token is being sent to the backend on each page request via useEffect
     sessionStorage.removeItem("token");
     setUser(null);
+    alert("You have been logged out")
   };
 
   return (
@@ -61,7 +62,11 @@ function Header({ setUser, user }) {
           }
           
           <div className="login__profile">
-            <Headshot />
+          {user? 
+            <p className="login__link">{`${user.username}`}</p>
+            :
+            <p className="login__link"></p>
+          }
           </div>
         </section>
       </section>

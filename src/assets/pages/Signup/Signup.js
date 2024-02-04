@@ -17,8 +17,7 @@ function Signup() {
       {
         email: event.target.email.value,
         password: event.target.password.value,
-        first_name: event.target.first_name.value,
-        last_name: event.target.last_name.value,
+        username: event.target.username.value,
         phone: event.target.phone.value,
         address: event.target.address.value,
       }

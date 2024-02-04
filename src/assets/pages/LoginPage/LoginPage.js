@@ -3,7 +3,6 @@ import "./LoginPage.scss";
 import {
     loginUserEndpoint,
     currentUserEndpoint,
-    singleUserEndpoint,
 } from "../../utils/api-utils";
 import { useNavigate } from "react-router";
 import axios from "axios";
@@ -23,11 +22,8 @@ const LoginForm = ({ setUser }) => {
             console.log(response.data);
             sessionStorage.setItem("token", response.data.token);
 
-            //Below works!
-            // const res = await axios.get(singleUserEndpoint(response.data.id))
-            // const res = await axios.get("http://localhost:8080/api/users/account/current";
             const userResponse = await axios.get(
-                "http://localhost:8080/api/users/account/current", // this route is proteced, so need to pass headers with authorization (see backend
+                currentUserEndpoint(), // this route is proteced, so need to pass headers with authorization (see backend
                 {
                     headers: {
                         Authorization: `Bearer ${response.data.token}`,
@@ -37,7 +33,9 @@ const LoginForm = ({ setUser }) => {
 
             setUser(userResponse.data);
 
-            navigate("/");
+            setTimeout(() => {
+                navigate("/");
+            }, 500);
         } catch (error) {
             console.log("Login failed: " + error);
         }
@@ -74,7 +72,7 @@ const LoginForm = ({ setUser }) => {
                     />
                 </div>
                 <button className="login-form__button">Login</button>
-                <Link className="login-form__link">
+                <Link to="/accountCreate" className="login-form__link">
                     Don't have an account? Create one here
                 </Link>
             </form>

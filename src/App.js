@@ -11,7 +11,7 @@ import NotFoundPage from "./assets/pages/NotFoundPage/NotFoundPage.js";
 import RoomsPage from "./assets/pages/RoomsPage/RoomsPage.js";
 import RoomDetailsPage from "./assets/pages/RoomDetailsPage/RoomDetailsPage.js";
 import LoginPage from "./assets/pages/LoginPage/LoginPage.js";
-// import CreateAccountPage from "./assets/pages/CreateAccountPage/CreateAccountPage.js";
+import CreateAccountPage from "./assets/pages/CreateAccountPage/CreateAccountPage.js";
 
 function App() {
     const [width, setWindowWidth] = useState(0);
@@ -20,7 +20,7 @@ function App() {
 
     const [failedAuth, setFailedAuth] = useState(false);
 
-    
+
 
 
     useEffect(() => {
@@ -61,14 +61,11 @@ function App() {
                         path="/accountLogin"
                         element={<LoginPage setUser={setUser} />}
                     />
-                    {/* <Route
+                    <Route
                         path="/accountCreate"
-                        element={<CreateAccountPage setUserId={setUserId} />}
-                    /> */}
-                    {/* <Route
-                        path="/accountCreate"
-                        element={<CreateAccountPage setUserId={setUserId} />}
-                    /> */}
+                        element={<CreateAccountPage setUser={setUser} user={user}/>}
+                    />
+
                     <Route path="/nearbyRooms" element={<Homepage />} />
                     <Route path="/roomCreate" element={<Homepage />} />
 
