@@ -11,17 +11,17 @@ function RoomDetailsTabletPlus({ room }) {
 
     useEffect(() => {
         setCurrentURL(window.location.href);
-      }, [location.pathname]);
+    }, [location.pathname]);
 
-      const handleShare = async () => {
+    const handleShare = async () => {
         try {
-          await navigator.clipboard.writeText(currentURL);
-          alert(currentURL+" URL copied to clipboard!");
+            await navigator.clipboard.writeText(currentURL);
+            alert(currentURL + " URL copied to clipboard!");
         } catch (error) {
-          console.error("Error copying to clipboard: ", error);
+            console.error("Error copying to clipboard: ", error);
         }
-      };
-    
+    };
+
     return (
         <section className="room-details-tablet-plus">
             <section className="left-wrapper">
@@ -59,25 +59,27 @@ function RoomDetailsTabletPlus({ room }) {
                         <p className="room-info__info-item">{`Success Rate: ${room.completion_rate}`}</p>
                     </section>
                     <section className="room-ratings">
-                    <section className="room-ratings__wrapper">
+                        <section className="room-ratings__wrapper">
                             <section className="room-ratings__rating-container">
                                 <p className="room-ratings__rating-container--header">
                                     Overall:
                                 </p>
-                                <StarRating rating={room.overall_rating}/>
+                                <StarRating rating={room.overall_rating} />
                             </section>
 
                             <section className="room-ratings__rating-container">
                                 <p className="room-ratings__rating-container--header">
                                     Atmosphere:
                                 </p>
-                                <StarRating rating={room.atmosphere_rating}/>
+                                <StarRating rating={room.atmosphere_rating} />
                             </section>
                             <section className="room-ratings__rating-container">
                                 <p className="room-ratings__rating-container--header">
                                     Puzzles:
                                 </p>
-                                <StarRating rating={room.puzzle_fairness_rating}/>
+                                <StarRating
+                                    rating={room.puzzle_fairness_rating}
+                                />
                             </section>
                         </section>
                         <section className="room-ratings__wrapper">
@@ -85,31 +87,70 @@ function RoomDetailsTabletPlus({ room }) {
                                 <p className="room-ratings__rating-container--header">
                                     Technology:
                                 </p>
-                                <StarRating rating={room.tech_rating}/>
+                                <StarRating rating={room.tech_rating} />
                             </section>
 
                             <section className="room-ratings__rating-container">
                                 <p className="room-ratings__rating-container--header">
                                     Storyline:
                                 </p>
-                                <StarRating rating={room.storyline_rating}/>
+                                <StarRating rating={room.storyline_rating} />
                             </section>
                             <section className="room-ratings__rating-container">
                                 <p className="room-ratings__rating-container--header">
                                     Staff:
                                 </p>
-                                <StarRating rating={room.staff_rating}/>
+                                <StarRating rating={room.staff_rating} />
                             </section>
                         </section>
                     </section>
                     <section className="room-links">
-                        {room.instagram_url && <Link to={room.instagram_url} className="room-links__social-media">Instagram</Link>}
-                        {room.facebook_url && <Link to={room.facebook_url} className="room-links__social-media">Facebook</Link>}
-                        {room.twitter_url && <Link to={room.twitter_url} className="room-links__social-media">Twitter (X)</Link>}
-                        {room.website_url && <Link to={room.website_url} className="room-links__social-media">Website</Link>}
+                        {room.instagram_url && (
+                            <Link
+                                to={room.instagram_url}
+                                className="room-links__social-media"
+                            >
+                                Instagram
+                            </Link>
+                        )}
+                        {room.facebook_url && (
+                            <Link
+                                to={room.facebook_url}
+                                className="room-links__social-media"
+                            >
+                                Facebook
+                            </Link>
+                        )}
+                        {room.twitter_url && (
+                            <Link
+                                to={room.twitter_url}
+                                className="room-links__social-media"
+                            >
+                                Twitter (X)
+                            </Link>
+                        )}
+                        {room.website_url && (
+                            <Link
+                                to={room.website_url}
+                                className="room-links__social-media"
+                            >
+                                Website
+                            </Link>
+                        )}
 
-                        <button onClick={handleShare} className="room-links__share-url">link</button>
-
+                        <button
+                            onClick={handleShare}
+                            className="room-links__share-url"
+                        >
+                            <img
+                                src={Icons().ShareUrlIcon}
+                                alt="share link"
+                                className="section-five__share-url-button--icon"
+                            />
+                            <p className="section-five__share-url-button--p">
+                                Share Room
+                            </p>
+                        </button>
                     </section>
                 </section>
             </section>
