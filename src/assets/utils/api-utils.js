@@ -12,6 +12,8 @@ export const singleUserEndpoint = (userId) => API_URL + "/users/" + userId;
 
 export const allFavoritesOfUserEndpoint = () => API_URL + "/favorites";
 
-export const currentUserEndpoint = ()=> API_URL + "/users/current"
+export const currentUserEndpoint = () => API_URL + "/users/account/current"
 
-export const registerUserEndpoint = ()=> API_URL + "/users/register"
+export const registerUserEndpoint = () => API_URL + "/users/account/register"
+
+export const loginUserEndpoint = () => API_URL + "/users/account/login"

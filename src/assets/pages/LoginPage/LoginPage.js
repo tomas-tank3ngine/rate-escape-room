@@ -1,59 +1,59 @@
 import React, { useState } from "react";
 import "./LoginPage.scss";
-import { allUsersEndpoint } from "../../utils/api-utils";
+import { loginUserEndpoint, currentUserEndpoint, singleUserEndpoint } from "../../utils/api-utils";
+import { useNavigate } from "react-router";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
-const LoginForm = ({ setUserId }) => {
-    const [loginData, setLoginData] = useState({
-        usernameOrEmail: "",
-        password: "",
-    });
+const LoginForm = ({ setUser }) => {
+    const navigate = useNavigate();
 
-    const handleLogin = async () => {
-        const { usernameOrEmail, password } = loginData;
+    const handleSubmit = async (event) => {
+        event.preventDefault();
 
-        // Fetch all users from the API
-        const usersResponse = await fetch(allUsersEndpoint());
-        const users = await usersResponse.json();
+        try {
+            const response = await axios.post(loginUserEndpoint(), {
+                identifier: event.target.identifier.value,
+                password: event.target.password.value,
+            });
+            console.log(response.data);
+            sessionStorage.setItem("token", response.data.token);
 
-        // Check if the entered usernameOrEmail already exists
-        const existingUser = users.find(
-            (user) =>(user.username === usernameOrEmail || user.email === usernameOrEmail)
-        );
-
-        if (existingUser && existingUser.password === password) {
-            // Successful login
-            console.log("Login successful! User id is: "+ existingUser.id);
-            setUserId(existingUser.id)
-        } else {
-            // Unsuccessful login 
-            console.log("Invalid credentials. Please try again.");
+            //Below works!
+            // const res = await axios.get(singleUserEndpoint(response.data.id))
+            // const res = await axios.get("http://localhost:8080/api/users/account/current";
+            const res = await axios.get(
+                "http://localhost:8080/api/users/account/current", // this route is proteced, so need to pass headers with authorization (see backend
+                {
+                  headers: {
+                    Authorization: `Bearer ${response.data.token}`,
+                  },
+                }
+              );
             
-        }
-    };
+            console.log(res.data.id)
 
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setLoginData((prevData) => ({ ...prevData, [name]: value }));
+            // navigate("/");
+        } catch (error) {
+            console.log("Login failed: " + error);
+        }
     };
 
     return (
         <div className="login-page">
-            <div className="login-form">
+            <form className="login-form" onSubmit={handleSubmit}>
                 <h2 className="login-form__title">Login</h2>
                 <div className="login-form__input-group">
                     <label
                         className="login-form__input-group__label"
-                        htmlFor="email"
+                        htmlFor="identifier"
                     >
                         Email or Username:
                     </label>
                     <input
                         className="login-form__input-group__input"
                         type="text"
-                        name="usernameOrEmail"
-                        value={loginData.usernameOrEmail}
-                        onChange={handleInputChange}
+                        name="identifier"
                     />
                 </div>
                 <div className="login-form__input-group">
@@ -67,17 +67,13 @@ const LoginForm = ({ setUserId }) => {
                         className="login-form__input-group__input"
                         type="password"
                         name="password"
-                        value={loginData.password}
-                        onChange={handleInputChange}
                     />
                 </div>
-                <button className="login-form__button" onClick={handleLogin}>
-                    Login
-                </button>
-                <p className="login-form__link">
+                <button className="login-form__button">Login</button>
+                <Link className="login-form__link">
                     Don't have an account? Create one here
-                </p>
-            </div>
+                </Link>
+            </form>
         </div>
     );
 };

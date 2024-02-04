@@ -20,33 +20,6 @@ function App() {
 
     const [failedAuth, setFailedAuth] = useState(false);
 
-    useEffect(() => {
-        const token = sessionStorage.getItem("token");
-
-        //no token? set to true and return
-        if (!token) {
-            setFailedAuth(false);
-        }
-
-        const checkUserAuthorization = async () => {
-            try {
-                const response = await axios.get(
-                    currentUserEndpoint, // this route is proteced, so need to pass headers with authorization (see backend
-                    {
-                        headers: {
-                            Authorization: `Bearer ${token}`,
-                        },
-                    }
-                );
-                console.log(response.data);
-                setUser(response.data);
-            } catch (error) {
-                console.log(error);
-                setFailedAuth(true);
-            }
-        };
-        checkUserAuthorization();
-    }, []);
 
     useEffect(() => {
         updateDimensions();
@@ -57,6 +30,7 @@ function App() {
     const updateDimensions = () => {
         const width = window.innerWidth;
         setWindowWidth(width);
+        console.log("dimensions");
     };
 
     const responsive = {
@@ -66,7 +40,10 @@ function App() {
     return (
         <>
             <BrowserRouter>
-                <Header setUser={setUser} setFailedAuth={setFailedAuth} failedAuth={failedAuth}/>
+                <Header
+                    setUser={setUser}
+                    user={user}
+                />
                 <Routes>
                     <Route path="/" element={<Homepage />} />
                     <Route
@@ -80,7 +57,7 @@ function App() {
                     <Route path="/rooms/:roomId/rate" element={<Homepage />} />
                     <Route
                         path="/accountLogin"
-                        element={<LoginPage setUserId={setUserId} />}
+                        element={<LoginPage setUser={setUser} />}
                     />
                     {/* <Route
                         path="/accountCreate"

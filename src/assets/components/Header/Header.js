@@ -5,7 +5,7 @@ import { useState } from "react";
 import menuIcon from "../../icons/menu_fill.svg";
 import closeIcon from "../../icons/close_fill.svg";
 
-function Header({ setFailedAuth, failedAuth, setUser }) {
+function Header({ setFailedAuth, failedAuth, setUser, user }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const menuHandler = () => {
@@ -55,10 +55,10 @@ function Header({ setFailedAuth, failedAuth, setUser }) {
           <img src="" alt="Rate Escape Rooms" className="logo__image" />
         </Link>
         <section className="login">
-          {failedAuth? 
-            <Link to="/accountLogin" className="login__link">log in</Link>
-          :
+          {user? 
             <button onClick={handleLogout} className="login__link">log out</button>
+            :
+            <Link to="/accountLogin" className="login__link">log in</Link>
           }
           
           <div className="login__profile">
