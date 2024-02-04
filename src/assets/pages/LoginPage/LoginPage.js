@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./LoginPage.scss";
 import { allUsersEndpoint } from "../../utils/api-utils";
+import axios from "axios";
 
 const LoginForm = ({ setUserId }) => {
     const [loginData, setLoginData] = useState({

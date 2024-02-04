@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:8080"
+const API_URL = "http://localhost:8080/api"
 
 export const allRoomsEndpoint = () => API_URL + "/rooms";
 
@@ -10,4 +10,8 @@ export const allUsersEndpoint = () => API_URL + "/users";
 
 export const singleUserEndpoint = (userId) => API_URL + "/users/" + userId;
 
-export const allFavoritesOfUser = () => API_URL + "/favorites";
+export const allFavoritesOfUserEndpoint = () => API_URL + "/favorites";
+
+export const currentUserEndpoint = ()=> API_URL + "/users/current"
+
+export const registerUserEndpoint = ()=> API_URL + "/users/register"
