@@ -50,11 +50,11 @@ function App() {
                     <Route path="/" element={<Homepage />} />
                     <Route
                         path="/rooms"
-                        element={<RoomsPage responsive={responsive} />}
+                        element={<RoomsPage responsive={responsive} user={user}/>}
                     />
                     <Route
                         path="/rooms/:roomId"
-                        element={<RoomDetailsPage responsive={responsive} />}
+                        element={<RoomDetailsPage responsive={responsive} user={user}/>}
                     />
                     <Route path="/rooms/:roomId/rate" element={<Homepage />} />
                     <Route
