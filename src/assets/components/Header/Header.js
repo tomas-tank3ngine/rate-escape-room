@@ -46,7 +46,7 @@ function Header() {
           <img src="" alt="Rate Escape Rooms" className="logo__image" />
         </Link>
         <section className="login">
-          <Link to="/login" className="login__link">
+          <Link to="/accountLogin" className="login__link">
             log-in
           </Link>
           <div className="login__profile">

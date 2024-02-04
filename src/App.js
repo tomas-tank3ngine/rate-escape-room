@@ -13,6 +13,8 @@ import CreateAccountPage from "./assets/pages/CreateAccountPage/CreateAccountPag
 
 function App() {
     const [width, setWindowWidth] = useState(0);
+    const [userId, setUserId] = useState(null)
+    
     useEffect(() => {
         updateDimensions();
 
@@ -34,19 +36,13 @@ function App() {
                 <Header />
                 <Routes>
                     <Route path="/" element={<Homepage />} />
-                    <Route
-                        path="/rooms"
-                        element={<RoomsPage responsive={responsive} />}
+                    <Route path="/rooms" element={<RoomsPage responsive={responsive} />}
                     />
-                    <Route
-                        path="/rooms/:roomId"
-                        element={<RoomDetailsPage responsive={responsive} />}
+                    <Route path="/rooms/:roomId" element={<RoomDetailsPage responsive={responsive} />}
                     />
                     <Route path="/rooms/:roomId/rate" element={<Homepage />} />
-                    <Route path="/accountLogin" element={<LoginPage />} />
-                    <Route
-                        path="/accountCreate"
-                        element={<CreateAccountPage />}
+                    <Route path="/accountLogin" element={<LoginPage setUserId={setUserId}/>} />
+                    <Route path="/accountCreate" element={<CreateAccountPage setUserId={setUserId}/>}
                     />
                     <Route path="/nearbyRooms" element={<Homepage />} />
                     <Route path="/roomCreate" element={<Homepage />} />
