@@ -24,19 +24,32 @@ function App() {
     useEffect(() => {
         const fetchOwnerStatus = async () => {
           try {
-            const response = await axios.get(currentUserEndpoint());
-            console.log(response.data.is_owner)
-            setOwner(response.data.is_owner);
+            const userResponse = await axios.get(
+                currentUserEndpoint(),
+                {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem("token")}`,
+                    },
+                }
+            );
+            console.log("show me"+userResponse.data.is_owner)
+
+            if(userResponse){
+                setOwner(userResponse.data.is_owner);
+            }
+            else{
+                console.log("no response found")
+            }
   
           } catch (error) {
-            console.error('User not found: ', error);
+            console.error('Error fetchign current user: ', error);
           }
         };
     
         fetchOwnerStatus();
       }, [user]);
     
-    
+
 
     useEffect(() => {
       const fetchData = async () => {
@@ -75,6 +88,7 @@ function App() {
                 <Header
                     setUser={setUser}
                     user={user}
+                    owner={owner}
                 />
                 <Routes>
                     <Route path="/" element={<Homepage allRooms={allRooms}/>} />
@@ -86,7 +100,7 @@ function App() {
                         path="/rooms/:roomId"
                         element={<RoomDetailsPage responsive={responsive} user={user}/>}
                     />
-                    <Route path="/rooms/:roomId/rate" element={<Homepage />} />
+                    {/* <Route path="/rooms/:roomId/rate" element={<Homepage />} /> */}
                     <Route
                         path="/accountLogin"
                         element={<LoginPage setUser={setUser} />}
