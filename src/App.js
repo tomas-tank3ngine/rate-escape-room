@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { currentUserEndpoint } from "./assets/utils/api-utils.js";
 import axios from "axios";
+import { allRoomsEndpoint } from "./assets/utils/api-utils.js";
 
 //pages and components
 import Header from "./assets/components/Header/Header.js";
@@ -18,10 +19,25 @@ function App() {
     const [userId, setUserId] = useState(null);
     const [user, setUser] = useState(null);
 
-    const [failedAuth, setFailedAuth] = useState(false);
+    const [allRooms, setAllRooms] = useState([]);
+    const [loading, setLoading] = useState(true); // Added loading state
+  
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const response = await axios.get(allRoomsEndpoint());
+          console.log(response.data);
+          setAllRooms(response.data);
 
-
-
+        } catch (error) {
+          console.error('Error fetching data: ', error);
+        } finally {
+          setLoading(false); // Set loading to false once data fetching is complete
+        }
+      };
+  
+      fetchData();
+    }, []);
 
     useEffect(() => {
         updateDimensions();
@@ -47,10 +63,10 @@ function App() {
                     user={user}
                 />
                 <Routes>
-                    <Route path="/" element={<Homepage />} />
+                    <Route path="/" element={<Homepage allRooms={allRooms}/>} />
                     <Route
                         path="/rooms"
-                        element={<RoomsPage responsive={responsive} user={user}/>}
+                        element={<RoomsPage responsive={responsive} user={user} allRooms={allRooms}/>}
                     />
                     <Route
                         path="/rooms/:roomId"

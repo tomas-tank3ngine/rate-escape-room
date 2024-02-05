@@ -4,37 +4,52 @@ import RoomOverview from '../../components/RoomOverview/RoomOverview';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { allRoomsEndpoint } from '../../utils/api-utils';
+import { random } from 'node-forge';
 
-function RoomsPage({responsive, user}){
+function RoomsPage({ responsive, user, allRooms }) {
     const [allRooms, setAllRooms] = useState([]);
     const [selectedRoom, setSelectedRoom] = useState({});
-    useEffect(() =>{
-        console.log(selectedRoom);
-    },[selectedRoom])
-
-    
-    
+    const [loading, setLoading] = useState(true);
+  
     useEffect(() => {
-        const fetchData = async () => {
-          try {
-            const response = await axios.get(allRoomsEndpoint());
-            console.log(response.data);
-            setAllRooms(response.data);
-          } catch (error) {
-            console.error('Error fetching data: ', error);
-          }
-        };
-    
-        // Call the function inside useEffect to fetch data when the component mounts
-        fetchData();
-      }, []);
-    return(
-        <main className="rooms-page">
-            <RoomOverview room={selectedRoom}/>
-            <hr className='rooms-page__line-break'></hr>
-            <RoomsTable responsive={responsive} allRooms={allRooms} setSelectedRoom={setSelectedRoom}/>
-        </main>        
-    )
-}
+      const fetchData = async () => {
+        try {
+          const response = await axios.get(allRoomsEndpoint());
+          console.log(response.data);
+          setAllRooms(response.data);
+  
+          const randomIndex = Math.floor(Math.random() * response.data.length);
+          const randomRoom = response.data[randomIndex];
+          console.log(randomRoom);
+          setSelectedRoom(randomRoom);
+        } catch (error) {
+          console.error('Error fetching data: ', error);
+        } finally {
+          setLoading(false);
+        }
+      };
+  
+      fetchData();
+    }, []);
+  
+    return (
+      <main className="rooms-page">
+        {loading ? (
+          <p>Loading...</p>
+        ) : (
+          <>
+            <RoomOverview room={selectedRoom} />
+            <hr className="rooms-page__line-break"></hr>
+            <RoomsTable
+              responsive={responsive}
+              allRooms={allRooms}
+              selectedRoom={selectedRoom}
+              setSelectedRoom={setSelectedRoom}
+            />
+          </>
+        )}
+      </main>
+    );
+  }
 
 export default RoomsPage;
