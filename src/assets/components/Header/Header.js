@@ -14,7 +14,7 @@ function Header({ setUser, user }) {
     };
 
     const handleLogout = () => {
-        sessionStorage.removeItem("token");
+        localStorage.removeItem("token");
         setUser(null);
         alert("You have been logged out");
     };
@@ -44,25 +44,26 @@ function Header({ setUser, user }) {
                             </Link>
                         </li>
                         {user ? (
-                            <li className="pages_link"></li>
-                        ) : (
                             <li className="pages__link">
-                                {user && user.is_owner ? (
-                                    <Link
-                                        to="/roomCreate"
-                                        className="mobile-menu-pages__link--text"
-                                    >
-                                        Upload Room
-                                    </Link>
-                                ) : (
-                                    <Link
-                                        to="/"
-                                        className="mobile-menu-pages__link--text"
-                                    >
-                                        My Favorites
-                                    </Link>
-                                )}
-                            </li>
+                            {user && user.is_owner ? (
+                                <Link
+                                    to="/roomCreate"
+                                    className="mobile-menu-pages__link--text"
+                                >
+                                    Upload Room
+                                </Link>
+                            ) : (
+                                <Link
+                                    to="/rooms"
+                                    className="mobile-menu-pages__link--text"
+                                >
+                                    My Favorites
+                                </Link>
+                            )}
+                        </li>
+                            
+                        ) : (
+                            <li className="pages_link"></li>
                         )}
                     </ul>
                 </nav>
@@ -113,25 +114,26 @@ function Header({ setUser, user }) {
                         </Link>
                     </li>
                     {user ? (
-                            <li className="mobile-menu-pages__link"></li>
-                        ) : (
                             <li className="mobile-menu-pages__link">
-                                {user && user.is_owner ? (
-                                    <Link
-                                        to="/roomCreate"
-                                        className="mobile-menu-pages__link--text"
-                                    >
-                                        Upload Room
-                                    </Link>
-                                ) : (
-                                    <Link
-                                        to="/"
-                                        className="mobile-menu-pages__link--text"
-                                    >
-                                        My Favorites
-                                    </Link>
-                                )}
-                            </li>
+                            {user && user.is_owner ? (
+                                <Link
+                                    to="/roomCreate"
+                                    className="mobile-menu-pages__link--text"
+                                >
+                                    Upload Room
+                                </Link>
+                            ) : (
+                                <Link
+                                    to="/"
+                                    className="mobile-menu-pages__link--text"
+                                >
+                                    My Favorites
+                                </Link>
+                            )}
+                        </li>
+                            
+                        ) : (
+                            <li className="mobile-menu-pages__link"></li>
                         )}
                 </ul>
             </section>

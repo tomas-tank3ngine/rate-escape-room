@@ -75,7 +75,7 @@ const CreateAccountPage = ({ user, setUser }) => {
                     currentUserEndpoint(),
                     {
                         headers: {
-                            Authorization: `Bearer ${sessionStorage.getItem("token")}`,
+                            Authorization: `Bearer ${localStorage.getItem("token")}`,
                         },
                     }
                 );

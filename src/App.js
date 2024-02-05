@@ -28,7 +28,7 @@ function App() {
                 currentUserEndpoint(),
                 {
                     headers: {
-                        Authorization: `Bearer ${sessionStorage.getItem("token")}`,
+                        Authorization: `Bearer ${localStorage.getItem("token")}`,
                     },
                 }
             );
@@ -100,7 +100,7 @@ function App() {
                         path="/rooms/:roomId"
                         element={<RoomDetailsPage responsive={responsive} user={user}/>}
                     />
-                    <Route path="/rooms/:roomId/rate" element={<Homepage />} />
+                    {/* <Route path="/rooms/:roomId/rate" element={<Homepage />} /> */}
                     <Route
                         path="/accountLogin"
                         element={<LoginPage setUser={setUser} />}
