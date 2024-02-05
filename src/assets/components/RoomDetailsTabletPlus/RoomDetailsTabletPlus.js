@@ -3,8 +3,9 @@ import Icons from "../IconHolder/IconHolder";
 import StarRating from "../StarRating/StarRating";
 import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
+import ModalReviewQA from "../ModalReviewQA/ModalReviewQA";
 
-function RoomDetailsTabletPlus({ room }) {
+function RoomDetailsTabletPlus({ room}) {
     const location = useLocation();
 
     const [currentURL, setCurrentURL] = useState("");
@@ -22,8 +23,31 @@ function RoomDetailsTabletPlus({ room }) {
         }
     };
 
+    
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const handleOpenModal = () => {
+        setIsModalOpen(true);
+        console.log("open clicked: " + isModalOpen);
+    };
+
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
+    };
+
+    const handleContinue = () => {
+        
+        setIsModalOpen(false);
+    };
+
     return (
         <section className="room-details-tablet-plus">
+            {/* <ModalReviewQA
+                onClose={handleCloseModal}
+                onContinue={handleContinue}
+                isOpen={isModalOpen}
+                roomId={room.id}
+            /> */}
             <section className="left-wrapper">
                 <img
                     src={`${room.thumbnail}`}
@@ -32,7 +56,7 @@ function RoomDetailsTabletPlus({ room }) {
                 />
                 <p className="left-wrapper__theme">{`${room.theme}`}</p>
                 <p className="left-wrapper__address">{`${room.address}`}</p>
-                <button className="left-wrapper__review-room-button">
+                <button onClick={handleOpenModal} className="left-wrapper__review-room-button">
                     Review Room
                 </button>
             </section>
