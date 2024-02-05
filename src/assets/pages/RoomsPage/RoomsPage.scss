@@ -5,7 +5,8 @@
 
 .rooms-page{
     @extend .format-padding;
-    background-color: $color-light-red;
+    // background-color: $color-light-red;
+    background-color: $color-black;
     min-height: 90vh;
 
     &__line-break{

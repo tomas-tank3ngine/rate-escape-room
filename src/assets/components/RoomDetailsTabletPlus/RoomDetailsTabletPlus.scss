@@ -45,7 +45,7 @@
 
         }
         &__address{
-
+            flex-wrap: wrap;
         }
     }
     .right-wrapper{
@@ -125,6 +125,10 @@
                 flex-direction: column;
                 justify-content: space-between;
                 align-items: center;
+
+                &__share-url{
+                    display: flex;
+                }
             }
         }
     }

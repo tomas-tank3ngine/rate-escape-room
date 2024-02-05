@@ -5,6 +5,28 @@
 .table-item-tablet-plus{
     display: flex;
     flex-direction: row;
+    align-items: center;
+    min-height: 36px;
+    
+    &:nth-child(even){
+        background-color: $color-eggshell;
+    }
+
+    &:nth-child(odd){
+        background-color: $color-secondary-mercury;
+    }
+
+    &:hover{
+        overflow: hidden;
+        outline: 1px solid $color-black;
+        background-color: $color-light-red;
+        cursor: pointer;
+    }
+    &:active{
+        color: $color-black;
+        background-color: $color-eggshell;
+    }
+
     
     &__label{
         display: flex;
