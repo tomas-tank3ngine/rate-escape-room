@@ -17,7 +17,6 @@ function RoomDetailsPage({ responsive }){
           try {
             const response = await axios.get(singleRoomEndpoint(roomId));
             setRoom(response.data);
-            console.log(room)
 
           } catch (error) {
             console.error('Error fetching data:', error);

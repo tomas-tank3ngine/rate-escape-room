@@ -123,7 +123,7 @@ function RoomDetailsMobile({room}) {
                     src={Icons().EditLineIcon}
                     alt="Upload button icon"
                 />
-                <p className="rate-room-button__p">Rate room</p>
+                <p className="rate-room-button__p">Review room</p>
             </button>
         </section>
     );

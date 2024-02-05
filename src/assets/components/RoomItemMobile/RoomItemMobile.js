@@ -19,7 +19,6 @@ function RoomItemMobile({ room, setSelectedRoom }) {
     };
 
     const handleCancel = () => {
-        console.log("cancel clicked")
         setTimeout(() => {
             setIsModalOpen(false);
         }, 10);

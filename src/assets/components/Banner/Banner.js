@@ -13,7 +13,6 @@ function Banner({ allRooms }) {
             try {
                 const randomIndex = Math.floor(Math.random() * allRooms.length);
                 const rollRoom = allRooms[randomIndex];
-                console.log(rollRoom);
 
                 const response = await axios.get(singleRoomEndpoint(rollRoom.id));
                 setRandomRoom(response.data);
