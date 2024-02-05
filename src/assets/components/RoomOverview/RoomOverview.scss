@@ -15,8 +15,21 @@
     .details-link{
         min-width: 180px;
         padding: 16px;
+        gap:8px;
+        &__icon{
+            max-width: 24px;
+        }
         &__text{
-
+            display: flex;
+            width: 100%;
+            position: relative;
+            text-transform: uppercase;
+            align-items: center;
+            justify-content: center;
+            background-color: #9A3A2E;
+            border-radius: 6px;
+            padding: 8px 8px;
+            color: #F2F2EA;
         }
 
         &__thumbnail{

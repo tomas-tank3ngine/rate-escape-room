@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import './ModalPopup.scss';
 
 function ModalPopup({ content, isOpen, onClose, onContinue }) {

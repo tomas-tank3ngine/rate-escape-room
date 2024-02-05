@@ -22,20 +22,19 @@ function App() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const fetchData = async () => {
+        const fetchOwnerStatus = async () => {
           try {
-            const response = await axios.get(allRoomsEndpoint());
-            setAllRooms(response.data);
+            const response = await axios.get(currentUserEndpoint());
+            console.log(response.data.is_owner)
+            setOwner(response.data.is_owner);
   
           } catch (error) {
-            console.error('Error fetching data: ', error);
-          } finally {
-            setLoading(false);
+            console.error('User not found: ', error);
           }
         };
     
-        fetchData();
-      }, []);
+        fetchOwnerStatus();
+      }, [user]);
     
     
 
