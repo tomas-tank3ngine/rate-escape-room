@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import "./LoginPage.scss";
-import {
-    loginUserEndpoint,
-    currentUserEndpoint,
-} from "../../utils/api-utils";
+import { loginUserEndpoint, currentUserEndpoint } from "../../utils/api-utils";
 import { useNavigate } from "react-router";
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -19,11 +16,10 @@ const LoginForm = ({ setUser }) => {
                 identifier: event.target.identifier.value,
                 password: event.target.password.value,
             });
-            console.log(response.data);
             sessionStorage.setItem("token", response.data.token);
 
             const userResponse = await axios.get(
-                currentUserEndpoint(), // this route is proteced, so need to pass headers with authorization (see backend
+                currentUserEndpoint(),
                 {
                     headers: {
                         Authorization: `Bearer ${response.data.token}`,

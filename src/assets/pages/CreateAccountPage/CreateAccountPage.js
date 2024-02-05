@@ -31,7 +31,6 @@ const CreateAccountPage = ({ user, setUser }) => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         if (formData.password !== formData.confirmPassword) {
-            console.log("passwords do not match");
             return;
         }
 
@@ -59,9 +58,6 @@ const CreateAccountPage = ({ user, setUser }) => {
                 );
 
                 setUser(userResponse.data);
-                console.log(userResponse.data);
-                console.log(user);
-
                 navigate("/");
             } else {
                 setSuccess(false);
@@ -79,7 +75,7 @@ const CreateAccountPage = ({ user, setUser }) => {
                     currentUserEndpoint(),
                     {
                         headers: {
-                            Authorization: `Bearer ${localStorage.getItem("token")}`, // Adjusted from `response.data.token` to `localStorage.getItem("token")`
+                            Authorization: `Bearer ${localStorage.getItem("token")}`,
                         },
                     }
                 );

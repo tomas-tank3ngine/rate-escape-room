@@ -1,8 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { currentUserEndpoint } from "./assets/utils/api-utils.js";
 import axios from "axios";
-import { allRoomsEndpoint } from "./assets/utils/api-utils.js";
+import { allRoomsEndpoint, currentUserEndpoint } from "./assets/utils/api-utils.js";
 
 //pages and components
 import Header from "./assets/components/Header/Header.js";
@@ -16,23 +15,40 @@ import CreateAccountPage from "./assets/pages/CreateAccountPage/CreateAccountPag
 
 function App() {
     const [width, setWindowWidth] = useState(0);
-    const [userId, setUserId] = useState(null);
+    const [owner, setOwner] = useState(false);
     const [user, setUser] = useState(null);
 
     const [allRooms, setAllRooms] = useState([]);
-    const [loading, setLoading] = useState(true); // Added loading state
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchData = async () => {
+          try {
+            const response = await axios.get(allRoomsEndpoint());
+            setAllRooms(response.data);
   
+          } catch (error) {
+            console.error('Error fetching data: ', error);
+          } finally {
+            setLoading(false);
+          }
+        };
+    
+        fetchData();
+      }, []);
+    
+    
+
     useEffect(() => {
       const fetchData = async () => {
         try {
           const response = await axios.get(allRoomsEndpoint());
-          console.log(response.data);
           setAllRooms(response.data);
 
         } catch (error) {
           console.error('Error fetching data: ', error);
         } finally {
-          setLoading(false); // Set loading to false once data fetching is complete
+          setLoading(false);
         }
       };
   
@@ -48,7 +64,6 @@ function App() {
     const updateDimensions = () => {
         const width = window.innerWidth;
         setWindowWidth(width);
-        console.log("dimensions");
     };
 
     const responsive = {
