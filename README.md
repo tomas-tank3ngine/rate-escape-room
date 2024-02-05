@@ -1,5 +1,29 @@
 # Rate Escape Room
 
+How to run:
+Client repo:
+1. cd into a new directory using the terminal
+2. clone this repo by typing 'git clone https://github.com/tomas-tank3ngine/rate-escape-room.git' in the terminal
+3. install npm by typing 'npm i' in the terminal
+4. start the client by typing 'npm start' in the terminal
+
+Backend Repo:
+1. cd into a new directory using the terminal
+2. clone the backend repo by typing 'git clone https://github.com/tomas-tank3ngine/rate-escape-room-server.git'
+3. install npm by typing npm i
+4. create a new MySQL database
+5. create a new .env file in the root directory and populate it with the following information:
+    - DB_HOST=127.0.0.1
+    - DB_USER= your username
+    - DB_PASSWORD= your password
+    - DB_DATABASE= the name of the database you created
+    - JWT_KEY= a random string of letters and numbers, such as:
+6. Populate the database:
+    - type 'npm migrate' to create tables
+    - type 'npm seed' to populate tables with seed data
+7. type 'npm run start' to start the backend server
+
+
 ## Overview
 
 Rate Escape Room is the one-stop collection of escape rooms sourced, rated, and ranked by the escape room community. Room owners add their rooms to the site and players can rate, review, and share the rooms to their friends and family.
@@ -133,8 +157,8 @@ List endpoints that your server will implement, including HTTP methods, paramete
 
 ### Authorization
 
-Authentication functionality will be implemented through validation on client and server side.
-Authorization functionality will be implemented through validation on client and server side. Users will have a boolean value (is_owner) that will be assigned at account creation. Owners will be able to upload rooms to the site but will not be able to review rooms. Non-owners, i.e. regular users, will be able to review rooms but will not be able to upload rooms.
+Authentication functionality will be implemented through validation on client and server side using JWT.
+Authorization functionality will be implemented through validation on client and server side using JWT. Users will have a boolean value (is_owner) that will be assigned at account creation. Owners will be able to upload rooms to the site but will not be able to review rooms. Non-owners, i.e. regular users, will be able to review rooms but will not be able to upload rooms.
 Does your project include any login or user profile functionality? If so, describe how authentication/authorization will be implemented.
 
 ## Roadmap
