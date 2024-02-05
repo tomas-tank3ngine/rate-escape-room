@@ -17,6 +17,8 @@ const LoginForm = ({ setUser }) => {
                 password: event.target.password.value,
             });
             sessionStorage.setItem("token", response.data.token);
+            console.log("token in login"+sessionStorage.getItem("token"))
+
 
             const userResponse = await axios.get(
                 currentUserEndpoint(),

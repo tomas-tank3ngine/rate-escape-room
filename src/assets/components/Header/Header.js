@@ -19,6 +19,8 @@ function Header({ setUser, user }) {
         alert("You have been logged out");
     };
 
+    // console.log(user)
+
     return (
         <>
             <section className="header">
@@ -41,11 +43,27 @@ function Header({ setUser, user }) {
                                 Rooms
                             </Link>
                         </li>
-                        <li className="pages__link">
-                            <Link to="/" className="pages__link--text">
-                                My Favourites
-                            </Link>
-                        </li>
+                        {user ? (
+                            <li className="pages_link"></li>
+                        ) : (
+                            <li className="pages__link">
+                                {user && user.is_owner ? (
+                                    <Link
+                                        to="/roomCreate"
+                                        className="mobile-menu-pages__link--text"
+                                    >
+                                        Upload Room
+                                    </Link>
+                                ) : (
+                                    <Link
+                                        to="/"
+                                        className="mobile-menu-pages__link--text"
+                                    >
+                                        My Favorites
+                                    </Link>
+                                )}
+                            </li>
+                        )}
                     </ul>
                 </nav>
                 <Link to="/" className="logo">
@@ -94,23 +112,27 @@ function Header({ setUser, user }) {
                             Rooms
                         </Link>
                     </li>
-                    <li className="mobile-menu-pages__link">
-                        {user && user.isOwner ? (
-                            <Link
-                                to="/roomCreate"
-                                className="mobile-menu-pages__link--text"
-                            >
-                                Upload Room
-                            </Link>
+                    {user ? (
+                            <li className="mobile-menu-pages__link"></li>
                         ) : (
-                            <Link
-                                to="/"
-                                className="mobile-menu-pages__link--text"
-                            >
-                                My Favorites
-                            </Link>
+                            <li className="mobile-menu-pages__link">
+                                {user && user.is_owner ? (
+                                    <Link
+                                        to="/roomCreate"
+                                        className="mobile-menu-pages__link--text"
+                                    >
+                                        Upload Room
+                                    </Link>
+                                ) : (
+                                    <Link
+                                        to="/"
+                                        className="mobile-menu-pages__link--text"
+                                    >
+                                        My Favorites
+                                    </Link>
+                                )}
+                            </li>
                         )}
-                    </li>
                 </ul>
             </section>
         </>
