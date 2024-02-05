@@ -4,27 +4,49 @@ import Icons from "../IconHolder/IconHolder";
 import StarRating from "../StarRating/StarRating";
 import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
+import ModalReviewQA from "../ModalReviewQA/ModalReviewQA";
 
-function RoomDetailsMobile({room}) {
+function RoomDetailsMobile({ room }) {
     const location = useLocation();
 
     const [currentURL, setCurrentURL] = useState("");
 
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const handleOpenModal = () => {
+        setIsModalOpen(true);
+    };
+
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
+    };
+
+    const handleContinue = () => {
+        // logic for handling continue button click
+        setIsModalOpen(false);
+    };
+
     useEffect(() => {
         setCurrentURL(window.location.href);
-      }, [location.pathname]);
+    }, [location.pathname]);
 
-      const handleShare = async () => {
+    const handleShare = async () => {
         try {
-          await navigator.clipboard.writeText(currentURL);
-          alert(currentURL+" URL copied to clipboard!");
+            await navigator.clipboard.writeText(currentURL);
+            alert(currentURL + " URL copied to clipboard!");
         } catch (error) {
-          console.error("Error copying to clipboard: ", error);
+            console.error("Error copying to clipboard: ", error);
         }
-      };
+    };
 
     return (
         <section className="room-details-mobile">
+            {/* <ModalReviewQA
+                onClose={handleCloseModal}
+                onContinue={handleContinue}
+                isOpen={isModalOpen}
+                roomId={room.id}
+            /> */}
             <section className="section-one">
                 <h2 className="section-one__room-name">{`${room.name}`}</h2>
                 <button className="section-one__fav-button">
@@ -70,43 +92,49 @@ function RoomDetailsMobile({room}) {
                     <p className="section-four__rating-container--header">
                         Overall:
                     </p>
-                    <StarRating rating={room.overall_rating}/>
+                    <StarRating rating={room.overall_rating} />
                 </section>
                 <section className="section-four__rating-container">
                     <p className="section-four__rating-container--header">
                         Storyline:
                     </p>
-                    <StarRating rating={room.storyline_rating}/>
+                    <StarRating rating={room.storyline_rating} />
                 </section>
                 <section className="section-four__rating-container">
                     <p className="section-four__rating-container--header">
                         Technology:
                     </p>
-                    <StarRating rating={room.tech_rating}/>
+                    <StarRating rating={room.tech_rating} />
                 </section>
                 <section className="section-four__rating-container">
                     <p className="section-four__rating-container--header">
                         Atmosphere:
                     </p>
-                    <StarRating rating={room.atmosphere_rating}/>
+                    <StarRating rating={room.atmosphere_rating} />
                 </section>
                 <section className="section-four__rating-container">
                     <p className="section-four__rating-container--header">
                         Puzzles:
                     </p>
-                    <StarRating rating={room.puzzle_fairness_rating}/>
+                    <StarRating rating={room.puzzle_fairness_rating} />
                 </section>
                 <section className="section-four__rating-container">
                     <p className="section-four__rating-container--header">
                         Staff:
                     </p>
-                    <StarRating rating={room.staff_rating}/>
+                    <StarRating rating={room.staff_rating} />
                 </section>
             </section>
 
             <section className="section-five">
-                <Link to={`${room.website_url}`}className="section-five__website-link">{`${room.website_url}`}</Link>
-                <button onClick={handleShare} className="section-five__share-url-button">
+                <Link
+                    to={`${room.website_url}`}
+                    className="section-five__website-link"
+                >{`${room.website_url}`}</Link>
+                <button
+                    onClick={handleShare}
+                    className="section-five__share-url-button"
+                >
                     <img
                         src={Icons().ShareUrlIcon}
                         alt="share link"
@@ -117,7 +145,7 @@ function RoomDetailsMobile({room}) {
                     </p>
                 </button>
             </section>
-            <button className="rate-room-button">
+            <button onClick={handleOpenModal} className="rate-room-button">
                 <img
                     className="rate-room-button__icon"
                     src={Icons().EditLineIcon}

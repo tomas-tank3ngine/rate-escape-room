@@ -1,0 +1,90 @@
+@use "../../styles/partials/global.scss" as *;
+@use "../../styles/partials/variables.scss" as *;
+@use "../../styles/partials/mixins.scss" as *;
+
+.modal-review-qa {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+
+    &.open {
+        display: flex;
+    }
+    &.closed{
+        display: none;
+    }
+  
+    &__content {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+  
+      &__title {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+      }
+  
+      &__question {
+        margin-bottom: 20px;
+  
+        &-text {
+          font-size: 1.2rem;
+        }
+  
+        &__rating {
+          display: flex;
+          justify-content: center;
+          margin-top: 10px;
+  
+          &-label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-right: 15px;
+  
+            &-input {
+              display: none;
+  
+              &:checked + .modal-review-qa__rating-value {
+                color: #007bff;
+              }
+            }
+  
+            &-value {
+              font-size: 1rem;
+              margin-top: 5px;
+              cursor: pointer;
+  
+              &:hover {
+                text-decoration: underline;
+              }
+            }
+          }
+        }
+      }
+  
+      &__buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+  
+        &__button {
+          padding: 10px;
+          width: 45%;
+          font-size: 1rem;
+          cursor: pointer;
+        }
+      }
+    }
+}
+  
