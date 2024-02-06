@@ -8,6 +8,7 @@ import ModalReviewQA from "../ModalReviewQA/ModalReviewQA";
 
 function RoomDetailsMobile({ room, user }) {
     const location = useLocation();
+    console.log("room in room details mobile: " + room)
 
     const [currentURL, setCurrentURL] = useState("");
 

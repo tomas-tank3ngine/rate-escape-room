@@ -22,7 +22,7 @@ function RoomOverview({ room }) {
             </Link>
             <section className="selected-info">
                 <section className="selected-info__top-section">
-                    <FavRoomButton />
+                    <FavRoomButton room={room}/>
                     <h2 className="selected-info__name">{`${room.name}`}</h2>
                     <StarRating rating={room.overall_rating} />
                 </section>

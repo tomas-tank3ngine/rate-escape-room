@@ -26,7 +26,8 @@ function RoomDetailsTabletPlus({ room, user }) {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const handleOpenModal = () => {
-        setIsModalOpen(true);
+        setTimeout( setIsModalOpen(true) ,2000)
+        // setIsModalOpen(true);
         console.log("open clicked: " + isModalOpen);
     };
 
@@ -34,15 +35,15 @@ function RoomDetailsTabletPlus({ room, user }) {
         setIsModalOpen(false);
     };
 
-    const handleContinue = () => {
-        setIsModalOpen(false);
-    };
+    // const handleContinue = () => {
+    //     setIsModalOpen(false);
+    // };
 
     const handleOwnerWarning = () => {
         alert("Owners are not allowed to review rooms.");
     };
 
-    console.log(room);
+    
     return (
         <section className="room-details-tablet-plus">
             {user ? (

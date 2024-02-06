@@ -17,7 +17,7 @@ function RoomDetailsPage({ responsive, user }) {
         const fetchData = async () => {
             try {
                 const response = await axios.get(singleRoomEndpoint(roomId));
-                console.log(response.data)
+                console.log(console.log("data fetched in room details page" + response.data))
                 setRoom(response.data);
             } catch (error) {
                 console.error("Error fetching data:", error);
@@ -26,6 +26,8 @@ function RoomDetailsPage({ responsive, user }) {
 
         fetchData();
     }, [roomId]);
+
+    
 
     return (
         <main className="room-details-page">
