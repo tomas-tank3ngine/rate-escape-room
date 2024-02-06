@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import menuIcon from "../../icons/menu_fill.svg";
 import closeIcon from "../../icons/close_fill.svg";
+import logo from '../../images/rate-escape-logo.svg'
 
 function Header({ setUser, user }) {
     const navigate = useNavigate();
@@ -71,7 +72,7 @@ function Header({ setUser, user }) {
                 </nav>
                 <Link to="/" className="logo">
                     <img
-                        src={require("../../images/BrainFlix-logo.svg").default}
+                        src={require("../../images/rate-escape-logo.svg").default}
                         alt="Rate Escape Rooms"
                         className="logo__image"
                     />

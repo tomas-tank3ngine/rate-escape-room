@@ -5,7 +5,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import ModalReviewQA from "../ModalReviewQA/ModalReviewQA";
 
-function RoomDetailsTabletPlus({ room}) {
+function RoomDetailsTabletPlus({ room, user }) {
     const location = useLocation();
 
     const [currentURL, setCurrentURL] = useState("");
@@ -42,12 +42,13 @@ function RoomDetailsTabletPlus({ room}) {
 
     return (
         <section className="room-details-tablet-plus">
-            {/* <ModalReviewQA
+            <ModalReviewQA
                 onClose={handleCloseModal}
                 onContinue={handleContinue}
                 isOpen={isModalOpen}
                 roomId={room.id}
-            /> */}
+                user={user}
+            />
             <section className="left-wrapper">
                 <img
                     src={`${room.thumbnail}`}
@@ -57,6 +58,11 @@ function RoomDetailsTabletPlus({ room}) {
                 <p className="left-wrapper__theme">{`${room.theme}`}</p>
                 <p className="left-wrapper__address">{`${room.address}`}</p>
                 <button onClick={handleOpenModal} className="left-wrapper__review-room-button">
+                    <img
+                        className="left-wrapper__review-room-button--icon"
+                        src={Icons().EditLineIcon}
+                        alt="Upload button icon"
+                    />
                     Review Room
                 </button>
             </section>

@@ -6,7 +6,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import ModalReviewQA from "../ModalReviewQA/ModalReviewQA";
 
-function RoomDetailsMobile({ room }) {
+function RoomDetailsMobile({ room, user }) {
     const location = useLocation();
 
     const [currentURL, setCurrentURL] = useState("");
@@ -41,12 +41,13 @@ function RoomDetailsMobile({ room }) {
 
     return (
         <section className="room-details-mobile">
-            {/* <ModalReviewQA
+            <ModalReviewQA
                 onClose={handleCloseModal}
                 onContinue={handleContinue}
                 isOpen={isModalOpen}
                 roomId={room.id}
-            /> */}
+                user={user}
+            />
             <section className="section-one">
                 <h2 className="section-one__room-name">{`${room.name}`}</h2>
                 <button className="section-one__fav-button">

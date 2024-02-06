@@ -6,17 +6,12 @@ import { useEffect } from "react";
 import Icons from "../IconHolder/IconHolder";
 
 function RoomOverview({ room }) {
-    // Dont forget to link the room id properly in the return()
 
     return (
         <section className="room-overview">
             <Link to={`/rooms/${room.id}`} className="details-link">
                 <button className="details-link__text">
-                    <img
-                        className="details-link__icon"
-                        src={Icons().EditLineIcon}
-                        alt="Upload button icon"
-                    />
+                    
                     Room Details
                 </button>
                 <img
@@ -33,7 +28,7 @@ function RoomOverview({ room }) {
                 </section>
                 <p className="selected-info__description-text">{`${room.description}`}</p>
                 <section className="selected-info__bottom-section">
-                    <Link className="selected-info__website-link">
+                    <Link to={room.website_url} className="selected-info__website-link">
                         {`${room.website_url}`}
                     </Link>
                     <Link className="selected-info__share-link">SHARE URL</Link>

@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router";
 
-function RoomDetailsPage({ responsive }) {
+function RoomDetailsPage({ responsive, user }) {
     const { roomId } = useParams();
 
     const [room, setRoom] = useState({});
@@ -30,9 +30,9 @@ function RoomDetailsPage({ responsive }) {
         <main className="room-details-page">
             <section className="room-details">
                 {responsive.isTablet ? (
-                    <RoomDetailsTabletPlus room={room} />
+                    <RoomDetailsTabletPlus room={room} user={user}/>
                 ) : (
-                    <RoomDetailsMobile room={room} />
+                    <RoomDetailsMobile room={room} user={user}/>
                 )}
             </section>
             <section className="room-reviews">

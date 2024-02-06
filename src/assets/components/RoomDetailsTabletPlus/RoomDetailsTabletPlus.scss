@@ -16,6 +16,8 @@
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
+
+        
         &__thumbnail{
             // min-width: 180px;
             border: 1px solid red;
@@ -43,6 +45,9 @@
             padding: 8px 8px;
             color: $color-eggshell;
 
+            &--icon{
+                width: 16px;
+            }
         }
         &__address{
             flex-wrap: wrap;
@@ -160,6 +165,8 @@
             flex-direction: column;
             align-items: center;
             gap: 8px;
+
+            
             
             .room-thumbnail{
                 width: 80px;
