@@ -12,42 +12,14 @@ import RoomsPage from "./assets/pages/RoomsPage/RoomsPage.js";
 import RoomDetailsPage from "./assets/pages/RoomDetailsPage/RoomDetailsPage.js";
 import LoginPage from "./assets/pages/LoginPage/LoginPage.js";
 import CreateAccountPage from "./assets/pages/CreateAccountPage/CreateAccountPage.js";
+import UploadRoomPage from "./assets/pages/UploadRoomPage/UploadRoomPage.js";
 
 function App() {
     const [width, setWindowWidth] = useState(0);
-    const [owner, setOwner] = useState(false);
     const [user, setUser] = useState(null);
 
     const [allRooms, setAllRooms] = useState([]);
     const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        const fetchOwnerStatus = async () => {
-          try {
-            const userResponse = await axios.get(
-                currentUserEndpoint(),
-                {
-                    headers: {
-                        Authorization: `Bearer ${localStorage.getItem("token")}`,
-                    },
-                }
-            );
-            console.log("show me"+userResponse.data.is_owner)
-
-            if(userResponse){
-                setOwner(userResponse.data.is_owner);
-            }
-            else{
-                console.log("no response found")
-            }
-  
-          } catch (error) {
-            console.error('Error fetchign current user: ', error);
-          }
-        };
-    
-        fetchOwnerStatus();
-      }, [user]);
     
 
 
@@ -88,7 +60,6 @@ function App() {
                 <Header
                     setUser={setUser}
                     user={user}
-                    owner={owner}
                 />
                 <Routes>
                     <Route path="/" element={<Homepage allRooms={allRooms}/>} />
@@ -110,8 +81,8 @@ function App() {
                         element={<CreateAccountPage setUser={setUser} user={user}/>}
                     />
 
-                    <Route path="/nearbyRooms" element={<Homepage />} />
-                    <Route path="/roomCreate" element={<Homepage />} />
+                    <Route path="/nearbyRooms" element={<RoomsPage responsive={responsive} user={user} allRooms={allRooms}/>} />
+                    <Route path="/roomCreate" element={<UploadRoomPage user={user}/>} />
 
                     <Route path="*" element={<NotFoundPage />} />
                 </Routes>

@@ -1,0 +1,96 @@
+@use "../../styles/partials/global.scss" as *;
+@use "../../styles/partials/variables.scss" as *;
+@use "../../styles/partials/mixins.scss" as *;
+
+.upload-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: $color-black;
+    min-height: 85vh;
+    @extend .format-padding;
+
+    &__header{
+        @extend .page-header;
+        padding: 16px;
+        color: $color-eggshell;
+        text-shadow: 1px 1px 2px white;
+
+        @include tablet{
+            padding: 24px;
+        }
+    }
+
+    
+    
+    .upload-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: $color-eggshell;
+        margin-bottom: 16px;
+        padding: 16px;
+        border-radius: 6px;
+        gap: 16px;
+        width: 90%;
+
+        @include tablet{
+            max-width: 600px;
+            margin-bottom: 36px;
+            padding: 36px;
+        }
+
+        &__warning-p{
+            color: $color-light-red;
+        }
+        .upload-form__label {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            gap: 8px;
+
+            p {
+                margin-bottom: 4px;
+            }
+
+            input,
+            textarea,
+            select {
+                padding: 8px;
+                border: 1px solid $color-black;
+                border-radius: 4px;
+                @extend .label;
+                
+            }
+
+            input[type="number"] {
+                width: 100%;
+            }
+        }
+
+        .upload-form__submit-button {
+            padding: 8px;
+            background-color: #bd4434;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+
+            &:hover {
+                background-color: darken(#bd4434, 10%);
+            }
+
+            @include tablet{
+                width: 200px;
+            }
+        }
+    }
+}
+
+#group_size{
+    @include tablet{
+        width: 50%;
+    }
+}

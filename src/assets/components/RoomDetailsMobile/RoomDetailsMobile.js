@@ -6,7 +6,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import ModalReviewQA from "../ModalReviewQA/ModalReviewQA";
 
-function RoomDetailsMobile({ room }) {
+function RoomDetailsMobile({ room, user }) {
     const location = useLocation();
 
     const [currentURL, setCurrentURL] = useState("");
@@ -22,8 +22,11 @@ function RoomDetailsMobile({ room }) {
     };
 
     const handleContinue = () => {
-        // logic for handling continue button click
         setIsModalOpen(false);
+    };
+
+    const handleOwnerWarning = () => {
+        alert("Owners are not allowed to review rooms.");
     };
 
     useEffect(() => {
@@ -41,12 +44,15 @@ function RoomDetailsMobile({ room }) {
 
     return (
         <section className="room-details-mobile">
-            {/* <ModalReviewQA
+            {user? <ModalReviewQA
                 onClose={handleCloseModal}
                 onContinue={handleContinue}
                 isOpen={isModalOpen}
                 roomId={room.id}
-            /> */}
+                user={user}
+            />
+        :        
+        <></>}
             <section className="section-one">
                 <h2 className="section-one__room-name">{`${room.name}`}</h2>
                 <button className="section-one__fav-button">
@@ -145,14 +151,36 @@ function RoomDetailsMobile({ room }) {
                     </p>
                 </button>
             </section>
-            <button onClick={handleOpenModal} className="rate-room-button">
-                <img
-                    className="rate-room-button__icon"
-                    src={Icons().EditLineIcon}
-                    alt="Upload button icon"
-                />
-                <p className="rate-room-button__p">Review room</p>
-            </button>
+            {user ? (
+                    user.is_owner ? (
+                        <button
+                            onClick={handleOwnerWarning}
+                            className="rate-room-button"
+                        >
+                            Review Unavailable
+                        </button>
+                    ) : (
+                        <button
+                            onClick={handleOpenModal}
+                            className="rate-room-button"
+                        >
+                            <img
+                                className="rate-room-button__icon"
+                                src={Icons().EditLineIcon}
+                                alt="Upload button icon"
+                            />
+                            Review Room
+                        </button>
+                    )
+                ) : (
+                    <Link
+                        to="/accountLogin"
+                        className="rate-room-button"
+                    >
+                        Login to Review
+                    </Link>
+                )}
+            
         </section>
     );
 }

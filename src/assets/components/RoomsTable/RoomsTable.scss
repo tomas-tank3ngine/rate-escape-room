@@ -31,8 +31,11 @@
         }
         .table-header{
             display: flex;
+            align-items: center;
             border: 1px solid $color-black;
-            background-color: grey;
+            min-height: 36px;
+            background-color: #bd4434;
+            
 
             .sort-label{
                 display: flex;

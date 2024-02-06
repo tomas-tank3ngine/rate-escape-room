@@ -10,7 +10,7 @@ function Hero(){
                 </Link>
             </section>
             <section className="hero__container">
-            <Link to="/rooms-nearby" className="cta">
+            <Link to="/nearbyRooms" className="cta">
                 <p className="cta__p">Rooms Near Me</p>
             </Link>
             </section>
