@@ -23,7 +23,6 @@ function RoomDetailsTabletPlus({ room, user }) {
         }
     };
 
-    
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const handleOpenModal = () => {
@@ -36,19 +35,27 @@ function RoomDetailsTabletPlus({ room, user }) {
     };
 
     const handleContinue = () => {
-        
         setIsModalOpen(false);
+    };
+
+    const handleOwnerWarning = () => {
+        alert("Owners are not allowed to review rooms.");
     };
 
     return (
         <section className="room-details-tablet-plus">
-            <ModalReviewQA
-                onClose={handleCloseModal}
-                onContinue={handleContinue}
-                isOpen={isModalOpen}
-                roomId={room.id}
-                user={user}
-            />
+            {user ? (
+                <ModalReviewQA
+                    onClose={handleCloseModal}
+                    onContinue={handleContinue}
+                    isOpen={isModalOpen}
+                    roomId={room.id}
+                    user={user}
+                />
+            ) : (
+                <></>
+            )}
+
             <section className="left-wrapper">
                 <img
                     src={`${room.thumbnail}`}
@@ -57,14 +64,35 @@ function RoomDetailsTabletPlus({ room, user }) {
                 />
                 <p className="left-wrapper__theme">{`${room.theme}`}</p>
                 <p className="left-wrapper__address">{`${room.address}`}</p>
-                <button onClick={handleOpenModal} className="left-wrapper__review-room-button">
-                    <img
-                        className="left-wrapper__review-room-button--icon"
-                        src={Icons().EditLineIcon}
-                        alt="Upload button icon"
-                    />
-                    Review Room
-                </button>
+                {user ? (
+                    user.is_owner ? (
+                        <button
+                            onClick={handleOwnerWarning}
+                            className="left-wrapper__review-room-button"
+                        >
+                            Review Unavailable
+                        </button>
+                    ) : (
+                        <button
+                            onClick={handleOpenModal}
+                            className="left-wrapper__review-room-button"
+                        >
+                            <img
+                                className="left-wrapper__review-room-button--icon"
+                                src={Icons().EditLineIcon}
+                                alt="Upload button icon"
+                            />
+                            Review Room
+                        </button>
+                    )
+                ) : (
+                    <Link
+                        to="/accountLogin"
+                        className="left-wrapper__review-room-button"
+                    >
+                        Login to Review
+                    </Link>
+                )}
             </section>
             <section className="right-wrapper">
                 <section className="right-wrapper__header-section">
