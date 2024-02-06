@@ -1,11 +1,12 @@
 import Headshot from "../Headshot/Headshot";
 import "./Header.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import menuIcon from "../../icons/menu_fill.svg";
 import closeIcon from "../../icons/close_fill.svg";
 
 function Header({ setUser, user }) {
+    const navigate = useNavigate();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [ownerLoggedIn, setOwnerLoggedIn] = useState(false);
 
@@ -16,7 +17,8 @@ function Header({ setUser, user }) {
     const handleLogout = () => {
         localStorage.removeItem("token");
         setUser(null);
-        alert("You have been logged out");
+        alert("You have been logged out. You will be returned to the homepage");
+        navigate('/'); //return to homepage
     };
 
     // console.log(user)
@@ -118,7 +120,7 @@ function Header({ setUser, user }) {
                             {user && user.is_owner ? (
                                 <Link
                                     to="/roomCreate"
-                                    className="mobile-menu-pages__link--text"
+                                    className="mobile-menu-pages__link--text"                                    
                                 >
                                     Upload Room
                                 </Link>
