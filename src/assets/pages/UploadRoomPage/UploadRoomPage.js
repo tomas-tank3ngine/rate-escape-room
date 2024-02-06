@@ -120,10 +120,9 @@ function UploadRoomPage({ user }) {
                             <option value="" disabled>
                                 Select cost
                             </option>
-                            <option value="premium">Premium</option>
-                            <option value="budget">Affordable</option>
-                            <option value="budget">Budget</option>
-                            <option value="discount">Discount</option>
+                            <option value="Premium">Premium</option>
+                            <option value="Affordable">Affordable</option>
+                            <option value="Budget">Budget</option>
                         </select>
                     </label>
                     <label htmlFor="difficulty" className="upload-form__label">
@@ -138,10 +137,10 @@ function UploadRoomPage({ user }) {
                             <option value="" disabled>
                                 Select difficulty
                             </option>
-                            <option value="premium">Expert</option>
-                            <option value="budget">Challenging</option>
-                            <option value="discount">Intermediate</option>
-                            <option value="discount">Beginner</option>
+                            <option value="Expert">Expert</option>
+                            <option value="Challenging">Challenging</option>
+                            <option value="Intermediate">Intermediate</option>
+                            <option value="Beginner">Beginner</option>
                         </select>
                     </label>
                     <label htmlFor="description" className="upload-form__label">

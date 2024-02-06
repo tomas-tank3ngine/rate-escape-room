@@ -37,6 +37,7 @@ function RoomDetailsMobile({ room, user }) {
         try {
             await navigator.clipboard.writeText(currentURL);
             alert(currentURL + " URL copied to clipboard!");
+            
         } catch (error) {
             console.error("Error copying to clipboard: ", error);
         }
@@ -45,10 +46,9 @@ function RoomDetailsMobile({ room, user }) {
     return (
         <section className="room-details-mobile">
             {user? <ModalReviewQA
-                onClose={handleCloseModal}
-                onContinue={handleContinue}
                 isOpen={isModalOpen}
-                roomId={room.id}
+                onClose={handleCloseModal}
+                room_id={room.id}
                 user={user}
             />
         :        

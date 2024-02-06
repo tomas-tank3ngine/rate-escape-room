@@ -1,22 +1,38 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './ModalReviewQA.scss';
 import { API_URL } from '../../utils/api-utils';
 import axios from 'axios';
+// import { useParams } from 'react-router';
 
-function ModalReviewQA({ isOpen, onClose, onContinue, roomId, user }) {
-  const [ratings, setRatings] = useState({
-    room_id: roomId,
-    // user_id: user? user.id : null,
+function ModalReviewQA({ isOpen, onClose, roomId, user }) {
+//   console.log(room_id)
+//   const room = room_id;
+
+    // const {roomId} = useParams();
+    
+    const [ratings, setRatings] = useState({
+    
+    user_id: user? user.id : null,
     atmosphere_rating: 'neutral',
     storyline_rating: 'neutral',
     tech_rating: 'neutral',
     puzzle_fairness_rating: 'neutral',
     staff_rating: 'neutral',
     comment: '',
+    // room_id: roomId.id,
   });
 
+  useEffect(()=>{
+    setRatings((prev)=>({
+        ...prev,
+        // user_id: user? user.id : null,
+        room_id: roomId? roomId : 4,
+    }))
+  },[user, roomId])
+//   ratings={}
+
   const handleRatingChange = (question, value) => {
-    
+    console.log("updated rating:"+ratings)//This isn't showing up???
     setRatings((prevRatings) => ({
       ...prevRatings,
       [question]: value,
@@ -33,18 +49,23 @@ function ModalReviewQA({ isOpen, onClose, onContinue, roomId, user }) {
   const handleSubmit = async () => {
     try {
       // Assuming you have an API endpoint for submitting the form data
-      const response = await axios.post(`${API_URL}/${roomId}/reviews`, ratings);
+      console.log(`${API_URL}/rooms/${roomId}/reviews`)
+      console.log("http://localhost:8080/api/rooms/4/reviews")
+      console.log(ratings)
+      console.log(roomId)
+      const response = await axios.post(`${API_URL}/rooms/${roomId}/reviews`, ratings);
+      console.log("response is: "+response)
 
-      if (response.ok) {
-        // Form submitted successfully, you can close the questionnaire
-        onClose();
-      } else {
-        // Handle error cases
-        console.error('Form submission failed');
-      }
+    //   if (response.status("201")) {
+    //     // Form submitted successfully, you can close the questionnaire
+    //     onClose();
+    //   } else {
+    //     // Handle error cases
+    //     console.error('Form submission failed');
+    //   }
     } catch (error) {
       // Handle network errors or other exceptions
-      console.error('Error submitting form:', error);
+      console.error('Error submitting form:', error.message);
     }
   };
 

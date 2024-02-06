@@ -42,13 +42,13 @@ function RoomDetailsTabletPlus({ room, user }) {
         alert("Owners are not allowed to review rooms.");
     };
 
+    console.log(room);
     return (
         <section className="room-details-tablet-plus">
             {user ? (
                 <ModalReviewQA
-                    onClose={handleCloseModal}
-                    onContinue={handleContinue}
                     isOpen={isModalOpen}
+                    onClose={handleCloseModal}
                     roomId={room.id}
                     user={user}
                 />
