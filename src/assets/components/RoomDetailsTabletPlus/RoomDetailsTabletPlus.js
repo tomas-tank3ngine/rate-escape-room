@@ -5,7 +5,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import ModalReviewQA from "../ModalReviewQA/ModalReviewQA";
 
-function RoomDetailsTabletPlus({ room, user }) {
+function RoomDetailsTabletPlus({ room, user}) {
     const location = useLocation();
 
     const [currentURL, setCurrentURL] = useState("");
@@ -42,7 +42,6 @@ function RoomDetailsTabletPlus({ room, user }) {
     const handleOwnerWarning = () => {
         alert("Owners are not allowed to review rooms.");
     };
-
     
     return (
         <section className="room-details-tablet-plus">

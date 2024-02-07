@@ -2,13 +2,15 @@ import "./RoomDetailsMobile.scss";
 // import FavRoomButton from "../FavRoomButton/FavRoomButton";
 import Icons from "../IconHolder/IconHolder";
 import StarRating from "../StarRating/StarRating";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import ModalReviewQA from "../ModalReviewQA/ModalReviewQA";
 
+
 function RoomDetailsMobile({ room, user }) {
+    const navigate = useNavigate()
     const location = useLocation();
-    console.log("room in room details mobile: " + room)
+    
 
     const [currentURL, setCurrentURL] = useState("");
 
@@ -20,10 +22,7 @@ function RoomDetailsMobile({ room, user }) {
 
     const handleCloseModal = () => {
         setIsModalOpen(false);
-    };
 
-    const handleContinue = () => {
-        setIsModalOpen(false);
     };
 
     const handleOwnerWarning = () => {
@@ -43,6 +42,11 @@ function RoomDetailsMobile({ room, user }) {
             console.error("Error copying to clipboard: ", error);
         }
     };
+
+    useEffect(() => {
+        console.log('reload')
+        navigate(location.pathname)
+    }, [isModalOpen]);
 
     return (
         <section className="room-details-mobile">

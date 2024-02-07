@@ -1,7 +1,5 @@
 import "./CommentsSection.scss";
 import CommentsList from "../CommentsList/CommentsList";
-import Headshot from "../Headshot/Headshot";
-import Icons from "../IconHolder/IconHolder";
 import { useParams } from "react-router";
 import { useEffect, useState } from "react";
 import { allReviewsOfRoomEndpoint } from "../../utils/api-utils";

@@ -1,15 +1,19 @@
 import { useEffect, useState } from 'react';
 import './ModalReviewQA.scss';
-import { API_URL } from '../../utils/api-utils';
+import { API_URL, singleRoomEndpoint} from '../../utils/api-utils';
 import axios from 'axios';
-import { useParams } from 'react-router';
+import { useParams} from 'react-router';
+import { useNavigate } from 'react-router-dom';
 
-function ModalReviewQA({ isOpen, onClose, user }) {
+
+function ModalReviewQA({ isOpen, onClose, user}) {
     // const [room_id] = roomId;
+
+    const navigate = useNavigate()
+    // const history = useHistory();
 
     const {roomId} = useParams();
 
-    console.log(roomId)
     const [ratings, setRatings] = useState({
     
     user_id: user? user.id : null,
@@ -25,7 +29,6 @@ function ModalReviewQA({ isOpen, onClose, user }) {
   useEffect(()=>{
     setRatings((prev)=>({
         ...prev,
-        // user_id: user? user.id : null,
         room_id: roomId,
     }));
     console.log("ratings at modal reviewQA: "+ratings.room_id);
@@ -33,7 +36,6 @@ function ModalReviewQA({ isOpen, onClose, user }) {
 
 
   const handleRatingChange = (question, value) => {
-    console.log("updated rating:"+ratings)//This isn't showing up???
     setRatings((prevRatings) => ({
       ...prevRatings,
       [question]: value,
@@ -50,17 +52,15 @@ function ModalReviewQA({ isOpen, onClose, user }) {
   const handleSubmit = async () => {
     try {
       // Assuming you have an API endpoint for submitting the form data
-      console.log(`${API_URL}/rooms/${roomId}/reviews`)
-      console.log("http://localhost:8080/api/rooms/4/reviews")
-      console.log(ratings)
-      console.log(roomId)
       const response = await axios.post(`${API_URL}/rooms/${roomId}/reviews`, ratings);
       console.log("response is: "+response)
 
       
       if (response.status == 201) {
         // Form submitted successfully, close the questionnaire
-        onClose()
+        navigate(`/rooms/`)
+        // navigate("/rooms/")
+        
       } else {
         // Handle error cases
         console.error('Form submission failed');
@@ -71,6 +71,8 @@ function ModalReviewQA({ isOpen, onClose, user }) {
       console.error('Error submitting form:', error.message);
     }
   };
+
+  
 
   return (
     <div className={`modal-review-qa ${isOpen ? 'open' : 'closed'}`}>
