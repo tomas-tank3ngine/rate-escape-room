@@ -29,6 +29,10 @@ function RoomItemMobile({ room, setSelectedRoom }) {
         setIsModalOpen(true);
     };
 
+    if (!room){
+        <p className="loading">Loading...</p>
+    }
+
     return (
         <li onClick={handleSelected} className="table-item-mobile">
             <ModalPopup
@@ -42,7 +46,7 @@ function RoomItemMobile({ room, setSelectedRoom }) {
                     <FavRoomButton />
                     <p className="item-name">{`${room.name}`}</p>
                 </div>
-                <StarRating rating={room.overall_rating} />
+                <StarRating roomId={room.id} targetRating="overall_rating" />
             </section>
             <section className="item-container-middle">
                 <p className="item-container-middle__theme">{`${room.theme}`}</p>

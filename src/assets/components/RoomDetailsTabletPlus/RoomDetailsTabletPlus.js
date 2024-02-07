@@ -1,12 +1,14 @@
 import "./RoomDetailsTabletPlus.scss";
 import Icons from "../IconHolder/IconHolder";
 import StarRating from "../StarRating/StarRating";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import ModalReviewQA from "../ModalReviewQA/ModalReviewQA";
 
 function RoomDetailsTabletPlus({ room, user}) {
     const location = useLocation();
+
+    const {roomId} = useParams();
 
     const [currentURL, setCurrentURL] = useState("");
 
@@ -42,6 +44,10 @@ function RoomDetailsTabletPlus({ room, user}) {
     const handleOwnerWarning = () => {
         alert("Owners are not allowed to review rooms.");
     };
+
+    if (!roomId){
+        <p className="loading">Loading...</p>
+    }
     
     return (
         <section className="room-details-tablet-plus">
@@ -122,21 +128,21 @@ function RoomDetailsTabletPlus({ room, user}) {
                                 <p className="room-ratings__rating-container--header">
                                     Overall:
                                 </p>
-                                <StarRating rating={room.overall_rating} />
+                                <StarRating roomId={roomId} targetRating="overall_rating" />
                             </section>
 
                             <section className="room-ratings__rating-container">
                                 <p className="room-ratings__rating-container--header">
                                     Atmosphere:
                                 </p>
-                                <StarRating rating={room.atmosphere_rating} />
+                                <StarRating roomId={roomId} targetRating="atmosphere_rating" />
                             </section>
                             <section className="room-ratings__rating-container">
                                 <p className="room-ratings__rating-container--header">
                                     Puzzles:
                                 </p>
                                 <StarRating
-                                    rating={room.puzzle_fairness_rating}
+                                    roomId={roomId} targetRating="puzzle_fairness_rating"
                                 />
                             </section>
                         </section>
@@ -145,20 +151,20 @@ function RoomDetailsTabletPlus({ room, user}) {
                                 <p className="room-ratings__rating-container--header">
                                     Technology:
                                 </p>
-                                <StarRating rating={room.tech_rating} />
+                                <StarRating roomId={roomId} targetRating="tech_rating" />
                             </section>
 
                             <section className="room-ratings__rating-container">
                                 <p className="room-ratings__rating-container--header">
                                     Storyline:
                                 </p>
-                                <StarRating rating={room.storyline_rating} />
+                                <StarRating roomId={roomId} targetRating="storyline_rating" />
                             </section>
                             <section className="room-ratings__rating-container">
                                 <p className="room-ratings__rating-container--header">
                                     Staff:
                                 </p>
-                                <StarRating rating={room.staff_rating} />
+                                <StarRating roomId={roomId} targetRating="staff_rating" />
                             </section>
                         </section>
                     </section>

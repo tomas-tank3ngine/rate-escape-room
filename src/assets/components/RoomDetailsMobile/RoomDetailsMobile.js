@@ -2,7 +2,7 @@ import "./RoomDetailsMobile.scss";
 // import FavRoomButton from "../FavRoomButton/FavRoomButton";
 import Icons from "../IconHolder/IconHolder";
 import StarRating from "../StarRating/StarRating";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import ModalReviewQA from "../ModalReviewQA/ModalReviewQA";
 
@@ -10,6 +10,8 @@ import ModalReviewQA from "../ModalReviewQA/ModalReviewQA";
 function RoomDetailsMobile({ room, user }) {
     const navigate = useNavigate()
     const location = useLocation();
+
+    const {roomId} = useParams()
     
 
     const [currentURL, setCurrentURL] = useState("");
@@ -47,6 +49,10 @@ function RoomDetailsMobile({ room, user }) {
         console.log('reload')
         navigate(location.pathname)
     }, [isModalOpen]);
+
+    if (!roomId){
+        <p className="loading">Loading...</p>
+    }
 
     return (
         <section className="room-details-mobile">
@@ -103,37 +109,37 @@ function RoomDetailsMobile({ room, user }) {
                     <p className="section-four__rating-container--header">
                         Overall:
                     </p>
-                    <StarRating rating={room.overall_rating} />
+                    <StarRating roomId={roomId} targetRating="overall_rating" />
                 </section>
                 <section className="section-four__rating-container">
                     <p className="section-four__rating-container--header">
                         Storyline:
                     </p>
-                    <StarRating rating={room.storyline_rating} />
+                    <StarRating roomId={roomId} targetRating="storyline_rating" />
                 </section>
                 <section className="section-four__rating-container">
                     <p className="section-four__rating-container--header">
                         Technology:
                     </p>
-                    <StarRating rating={room.tech_rating} />
+                    <StarRating roomId={roomId} targetRating="tech_rating" />
                 </section>
                 <section className="section-four__rating-container">
                     <p className="section-four__rating-container--header">
                         Atmosphere:
                     </p>
-                    <StarRating rating={room.atmosphere_rating} />
+                    <StarRating roomId={roomId} targetRating="atmosphere_rating" />
                 </section>
                 <section className="section-four__rating-container">
                     <p className="section-four__rating-container--header">
                         Puzzles:
                     </p>
-                    <StarRating rating={room.puzzle_fairness_rating} />
+                    <StarRating roomId={roomId} targetRating="puzzle_fairness_rating" />
                 </section>
                 <section className="section-four__rating-container">
                     <p className="section-four__rating-container--header">
                         Staff:
                     </p>
-                    <StarRating rating={room.staff_rating} />
+                    <StarRating roomId={roomId} targetRating="staff_rating" />
                 </section>
             </section>
 

@@ -13,7 +13,7 @@ function CommentsSection() {
         const fetchData = async ()=>{
             try {
                 const response = await axios.get((allReviewsOfRoomEndpoint(roomId)))
-                setAllReviews(response.data)
+                setAllReviews(response.data.reviews)
                 console.log(allReviews)
             } catch (error) {
                 console.log(error);
@@ -22,7 +22,9 @@ function CommentsSection() {
         fetchData();
     },[roomId])
 
-
+    if (allReviews.length === 0){
+        <p className="loading">Loading...</p>
+    }
 
   return (
     <section className="comments-section">
