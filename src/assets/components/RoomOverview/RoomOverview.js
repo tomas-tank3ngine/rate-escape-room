@@ -7,6 +7,10 @@ import Icons from "../IconHolder/IconHolder";
 
 function RoomOverview({ room }) {
 
+    if (!room){
+        <p className="loading">Loading...</p>
+    }
+
     return (
         <section className="room-overview">
             <Link to={`/rooms/${room.id}`} className="details-link">
@@ -24,7 +28,7 @@ function RoomOverview({ room }) {
                 <section className="selected-info__top-section">
                     <FavRoomButton room={room}/>
                     <h2 className="selected-info__name">{`${room.name}`}</h2>
-                    <StarRating rating={room.overall_rating} />
+                    <StarRating roomId={room.id} targetRating="overall_rating" />
                 </section>
                 <p className="selected-info__description-text">{`${room.description}`}</p>
                 <section className="selected-info__bottom-section">
