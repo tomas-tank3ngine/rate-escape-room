@@ -32,7 +32,7 @@ function RoomDetailsPage({ responsive, user }) {
         const fetchData = async ()=>{
             try {
                 const response = await axios.get((allReviewsOfRoomEndpoint(roomId)))
-                setAllReviews(response.data)
+                setAllReviews(response.data.reviews)
                 console.log(allReviews)
             } catch (error) {
                 console.log(error);
@@ -41,7 +41,7 @@ function RoomDetailsPage({ responsive, user }) {
         fetchData();
     },[roomId])
 
-    if (!roomId || allReviews){
+    if (!roomId || allReviews.length === 0){
         <p className="loading">Loading...</p>
     }
 
