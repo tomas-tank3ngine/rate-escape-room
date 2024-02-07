@@ -1,18 +1,14 @@
-import Headshot from "../Headshot/Headshot";
 import "./CommentsList.scss";
 import { convertedTimestamp } from "../TimestampConverter/TimestampConverter";
 
-function CommentsList({ commentsList }) {
-  const allComments = commentsList.map((commentItem) => (
+function CommentsList({ allReviews }) {
+  const allComments = allReviews.map((commentItem) => (
     <li className="comment-entry" key={commentItem.id}>
-      <div className="comment-entry__profile-picture">
-        <Headshot />
-      </div>
       <div className="comment-entry__comment-container">
         <div className="comment-entry__info">
-          <h3 className="comment-entry__name">{commentItem.name}</h3>
+          <h3 className="comment-entry__name">Anonymous</h3>
           <h3 className="comment-entry__timestamp">
-            {convertedTimestamp(commentItem.timestamp)}
+            {convertedTimestamp(commentItem.created_at)}
           </h3>
         </div>
         <div className="comment-entry__comment">

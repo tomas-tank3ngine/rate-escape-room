@@ -2,16 +2,38 @@ import "./CommentsSection.scss";
 import CommentsList from "../CommentsList/CommentsList";
 import Headshot from "../Headshot/Headshot";
 import Icons from "../IconHolder/IconHolder";
+import { useParams } from "react-router";
+import { useEffect, useState } from "react";
+import { allReviewsOfRoomEndpoint } from "../../utils/api-utils";
+import axios from "axios";
 
-function CommentsSection({ videoDetails }) {
+function CommentsSection() {
+    const {roomId} = useParams();
+    const [allReviews, setAllReviews] = useState([])
+
+    useEffect(()=>{
+        const fetchData = async ()=>{
+            try {
+                const response = await axios.get((allReviewsOfRoomEndpoint(roomId)))
+                setAllReviews(response.data)
+                console.log(allReviews)
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        fetchData();
+    },[roomId])
+
+
+
   return (
     <section className="comments-section">
       <h2 className="comments-section__title">
-        {/* {videoDetails.comments.length + " Comments"} */}
+        {allReviews.length + " Reviews"}
       </h2>
       <section className="comment-section__container">
 
-        {/* <CommentsList commentsList={videoDetails.comments} /> */}
+        <CommentsList allReviews={allReviews} />
       </section>
     </section>
   );
