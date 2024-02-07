@@ -5,7 +5,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import ModalReviewQA from "../ModalReviewQA/ModalReviewQA";
 
-function RoomDetailsTabletPlus({ room, user }) {
+function RoomDetailsTabletPlus({ room, user}) {
     const location = useLocation();
 
     const [currentURL, setCurrentURL] = useState("");
@@ -26,7 +26,8 @@ function RoomDetailsTabletPlus({ room, user }) {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const handleOpenModal = () => {
-        setIsModalOpen(true);
+        setTimeout( setIsModalOpen(true) ,2000)
+        // setIsModalOpen(true);
         console.log("open clicked: " + isModalOpen);
     };
 
@@ -34,21 +35,20 @@ function RoomDetailsTabletPlus({ room, user }) {
         setIsModalOpen(false);
     };
 
-    const handleContinue = () => {
-        setIsModalOpen(false);
-    };
+    // const handleContinue = () => {
+    //     setIsModalOpen(false);
+    // };
 
     const handleOwnerWarning = () => {
         alert("Owners are not allowed to review rooms.");
     };
-
+    
     return (
         <section className="room-details-tablet-plus">
             {user ? (
                 <ModalReviewQA
-                    onClose={handleCloseModal}
-                    onContinue={handleContinue}
                     isOpen={isModalOpen}
+                    onClose={handleCloseModal}
                     roomId={room.id}
                     user={user}
                 />

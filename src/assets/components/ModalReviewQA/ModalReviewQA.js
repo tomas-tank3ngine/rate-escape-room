@@ -1,22 +1,41 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './ModalReviewQA.scss';
-import { API_URL } from '../../utils/api-utils';
+import { API_URL, singleRoomEndpoint} from '../../utils/api-utils';
 import axios from 'axios';
+import { useParams} from 'react-router';
+import { useNavigate } from 'react-router-dom';
 
-function ModalReviewQA({ isOpen, onClose, onContinue, roomId, user }) {
-  const [ratings, setRatings] = useState({
-    room_id: roomId,
-    // user_id: user? user.id : null,
+
+function ModalReviewQA({ isOpen, onClose, user}) {
+    // const [room_id] = roomId;
+
+    const navigate = useNavigate()
+    // const history = useHistory();
+
+    const {roomId} = useParams();
+
+    const [ratings, setRatings] = useState({
+    
+    user_id: user? user.id : null,
     atmosphere_rating: 'neutral',
     storyline_rating: 'neutral',
     tech_rating: 'neutral',
     puzzle_fairness_rating: 'neutral',
     staff_rating: 'neutral',
     comment: '',
+    room_id: null,
   });
 
+  useEffect(()=>{
+    setRatings((prev)=>({
+        ...prev,
+        room_id: roomId,
+    }));
+    console.log("ratings at modal reviewQA: "+ratings.room_id);
+  },[roomId])
+
+
   const handleRatingChange = (question, value) => {
-    
     setRatings((prevRatings) => ({
       ...prevRatings,
       [question]: value,
@@ -33,20 +52,27 @@ function ModalReviewQA({ isOpen, onClose, onContinue, roomId, user }) {
   const handleSubmit = async () => {
     try {
       // Assuming you have an API endpoint for submitting the form data
-      const response = await axios.post(`${API_URL}/${roomId}/reviews`, ratings);
+      const response = await axios.post(`${API_URL}/rooms/${roomId}/reviews`, ratings);
+      console.log("response is: "+response)
 
-      if (response.ok) {
-        // Form submitted successfully, you can close the questionnaire
-        onClose();
+      
+      if (response.status == 201) {
+        // Form submitted successfully, close the questionnaire
+        navigate(`/rooms/`)
+        // navigate("/rooms/")
+        
       } else {
         // Handle error cases
         console.error('Form submission failed');
+        alert("Please fill out all fields")
       }
     } catch (error) {
       // Handle network errors or other exceptions
-      console.error('Error submitting form:', error);
+      console.error('Error submitting form:', error.message);
     }
   };
+
+  
 
   return (
     <div className={`modal-review-qa ${isOpen ? 'open' : 'closed'}`}>
@@ -183,6 +209,7 @@ function ModalReviewQA({ isOpen, onClose, onContinue, roomId, user }) {
               value={ratings.comment}
               onChange={handleReviewChange}
               className="modal-review-qa__review-textarea"
+              required
             />
           </div>
         </div>
