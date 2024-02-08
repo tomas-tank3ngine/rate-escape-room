@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import "./LoginPage.scss";
 import { loginUserEndpoint, currentUserEndpoint } from "../../utils/api-utils";
 import { useNavigate } from "react-router";
@@ -17,17 +16,12 @@ const LoginForm = ({ setUser }) => {
                 password: event.target.password.value,
             });
             localStorage.setItem("token", response.data.token);
-            console.log("token in login"+localStorage.getItem("token"))
 
-
-            const userResponse = await axios.get(
-                currentUserEndpoint(),
-                {
-                    headers: {
-                        Authorization: `Bearer ${response.data.token}`,
-                    },
-                }
-            );
+            const userResponse = await axios.get(currentUserEndpoint(), {
+                headers: {
+                    Authorization: `Bearer ${response.data.token}`,
+                },
+            });
 
             setUser(userResponse.data);
 

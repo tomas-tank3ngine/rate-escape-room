@@ -1,15 +1,12 @@
-import Headshot from "../Headshot/Headshot";
 import "./Header.scss";
 import { Link, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import menuIcon from "../../icons/menu_fill.svg";
 import closeIcon from "../../icons/close_fill.svg";
-import logo from '../../images/rate-escape-logo.svg'
 
 function Header({ setUser, user }) {
     const navigate = useNavigate();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [ownerLoggedIn, setOwnerLoggedIn] = useState(false);
 
     const menuHandler = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -19,10 +16,8 @@ function Header({ setUser, user }) {
         localStorage.removeItem("token");
         setUser(null);
         alert("You have been logged out. You will be returned to the homepage");
-        navigate('/'); //return to homepage
+        navigate("/"); //return to homepage
     };
-
-    // console.log(user)
 
     return (
         <>
@@ -48,23 +43,22 @@ function Header({ setUser, user }) {
                         </li>
                         {user ? (
                             <li className="pages__link">
-                            {user && user.is_owner ? (
-                                <Link
-                                    to="/roomCreate"
-                                    className="mobile-menu-pages__link--text"
-                                >
-                                    Upload Room
-                                </Link>
-                            ) : (
-                                <Link
-                                    to="/rooms"
-                                    className="mobile-menu-pages__link--text"
-                                >
-                                    My Favorites
-                                </Link>
-                            )}
-                        </li>
-                            
+                                {user && user.is_owner ? (
+                                    <Link
+                                        to="/roomCreate"
+                                        className="mobile-menu-pages__link--text"
+                                    >
+                                        Upload Room
+                                    </Link>
+                                ) : (
+                                    <Link
+                                        to="/rooms"
+                                        className="mobile-menu-pages__link--text"
+                                    >
+                                        My Favorites
+                                    </Link>
+                                )}
+                            </li>
                         ) : (
                             <li className="pages_link"></li>
                         )}
@@ -72,7 +66,9 @@ function Header({ setUser, user }) {
                 </nav>
                 <Link to="/" className="logo">
                     <img
-                        src={require("../../images/rate-escape-logo.svg").default}
+                        src={
+                            require("../../images/rate-escape-logo.svg").default
+                        }
                         alt="Rate Escape Rooms"
                         className="logo__image"
                     />
@@ -117,11 +113,11 @@ function Header({ setUser, user }) {
                         </Link>
                     </li>
                     {user ? (
-                            <li className="mobile-menu-pages__link">
+                        <li className="mobile-menu-pages__link">
                             {user && user.is_owner ? (
                                 <Link
                                     to="/roomCreate"
-                                    className="mobile-menu-pages__link--text"                                    
+                                    className="mobile-menu-pages__link--text"
                                 >
                                     Upload Room
                                 </Link>
@@ -134,10 +130,9 @@ function Header({ setUser, user }) {
                                 </Link>
                             )}
                         </li>
-                            
-                        ) : (
-                            <li className="mobile-menu-pages__link"></li>
-                        )}
+                    ) : (
+                        <li className="mobile-menu-pages__link"></li>
+                    )}
                 </ul>
             </section>
         </>

@@ -24,6 +24,12 @@
     font-weight: 700;
 }
 
+body{
+    font-family: 'Avenir';
+    @extend .body-copy;
+    color: $color-text-dark;
+}
+
 .page-header{
     font-size: 24px;
     line-height: 2rem;

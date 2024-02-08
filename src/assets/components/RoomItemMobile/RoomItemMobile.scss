@@ -44,14 +44,30 @@
             text-align: center;
             border-radius: 6px;
             border: 1px solid $color-black;
+            background-color: $color-light-accent;
             @extend .body-copy;
         }
+        
         &__difficulty{
             flex-grow: 1;
             text-align: center;
             border-radius: 6px;
             border: 1px solid $color-black;
             @extend .body-copy;
+
+            &.Beginner{
+                background-color: rgb(95, 202, 95);
+            }
+            &.Intermediate{
+                background-color: rgb(240, 240, 60);
+            }
+            &.Challenging{
+                background-color: rgb(247, 113, 65);
+            }
+            &.Expert{
+                background-color: rgb(255, 73, 73);
+            }
+            
         }
         &__completion-rate{
             flex-grow: 0.25;

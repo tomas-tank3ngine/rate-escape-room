@@ -26,7 +26,7 @@ function RoomsTable({ responsive, allRooms, setSelectedRoom }) {
                             className="sort-label__fav-icon"
                         />
                     </button>
-                    <button className="sort-label">
+                    <button className="sort-label sort-name">
                         <p className="sort-label__p">Name</p>
                         <img
                             src={Icons().SortIcon}

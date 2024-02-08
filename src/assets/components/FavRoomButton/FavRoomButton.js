@@ -2,11 +2,8 @@ import "./FavRoomButton.scss";
 import Icons from "../IconHolder/IconHolder";
 
 function FavRoomButton({ room }) {
-    const handleFav = ()=>{
-        
-    }
-    
-    
+    const handleFav = () => {};
+
     return (
         <button onClick={handleFav} className="fav-room-button">
             <img

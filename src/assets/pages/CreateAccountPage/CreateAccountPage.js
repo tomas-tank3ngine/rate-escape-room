@@ -1,14 +1,11 @@
-import './CreateAccountPage.scss'
-import { Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import { registerUserEndpoint, currentUserEndpoint } from '../../utils/api-utils';
-import axios from 'axios';
+import "./CreateAccountPage.scss";
+import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { currentUserEndpoint } from "../../utils/api-utils";
+import axios from "axios";
 import { useNavigate } from "react-router";
 
-
-
-
-const CreateAccountPage = ({ user, setUser }) => {
+const CreateAccountPage = ({ setUser }) => {
     const navigate = useNavigate();
     const [error, setError] = useState("");
     const [success, setSuccess] = useState(false);
@@ -42,20 +39,20 @@ const CreateAccountPage = ({ user, setUser }) => {
                 isOwner: formData.isOwner,
             };
 
-            const response = await axios.post("http://localhost:8080/api/users/account/register", newUser);
+            const response = await axios.post(
+                "http://localhost:8080/api/users/account/register",
+                newUser
+            );
 
             if (response) {
                 setSuccess(true);
                 event.target.reset();
 
-                const userResponse = await axios.get(
-                    currentUserEndpoint(),
-                    {
-                        headers: {
-                            Authorization: `Bearer ${response.data.token}`,
-                        },
-                    }
-                );
+                const userResponse = await axios.get(currentUserEndpoint(), {
+                    headers: {
+                        Authorization: `Bearer ${response.data.token}`,
+                    },
+                });
 
                 setUser(userResponse.data);
                 navigate("/");
@@ -71,22 +68,19 @@ const CreateAccountPage = ({ user, setUser }) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const userResponse = await axios.get(
-                    currentUserEndpoint(),
-                    {
-                        headers: {
-                            Authorization: `Bearer ${localStorage.getItem("token")}`,
-                        },
-                    }
-                );
+                const userResponse = await axios.get(currentUserEndpoint(), {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem(
+                            "token"
+                        )}`,
+                    },
+                });
 
                 setUser(userResponse.data);
 
-                
                 setTimeout(() => {
                     navigate("/");
                 }, 1000);
-
             } catch (error) {
                 console.log(error);
             }
@@ -135,13 +129,13 @@ const CreateAccountPage = ({ user, setUser }) => {
                 </div>
                 <div className="create-user-form__input-group">
                     <label
-                        className="create-user-form__input-group__label"
+                        className="create-user-form__input-group--label"
                         htmlFor="password"
                     >
                         Password:
                     </label>
                     <input
-                        className="create-user-form__input-group__input"
+                        className="create-user-form__input-group--input"
                         type="password"
                         name="password"
                         value={formData.password}
@@ -174,7 +168,7 @@ const CreateAccountPage = ({ user, setUser }) => {
                         onChange={handleChange}
                     />
                     <label
-                        className="create-user-form__input-group--label create-user-form__input-group__label--checkbox"
+                        className="create-user-form__input-group--label create-user-form__input-group--checkbox"
                         htmlFor="isOwner"
                     >
                         I am an owner
@@ -184,7 +178,7 @@ const CreateAccountPage = ({ user, setUser }) => {
                     Create User
                 </button>
                 {success && <div className="signup__message">Signed up!</div>}
-        {error && <div className="signup__message">{error}</div>}
+                {error && <div className="signup__message">{error}</div>}
                 <Link className="create-user-form__link" to="/accountLogin">
                     Already have an account? Log in here
                 </Link>
