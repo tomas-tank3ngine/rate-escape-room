@@ -1,8 +1,8 @@
-import './Hero.scss';
-import { Link } from 'react-router-dom';
+import "./Hero.scss";
+import { Link } from "react-router-dom";
 
-function Hero(){
-    return(
+function Hero() {
+    return (
         <section className="hero">
             <section className="hero__container">
                 <Link to="/rooms" className="cta">
@@ -10,12 +10,12 @@ function Hero(){
                 </Link>
             </section>
             <section className="hero__container">
-            <Link to="/nearbyRooms" className="cta">
-                <p className="cta__p">Rooms Near Me</p>
-            </Link>
+                <Link to="/nearbyRooms" className="cta">
+                    <p className="cta__p">Rooms Near Me</p>
+                </Link>
             </section>
         </section>
-    )
+    );
 }
 
 export default Hero;

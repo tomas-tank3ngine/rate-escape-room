@@ -2,7 +2,7 @@ import "./RoomDetailsPage.scss";
 import RoomDetailsMobile from "../../components/RoomDetailsMobile/RoomDetailsMobile";
 import RoomDetailsTabletPlus from "../../components/RoomDetailsTabletPlus/RoomDetailsTabletPlus";
 import CommentsList from "../../components/CommentsList/CommentsList";
-import TitleSection from '../../components/TitleSection/TitleSection';
+import TitleSection from "../../components/TitleSection/TitleSection";
 
 import {
     singleRoomEndpoint,
@@ -22,11 +22,6 @@ function RoomDetailsPage({ responsive, user }) {
         const fetchData = async () => {
             try {
                 const response = await axios.get(singleRoomEndpoint(roomId));
-                console.log(
-                    console.log(
-                        "data fetched in room details page" + response.data
-                    )
-                );
                 setRoom(response.data);
             } catch (error) {
                 console.error("Error fetching data:", error);
@@ -43,7 +38,6 @@ function RoomDetailsPage({ responsive, user }) {
                     allReviewsOfRoomEndpoint(roomId)
                 );
                 setAllReviews(response.data.reviews);
-                console.log(allReviews);
             } catch (error) {
                 console.log(error);
             }

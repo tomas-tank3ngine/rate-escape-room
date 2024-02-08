@@ -14,7 +14,9 @@ function Banner({ allRooms }) {
                 const randomIndex = Math.floor(Math.random() * allRooms.length);
                 const rollRoom = allRooms[randomIndex];
 
-                const response = await axios.get(singleRoomEndpoint(rollRoom.id));
+                const response = await axios.get(
+                    singleRoomEndpoint(rollRoom.id)
+                );
                 setRandomRoom(response.data);
             } catch (error) {
                 console.error("Error fetching data: ", error);

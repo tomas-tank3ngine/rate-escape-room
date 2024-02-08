@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { allRoomsEndpoint } from "../../utils/api-utils";
 import TitleSection from "../../components/TitleSection/TitleSection";
 
-function RoomsPage({ responsive, user }) {
+function RoomsPage({ responsive }) {
     const [allRooms, setAllRooms] = useState([]);
     const [selectedRoom, setSelectedRoom] = useState({});
     const [loading, setLoading] = useState(true);
@@ -34,7 +34,7 @@ function RoomsPage({ responsive, user }) {
 
     return (
         <>
-        <TitleSection title="Escape Rooms" linkRoute="/" />
+            <TitleSection title="Escape Rooms" linkRoute="/" />
             <main className="rooms-page">
                 {loading ? (
                     <p>Loading...</p>

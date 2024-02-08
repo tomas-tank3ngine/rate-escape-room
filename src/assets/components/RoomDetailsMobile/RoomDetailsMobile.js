@@ -42,7 +42,6 @@ function RoomDetailsMobile({ room, user }) {
     };
 
     useEffect(() => {
-        console.log("reload");
         navigate(location.pathname);
     }, [isModalOpen]);
 

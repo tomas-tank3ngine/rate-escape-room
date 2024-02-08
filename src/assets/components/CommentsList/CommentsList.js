@@ -1,32 +1,35 @@
 import "./CommentsList.scss";
 import { convertedTimestamp } from "../TimestampConverter/TimestampConverter";
 import { useEffect, useState } from "react";
-import { allReviewsOfRoomEndpoint, singleRoomEndpoint } from "../../utils/api-utils";
+import {
+    allReviewsOfRoomEndpoint,
+    singleRoomEndpoint,
+} from "../../utils/api-utils";
 import axios from "axios";
 import { useParams } from "react-router";
 
-
 function CommentsList() {
     const { roomId } = useParams();
-    const [allReviews, setAllReviews] = useState([])
+    const [allReviews, setAllReviews] = useState([]);
 
-    useEffect(()=>{
-        const fetchData = async ()=>{
+    useEffect(() => {
+        const fetchData = async () => {
             try {
-                const response = await axios.get((allReviewsOfRoomEndpoint(roomId)))
-                
-                setAllReviews(response.data.reviews)
+                const response = await axios.get(
+                    allReviewsOfRoomEndpoint(roomId)
+                );
+
+                setAllReviews(response.data.reviews);
             } catch (error) {
                 console.log(error);
             }
-        }
+        };
         fetchData();
-    },[roomId])
+    }, [roomId]);
 
-    if (allReviews.length === 0){
-        <p className="loading">Loading...</p>
+    if (allReviews.length === 0) {
+        <p className="loading">Loading...</p>;
     }
-    
 
     return (
         <ul className="comment-entry__container">

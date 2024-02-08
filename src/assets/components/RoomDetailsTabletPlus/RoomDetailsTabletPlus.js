@@ -5,7 +5,6 @@ import { Link, useLocation, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import ModalReviewQA from "../ModalReviewQA/ModalReviewQA";
 import thumbnail from "../../images/placeholder2.png";
-import TitleSection from "../../components/TitleSection/TitleSection";
 
 function RoomDetailsTabletPlus({ room, user }) {
     const location = useLocation();
@@ -30,7 +29,6 @@ function RoomDetailsTabletPlus({ room, user }) {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const handleOpenModal = () => {
         setTimeout(setIsModalOpen(true), 2000);
-        console.log("open clicked: " + isModalOpen);
     };
 
     const handleCloseModal = () => {

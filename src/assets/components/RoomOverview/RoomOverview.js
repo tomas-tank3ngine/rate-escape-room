@@ -1,8 +1,7 @@
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./RoomOverview.scss";
 import StarRating from "../StarRating/StarRating";
 import FavRoomButton from "../FavRoomButton/FavRoomButton";
-import { useEffect } from "react";
 import Icons from "../IconHolder/IconHolder";
 import thumbnail from '../../images/placeholder2.png'
 
@@ -15,8 +14,7 @@ function RoomOverview({ room }) {
     return (
         <section className="room-overview">
             <Link to={`/rooms/${room.id}`} className="details-link">
-                <button className="details-link__text">
-                    
+                <button className="details-link__text">                    
                     Room Details
                 </button>
                 <img
