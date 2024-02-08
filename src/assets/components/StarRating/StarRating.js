@@ -47,7 +47,6 @@ function StarRating({ roomId, targetRating }) {
       const stars = [];
       
       for (let i = 1; i <= fullStars; i++) {
-        // console.log("stars are: "+stars)
         stars.push(
           <img
             key={i}
@@ -57,7 +56,7 @@ function StarRating({ roomId, targetRating }) {
           />
         );
       }
-    //   console.log("stars are: "+stars)
+
       if (hasHalfStar) {
         stars.push(
           <img
@@ -84,18 +83,6 @@ function StarRating({ roomId, targetRating }) {
     };
   
     return <div className="star-rating">{renderStars()}</div>;
-    
-    // if(!allRatings){
-    //     <p className="loading">Loading...</p>
-    // }
-    // return(
-    //     <section className="star-rating">
-    //         <img src={Icons().StarFullIcon} alt="star" className="star-rating__icon" />
-    //         <img src={Icons().StarFullIcon} alt="star" className="star-rating__icon" />
-    //         <img src={Icons().StarFullIcon} alt="star" className="star-rating__icon" />
-    //         <img src={Icons().StarFullIcon} alt="star" className="star-rating__icon" />
-    //         <img src={Icons().StarFullIcon} alt="star" className="star-rating__icon" />
-    //     </section>
-    // )
 }
+
 export default StarRating;

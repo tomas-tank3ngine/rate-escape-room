@@ -24,14 +24,14 @@ function RoomItemTabletPlus({room, setSelectedRoom}) {
       <div className="table-item-tablet-plus__label">
         <p className="table-item-tablet-plus__text">{`${room.name}`}</p>
       </div>
-      <div className="table-item-tablet-plus__label">
+      <div className="table-item-tablet-plus__label theme-label">
         <p className="table-item-tablet-plus__text">{`${room.theme}`}</p>
       </div>
       <div className="table-item-tablet-plus__label rating-label">
         <StarRating roomId={room.id} targetRating="overall_rating"/>
       </div>
       <div className="table-item-tablet-plus__label completion-label">
-        <p className="table-item-tablet-plus__text">{`${room.completion_rate}`}%</p>
+        <p className="table-item-tablet-plus__text">{`${room.difficulty}`}</p>
       </div>
     </li>
   );

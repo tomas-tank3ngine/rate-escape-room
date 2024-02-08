@@ -7,8 +7,10 @@
     &__icon{
         width: 16px;
         
-        // width: 20%;
         @include tablet{
+            width: 18px;
+        }
+        @include desktop{
             width: 24px;
         }
     }

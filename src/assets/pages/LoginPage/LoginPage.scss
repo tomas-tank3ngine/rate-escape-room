@@ -2,71 +2,72 @@
 @use "../../styles/partials/variables.scss" as *;
 @use "../../styles/partials/mixins.scss" as *;
 
-.login-page{
-    background-color: $color-black;
+.login-page {
+    background-color: $color-dark-shade;
     display: flex;
     justify-content: center;
     padding: 40px;
     height: 90vh;
 }
+
 .login-form {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: $color-eggshell;
-    height:fit-content;
-
+    background-color: $color-light-accent;
+    height: fit-content;
     width: 300px;
-    // margin: 50px auto;
     padding: 24px;
-    border: 1px solid $color-eggshell;
+    border: 1px solid $color-light-accent;
     border-radius: 6px;
   
     &__title {
-      font-size: 1.5rem;
-      margin-bottom: 20px;
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+        color: $color-text-dark;
     }
   
     &__input-group {
-      display: flex;
-      flex-direction: column;
-      margin-bottom: 15px;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 15px;
   
-      &__label {
-        margin-bottom: 5px;
-      }
+        &__label {
+            margin-bottom: 5px;
+            color: $color-text-dark;
+        }
   
-      &__input{
-        padding: 8px;
-        margin-top: 5px;
-        border: 1px solid #ccc;
-        border-radius: 3px;
-      }
+        &__input {
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid $color-dark-shade;
+            border-radius: 3px;
+        }
     }
   
     &__button {
-      background-color: $color-light-red;
-      color: white;
-      padding: 10px 15px;
-      border: none;
-      border-radius: 3px;
-      cursor: pointer;
-      transition: background-color 0.3s;
+        background-color: $color-dark-primary;
+        color: $color-text-light;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+        transition: background-color 0.3s;
   
-      &:hover {
-        background-color: $color-dark-red;
-    }
+        &:hover {
+            background-color: $color-dark-accent;
+        }
     }
   
     &__link {
-      margin-top: 15px;
-      color: #3498db;
-      text-decoration: none;
-      cursor: pointer;
+        margin-top: 15px;
+        color: $color-link;
+        text-decoration: none;
+        cursor: pointer;
   
-      &:hover {
-        text-decoration: underline;
-      }
+        &:hover {
+            text-decoration: underline;
+        }
     }
-  }
+}

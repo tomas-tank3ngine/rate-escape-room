@@ -61,6 +61,7 @@ function App() {
                     setUser={setUser}
                     user={user}
                 />
+                
                 <Routes>
                     <Route path="/" element={<Homepage allRooms={allRooms}/>} />
                     <Route

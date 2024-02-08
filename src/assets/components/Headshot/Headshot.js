@@ -1,5 +1,4 @@
 import "./Headshot.scss";
-// import { profileImage } from "../../utils/api-utils";
 
 function Headshot() {
   return (

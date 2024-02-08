@@ -4,6 +4,7 @@ import StarRating from "../StarRating/StarRating";
 import FavRoomButton from "../FavRoomButton/FavRoomButton";
 import { useEffect } from "react";
 import Icons from "../IconHolder/IconHolder";
+import thumbnail from '../../images/placeholder2.png'
 
 function RoomOverview({ room }) {
 
@@ -19,8 +20,8 @@ function RoomOverview({ room }) {
                     Room Details
                 </button>
                 <img
-                    src={`${room.thumbnail}`}
-                    alt={`${room.thumbnail}`}
+                    src={thumbnail}
+                    alt={thumbnail}
                     className="details-link__thumbnail"
                 />
             </Link>
@@ -35,7 +36,14 @@ function RoomOverview({ room }) {
                     <Link to={room.website_url} className="selected-info__website-link">
                         {`${room.website_url}`}
                     </Link>
-                    <Link className="selected-info__share-link">SHARE URL</Link>
+                    <Link className="selected-info__share-link">
+                    <img
+                        src={Icons().ShareUrlIcon}
+                        alt="share link"
+                        className="selected-info__share-link--icon"
+                    />
+                        SHARE URL
+                    </Link>
                 </section>
             </section>
         </section>

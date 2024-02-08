@@ -15,6 +15,8 @@
         display: flex;
         &__room-name{
             flex: 1;
+            align-items: center;
+            @extend .section-header;
         }
 
         &__fav-button{
@@ -41,7 +43,7 @@
             .room-thumbnail{
                 width: 80px;
                 height: 80px;
-                border: 1px solid red;
+                
             }
             .room-theme{
                 display: flex;
@@ -78,9 +80,7 @@
 
     .section-three{
         display: flex;
-        // padding: 8px;
         justify-content: space-between;
-        // border: 1px solid red;
         &__wrapper{
             display: flex;
             flex-direction: column;
@@ -103,8 +103,6 @@
         flex-wrap: wrap;
         justify-content: space-between;
 
-        // border: 1px solid red;
-        // padding: 0 8px;
         &__rating-container{
             display: flex;
             flex-direction: column;
@@ -121,7 +119,7 @@
         display: flex;
         justify-content: space-between;
         &__website-link{
-            
+            color: $color-link;
         }
         &__share-url-button{
             display: flex;

@@ -1,0 +1,43 @@
+@use "../../styles/partials/global.scss" as *;
+@use "../../styles/partials/variables.scss" as *;
+@use "../../styles/partials/mixins.scss" as *;
+
+.title-section{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    position: relative;
+    height: 120px;
+    &__back-link{
+        position: absolute;
+        top:50%;
+        left: 16px;
+        transform: translate(0, -50%);
+
+        @include tablet{
+            left: 36px;
+        }
+        
+        @include desktop{
+            left: 10vw;
+        }
+
+        &--icon{
+            width: 36px;
+            @include tablet{
+                width: 64px;                
+            }
+        }
+    }
+
+    &__header{
+        color: white;
+        @extend .page-header;
+    }
+}
+
+.hidden{
+    display: none;
+}

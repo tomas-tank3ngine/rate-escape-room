@@ -50,9 +50,9 @@ function RoomItemMobile({ room, setSelectedRoom }) {
             </section>
             <section className="item-container-middle">
                 <p className="item-container-middle__theme">{`${room.theme}`}</p>
-                <p className="item-container-middle__difficulty">{`${room.difficulty}`}</p>
+                <p className={`item-container-middle__difficulty ${room.difficulty}`}>{`${room.difficulty}`}</p>
                 <p className="item-container-middle__completion-rate">
-                    {`${room.completion_rate}`}%
+                    {`${room.completion_rate*100}%`}
                 </p>
             </section>
             <section className="item-container-bottom">

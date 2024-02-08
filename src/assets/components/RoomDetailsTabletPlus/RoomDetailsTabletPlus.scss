@@ -11,16 +11,19 @@
     background-color: $color-eggshell;
     box-shadow: 0px 0px 8px 4px rgba(0,0,0,0.14);
     gap: 16px;
-
+    flex-wrap: wrap;
+    justify-content: space-between;
+    
     .left-wrapper{
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
-
-        
+        gap: 8px;
+        max-height: 380px;
+        max-width: 270px;
+        width: 35%;
+                
         &__thumbnail{
-            // min-width: 180px;
-            border: 1px solid red;
             min-height: 80px;;
         }
         &__theme{
@@ -31,7 +34,6 @@
             width: 100%;
             min-height: 16px;
             border-radius: 6px;
-            // height: 10%;
         }
         &__review-room-button{
             display: flex;
@@ -56,13 +58,15 @@
     .right-wrapper{
         display: flex;
         flex-direction: column;
-        flex: 1;
+        width: 60%;
+        max-width: 630px;
         gap: 16px;
-        // justify-content: flex-start;
+        box-shadow: 0px 0px 13px -4px #000000;
+        padding: 8px;
+        border-radius: 6px;
         &__header-section{
             display: flex;
             width: 100%;
-            // gap: 8px;
             .room-name{
                 flex: 1;
             }
@@ -81,11 +85,12 @@
         }
         &__description{
             min-height: 100px;
-            border: 1px solid red;
+            border-radius: 6px;
+            background-color: $color-light-shade;
+            padding: 8px;
         }
         &__room-details{
             display: flex;
-            // padding: 16px;
             min-height: 25vh;
             gap: 16px;
             
@@ -101,10 +106,8 @@
                 flex-grow: 1;
                 display: flex;
                 gap: 16px;
-                // flex-wrap: wrap;
-                // justify-content: space-around;
-                // width: 100%;
                 justify-content: space-evenly;
+
                 &__wrapper{
                     display: flex;
                     flex-direction: column;
@@ -115,26 +118,13 @@
                     display: flex;
                     flex-direction: column;
                     gap: 8px;
-                    // flex-grow: 1;
-                    // padding
 
-                    // width: 50%;
                     &--header{
 
                     }
                 }
             }
-            .room-links{
-                min-width: 100px;
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-                align-items: center;
-
-                &__share-url{
-                    display: flex;
-                }
-            }
+            
         }
     }
 
@@ -165,8 +155,6 @@
             flex-direction: column;
             align-items: center;
             gap: 8px;
-
-            
             
             .room-thumbnail{
                 width: 80px;
@@ -189,6 +177,7 @@
             flex-direction: column;
             flex: 1;
             gap: 8px;
+
             &--room-description{
                 @extend .body-copy;
                 font-size: 12px;
@@ -202,15 +191,13 @@
                 align-items: center;
                 flex: 1;
             }
-        }
-        
+        }        
     }
 
     .section-three{
         display: flex;
-        // padding: 8px;
         justify-content: space-between;
-        // border: 1px solid red;
+
         &__wrapper{
             display: flex;
             flex-direction: column;
@@ -232,8 +219,7 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
-        // border: 1px solid red;
-        // padding: 0 8px;
+
         &__rating-container{
             display: flex;
             flex-direction: column;
@@ -248,17 +234,21 @@
     .section-five{
         display: flex;
         justify-content: space-between;
+
         &__website-link{
-            
+            color: $color-link;
         }
+
         &__share-url-button{
             display: flex;
             align-items: center;
             gap: 4px;
             @extend .body-copy;
+
             &--icon{
                 max-width: 16px;
             }
+
             &--p{
                 @extend .body-copy;
             }
@@ -275,8 +265,7 @@
         background-color: $color-light-red;
         border-radius: 6px;
         padding: 8px 0;
-        gap: 8px;
-        
+        gap: 8px;        
 
         &__icon{
             max-width: 1.5rem;
@@ -288,10 +277,24 @@
             font-size: 1.125rem;
             color: $color-eggshell;
             line-height: unset;
-            margin-top: 0.25rem;
-            
+            margin-top: 0.25rem;            
         }
     }
-        
+
+    .room-links{
+        min-width: 100px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
     
+        &__share-url{
+            display: flex;            
+        }
+        &__website{
+            display: flex;
+            color: $color-link;
+        }
+    }    
 }

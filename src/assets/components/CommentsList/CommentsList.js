@@ -16,7 +16,6 @@ function CommentsList() {
                 const response = await axios.get((allReviewsOfRoomEndpoint(roomId)))
                 
                 setAllReviews(response.data.reviews)
-                // console.log(reviewsdata)
             } catch (error) {
                 console.log(error);
             }

@@ -22,8 +22,6 @@ function Header({ setUser, user }) {
         navigate('/'); //return to homepage
     };
 
-    // console.log(user)
-
     return (
         <>
             <section className="header">

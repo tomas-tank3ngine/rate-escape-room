@@ -5,25 +5,16 @@
 .comment-entry__container{
     display: flex;
     flex-direction: column;
+    padding: 8px;
+    gap: 8px;
+    
 
     .comment-entry{
         display: flex;
         position: relative;
-        border-bottom: 0.0625rem $color-eggshell solid;
-        padding: 1rem 0;
-        @include desktop{
-            padding: 1.5rem 1.5rem 1.5rem 0;
-            border-bottom: none;
-            border-top: 0.0625rem $color-black solid;
-        }
-
-        &__profile-picture{
-            display: flex;
-            margin-right: 1rem;
-            @include desktop{
-                margin-right: 1.5rem;
-            }
-        }
+        background-color: $color-light-shade;
+        border-radius: 8px;
+        padding: 16px 8px;
 
         &__comment-container{
             display: flex;
@@ -31,7 +22,7 @@
             width: 100%;
             @extend .body-copy;
             
-            color: $color-black;
+            color: $color-text-dark;
             
             .comment-entry__info{
                 display: flex;
@@ -44,7 +35,7 @@
                 }
 
                 .comment-entry__timestamp{
-                    color: $color-eggshell;
+                    color: $color-text-dark;
                 }
             }
             .comment-entry__comment{

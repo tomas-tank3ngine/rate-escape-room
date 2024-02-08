@@ -7,15 +7,9 @@ import { useNavigate } from 'react-router-dom';
 
 
 function ModalReviewQA({ isOpen, onClose, user}) {
-    // const [room_id] = roomId;
-
     const navigate = useNavigate()
-    // const history = useHistory();
-
     const {roomId} = useParams();
-
     const [ratings, setRatings] = useState({
-    
     user_id: user? user.id : null,
     atmosphere_rating: 'neutral',
     storyline_rating: 'neutral',
@@ -51,15 +45,12 @@ function ModalReviewQA({ isOpen, onClose, user}) {
 
   const handleSubmit = async () => {
     try {
-      // Assuming you have an API endpoint for submitting the form data
       const response = await axios.post(`${API_URL}/rooms/${roomId}/reviews`, ratings);
       console.log("response is: "+response)
-
       
       if (response.status == 201) {
         // Form submitted successfully, close the questionnaire
         navigate(`/rooms/`)
-        // navigate("/rooms/")
         
       } else {
         // Handle error cases

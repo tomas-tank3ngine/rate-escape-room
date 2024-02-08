@@ -9,18 +9,18 @@
     background-position: center;
     display: flex;
     flex-direction: column;
-    // justify-content: center;
     align-items: center;
     gap: 16px;
     @extend .format-padding;
-    padding-top: 24px;
+    padding-top: 36px;
     padding-bottom: 24px;
     
     &__header{
         @extend .section-header;
         font-size: larger;
         text-transform: uppercase;
-        color: $color-eggshell;
+        color: $color-text-light;
+        display: none;
     }
 
     &__child-container{
@@ -42,7 +42,7 @@
         .why-play{
             display: flex;
             flex-direction: column;
-            background-color: rgba($color-black, 0.9);
+            background-color: rgba($color-dark-shade, 0.9);
             border: 1px solid black;
             border-radius: 20px;
             padding: 16px;
@@ -62,7 +62,7 @@
                 text-align: center;
                 @extend .section-header;
                 font-size:larger;
-                color: $color-light-red;
+                color: $color-light-shade;
             }
             &__p{
                 @extend .body-copy;
