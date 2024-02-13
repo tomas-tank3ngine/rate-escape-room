@@ -54,8 +54,8 @@ const CreateAccountPage = ({ setUser }) => {
                     },
                 });
 
-                setUser(userResponse.data);
-                navigate("/");
+                await setUser(userResponse.data);
+                await navigate("/");
             } else {
                 setSuccess(false);
                 setError("");
@@ -64,32 +64,6 @@ const CreateAccountPage = ({ setUser }) => {
             console.log(error);
         }
     };
-
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const userResponse = await axios.get(currentUserEndpoint(), {
-                    headers: {
-                        Authorization: `Bearer ${localStorage.getItem(
-                            "token"
-                        )}`,
-                    },
-                });
-
-                setUser(userResponse.data);
-
-                setTimeout(() => {
-                    navigate("/");
-                }, 1000);
-            } catch (error) {
-                console.log(error);
-            }
-        };
-
-        if (success) {
-            fetchData();
-        }
-    }, [success, setUser, navigate]);
 
     return (
         <div className="create-user-page">

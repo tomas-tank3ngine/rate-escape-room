@@ -13,7 +13,7 @@ function Header({ setUser, user }) {
     };
 
     const handleLogout = () => {
-        localStorage.removeItem("token");
+        sessionStorage.removeItem("token");
         setUser(null);
         alert("You have been logged out. You will be returned to the homepage");
         navigate("/"); //return to homepage
