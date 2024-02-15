@@ -4,12 +4,16 @@ import StarRating from "../StarRating/StarRating";
 import FavRoomButton from "../FavRoomButton/FavRoomButton";
 import Icons from "../IconHolder/IconHolder";
 import thumbnail from '../../images/placeholder2.png'
+import { useEffect } from "react";
 
 function RoomOverview({ room }) {
 
-    if (!room){
-        <p className="loading">Loading...</p>
-    }
+    useEffect(()=>{
+        if (!room){
+            <p className="loading">Loading...</p>
+        }
+
+    },[room])
 
     return (
         <section className="room-overview">
