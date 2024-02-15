@@ -14,7 +14,7 @@
 
     .details-link{
         min-width: 180px;
-        padding: 16px;
+        padding: 16px 0 16px 16px;
         gap:8px;
         &__icon{
             max-width: 24px;
@@ -33,7 +33,7 @@
         }
 
         &__thumbnail{
-            width: 180px;
+            max-width: 180px;
             margin-top: 8px;
         }
     }

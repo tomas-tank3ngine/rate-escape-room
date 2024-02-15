@@ -8,18 +8,50 @@ import TitleSection from "../../components/TitleSection/TitleSection";
 
 function RoomsPage({ responsive }) {
   const [selectedRoom, setSelectedRoom] = useState({});
+  const [loading, setLoading] = useState(true);
+  const [allRooms, setAllRooms] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+        try {
+            const response = await axios.get(allRoomsEndpoint());
+            setAllRooms(response.data);
+
+            const randomIndex = Math.floor(
+                Math.random() * response.data.length
+            );
+            const randomRoom = response.data[randomIndex];
+            setSelectedRoom(randomRoom);
+        } catch (error) {
+            console.error("Error fetching data: ", error);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    fetchData();
+    }, []);
 
   return (
     <>
       <TitleSection title="Escape Rooms" linkRoute="/" />
       <main className="rooms-page">
-        <RoomOverview room={selectedRoom} />
-        <hr className="rooms-page__line-break"></hr>
-        <RoomsTable
-          responsive={responsive}
-          selectedRoom={selectedRoom}
-          setSelectedRoom={setSelectedRoom}
-        />
+        {loading ? (
+          <p>Loading...</p>
+        ) : (
+          <>
+            <RoomOverview room={selectedRoom} />
+
+            <hr className="rooms-page__line-break"></hr>
+
+            <RoomsTable
+              responsive={responsive}
+              selectedRoom={selectedRoom}
+              setSelectedRoom={setSelectedRoom}
+              allRooms={allRooms}
+            />
+          </>
+        )}
       </main>
     </>
   );

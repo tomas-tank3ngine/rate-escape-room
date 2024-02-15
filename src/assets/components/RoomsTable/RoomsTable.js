@@ -6,29 +6,14 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { allRoomsEndpoint } from "../../utils/api-utils";
 
-function RoomsTable({ responsive, setSelectedRoom }) {
-  const [allRooms, setAllRooms] = useState([]);
+function RoomsTable({ responsive, setSelectedRoom, allRooms }) {
+  // const [allRooms, setAllRooms] = useState([]);
   const [sortedRooms, setSortedRooms] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(allRoomsEndpoint());
-        setAllRooms(response.data);
-        setSortedRooms(response.data); //Make sure sorted Rooms has something in it to start
-
-        const randomIndex = Math.floor(Math.random() * response.data.length);
-        const randomRoom = response.data[randomIndex];
-        setSelectedRoom(randomRoom);
-      } catch (error) {
-        console.error("Error fetching data: ", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchData();
+    setSortedRooms(allRooms); //Make sure sorted Rooms has something in it to start
+    setLoading(false);    
   }, []);
 
   function sortHandler(sortCriterion){
