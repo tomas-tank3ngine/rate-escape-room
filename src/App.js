@@ -1,7 +1,10 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { allRoomsEndpoint, currentUserEndpoint } from "./assets/utils/api-utils.js";
+import {
+    allRoomsEndpoint,
+    currentUserEndpoint,
+} from "./assets/utils/api-utils.js";
 
 //pages and components
 import Header from "./assets/components/Header/Header.js";
@@ -13,30 +16,28 @@ import RoomDetailsPage from "./assets/pages/RoomDetailsPage/RoomDetailsPage.js";
 import LoginPage from "./assets/pages/LoginPage/LoginPage.js";
 import CreateAccountPage from "./assets/pages/CreateAccountPage/CreateAccountPage.js";
 import UploadRoomPage from "./assets/pages/UploadRoomPage/UploadRoomPage.js";
+import Store from "./assets/utils/context-utils.js";
 
 function App() {
     const [width, setWindowWidth] = useState(0);
-    const [user, setUser] = useState(null);
+    // const [user, setUser] = useState(null);
 
     const [allRooms, setAllRooms] = useState([]);
     const [loading, setLoading] = useState(true);
-    
-
 
     useEffect(() => {
-      const fetchData = async () => {
-        try {
-          const response = await axios.get(allRoomsEndpoint());
-          setAllRooms(response.data);
+        const fetchData = async () => {
+            try {
+                const response = await axios.get(allRoomsEndpoint());
+                setAllRooms(response.data);
+            } catch (error) {
+                console.error("Error fetching data: ", error);
+            } finally {
+                setLoading(false);
+            }
+        };
 
-        } catch (error) {
-          console.error('Error fetching data: ', error);
-        } finally {
-          setLoading(false);
-        }
-      };
-  
-      fetchData();
+        fetchData();
     }, []);
 
     useEffect(() => {
@@ -55,41 +56,63 @@ function App() {
         isDesktop: width > 1279,
     };
     return (
-        <>
-            <BrowserRouter>
-                <Header
-                    setUser={setUser}
-                    user={user}
-                />
-                
+        <BrowserRouter>
+            <Store>
+                <Header />
+
                 <Routes>
-                    <Route path="/" element={<Homepage allRooms={allRooms}/>} />
+                    <Route
+                        path="/"
+                        element={<Homepage allRooms={allRooms} />}
+                    />
                     <Route
                         path="/rooms"
-                        element={<RoomsPage responsive={responsive} user={user} allRooms={allRooms}/>}
+                        element={
+                            <RoomsPage
+                                responsive={responsive}
+                                allRooms={allRooms}
+                            />
+                        }
                     />
                     <Route
                         path="/rooms/:roomId"
-                        element={<RoomDetailsPage responsive={responsive} user={user}/>}
+                        element={
+                            <RoomDetailsPage
+                                responsive={responsive}
+                            />
+                        }
                     />
                     {/* <Route path="/rooms/:roomId/rate" element={<Homepage />} /> */}
                     <Route
                         path="/accountLogin"
-                        element={<LoginPage setUser={setUser} />}
+                        element={<LoginPage/>}
                     />
                     <Route
                         path="/accountCreate"
-                        element={<CreateAccountPage setUser={setUser} user={user}/>}
+                        element={
+                            <CreateAccountPage/>
+                        }
                     />
 
-                    <Route path="/nearbyRooms" element={<RoomsPage responsive={responsive} user={user} allRooms={allRooms}/>} />
-                    <Route path="/roomCreate" element={<UploadRoomPage user={user}/>} />
+                    <Route
+                        path="/nearbyRooms"
+                        element={
+                            <RoomsPage
+                                responsive={responsive}
+                                allRooms={allRooms}
+                            />
+                        }
+                    />
+                    <Route
+                        path="/roomCreate"
+                        element={<UploadRoomPage />}
+                    />
 
                     <Route path="*" element={<NotFoundPage />} />
                 </Routes>
                 <Footer />
-            </BrowserRouter>
-        </>
+            </Store>
+        </BrowserRouter>
     );
 }
 

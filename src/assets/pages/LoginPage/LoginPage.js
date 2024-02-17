@@ -3,9 +3,12 @@ import { loginUserEndpoint, currentUserEndpoint } from "../../utils/api-utils";
 import { useNavigate } from "react-router";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { Context } from "../../utils/context-utils";
+import { useContext } from "react";
 
-const LoginForm = ({ setUser }) => {
+const LoginForm = () => {
     const navigate = useNavigate();
+    const [userInfo, setUserInfo] = useContext(Context)
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -16,7 +19,7 @@ const LoginForm = ({ setUser }) => {
                 password: event.target.password.value,
             });
             console.log('response is:' + response.data.token);
-            sessionStorage.setItem("token", response.data.token);
+            localStorage.setItem("token", response.data.token);
 
             const userResponse = await axios.get(currentUserEndpoint(), {
                 headers: {
@@ -24,7 +27,7 @@ const LoginForm = ({ setUser }) => {
                 },
             });
 
-            setUser(userResponse.data);
+            setUserInfo(userResponse.data);
 
             setTimeout(() => {
                 navigate("/");

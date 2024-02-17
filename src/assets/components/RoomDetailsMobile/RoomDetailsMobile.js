@@ -5,8 +5,11 @@ import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import ModalReviewQA from "../ModalReviewQA/ModalReviewQA";
 import thumbnail from "../../images/placeholder2.png";
+import { Context } from "../../utils/context-utils";
+import { useContext } from "react";
 
-function RoomDetailsMobile({ room, user }) {
+function RoomDetailsMobile({ room }) {
+    const [userInfo, setUserInfo] = useContext(Context)
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -51,12 +54,12 @@ function RoomDetailsMobile({ room, user }) {
 
     return (
         <section className="room-details-mobile">
-            {user ? (
+            {userInfo ? (
                 <ModalReviewQA
                     isOpen={isModalOpen}
                     onClose={handleCloseModal}
                     room_id={room.id}
-                    user={user}
+                    user={userInfo}
                 />
             ) : (
                 <></>
@@ -170,8 +173,8 @@ function RoomDetailsMobile({ room, user }) {
                     </p>
                 </button>
             </section>
-            {user ? (
-                user.is_owner ? (
+            {userInfo ? (
+                userInfo.is_owner ? (
                     <button
                         onClick={handleOwnerWarning}
                         className="rate-room-button"

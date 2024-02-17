@@ -5,7 +5,12 @@ import { currentUserEndpoint } from "../../utils/api-utils";
 import axios from "axios";
 import { useNavigate } from "react-router";
 
-const CreateAccountPage = ({ setUser }) => {
+import { Context } from "../../utils/context-utils";
+import { useContext } from "react";
+
+
+const CreateAccountPage = () => {
+    const [userInfo, setUserInfo] = useContext(Context)
     const navigate = useNavigate();
     const [error, setError] = useState("");
     const [success, setSuccess] = useState(false);
@@ -54,8 +59,8 @@ const CreateAccountPage = ({ setUser }) => {
                     },
                 });
 
-                sessionStorage.setItem("token", response.data.token);
-                await setUser(userResponse.data);
+                localStorage.setItem("token", response.data.token);
+                await setUserInfo(userResponse.data);
                 
                 await navigate("/");
             } else {

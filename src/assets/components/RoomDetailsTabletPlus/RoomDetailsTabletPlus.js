@@ -5,8 +5,12 @@ import { Link, useLocation, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import ModalReviewQA from "../ModalReviewQA/ModalReviewQA";
 import thumbnail from "../../images/placeholder2.png";
+import { Context } from "../../utils/context-utils";
+import { useContext } from "react";
 
-function RoomDetailsTabletPlus({ room, user }) {
+
+function RoomDetailsTabletPlus({ room }) {
+    const [userInfo, setUserInfo] = useContext(Context)
     const location = useLocation();
 
     const { roomId } = useParams();
@@ -46,12 +50,12 @@ function RoomDetailsTabletPlus({ room, user }) {
     return (
         <>
             <section className="room-details-tablet-plus">
-                {user ? (
+                {userInfo ? (
                     <ModalReviewQA
                         isOpen={isModalOpen}
                         onClose={handleCloseModal}
                         roomId={room.id}
-                        user={user}
+                        user={userInfo}
                     />
                 ) : (
                     <></>
@@ -65,8 +69,8 @@ function RoomDetailsTabletPlus({ room, user }) {
                     />
                     <p className="left-wrapper__theme">{`${room.theme}`}</p>
                     <p className="left-wrapper__address">{`${room.address}`}</p>
-                    {user ? (
-                        user.is_owner ? (
+                    {userInfo ? (
+                        userInfo.is_owner ? (
                             <button
                                 onClick={handleOwnerWarning}
                                 className="left-wrapper__review-room-button"

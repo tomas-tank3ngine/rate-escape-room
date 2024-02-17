@@ -12,7 +12,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router";
 
-function RoomDetailsPage({ responsive, user }) {
+function RoomDetailsPage({ responsive }) {
     const { roomId } = useParams();
 
     const [room, setRoom] = useState({});
@@ -56,9 +56,9 @@ function RoomDetailsPage({ responsive, user }) {
             <main className="room-details-page">
                 <section className="room-details">
                     {responsive.isTablet ? (
-                        <RoomDetailsTabletPlus room={room} user={user} />
+                        <RoomDetailsTabletPlus room={room}/>
                     ) : (
-                        <RoomDetailsMobile room={room} user={user} />
+                        <RoomDetailsMobile room={room}/>
                     )}
                 </section>
                 <section className="room-reviews">

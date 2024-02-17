@@ -6,36 +6,51 @@ import { currentUserEndpoint, singleUserFavoriteRoomsEndpoint } from "../../util
 
 function FavRoomButton({ room }) {
     const [allFavorites, setAllFavorites] = useState(false);
-    const [user, setUser] = useState(null)
+    const [user, setUser] = useState({})
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await axios.get(currentUserEndpoint(), {
-                    headers: {
-                        Authorization: `Bearer ${sessionStorage.getItem("token")}`,
-                    },
-                });
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         try {
+    //             const response = await axios.get(currentUserEndpoint(), {
+    //                 headers: {
+    //                     Authorization: `Bearer ${localStorage.getItem("token")}`,
+    //                 },
+    //             });
 
-                setUser(response.data);
+    //             setUser(response.data);
+    //             console.log(response.data.id)
                 
-            } catch (error) {
-                console.error("Error fetching data: ", error);
-            }
-        };
+    //         } catch (error) {
+    //             console.error("Error fetching data: ", error);
+    //             // alert("you are not logged in")
+    //         }
+    //     };
 
-        fetchData();
-    }, []);
-
-
+    //     fetchData();
+    // }, []);
 
     const handleFav = async () => {
         const fetchData = async () =>{
             try {
-                const response = await axios.get(singleUserFavoriteRoomsEndpoint)
+                const response = await axios.get(currentUserEndpoint(), {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem("token")}`,
+                    },
+                });
+                
+
+                // setUser(response.data);
                 console.log(response.data)
+                const userResponse = await axios.get(singleUserFavoriteRoomsEndpoint(response.data.id), {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem("token")}`,
+                    },
+                })
+                console.log("userResponse is: "+userResponse.data)
             } catch (error) {
                 console.log(error);
+                // alert("you are not logged in")
+                
             }
         }
         fetchData();

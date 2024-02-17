@@ -3,8 +3,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import menuIcon from "../../icons/menu_fill.svg";
 import closeIcon from "../../icons/close_fill.svg";
+import { Context } from "../../utils/context-utils";
+import { useContext } from "react";
 
-function Header({ setUser, user }) {
+
+
+function Header() {
+    const [userInfo, setUserInfo] = useContext(Context)
     const navigate = useNavigate();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -13,8 +18,8 @@ function Header({ setUser, user }) {
     };
 
     const handleLogout = () => {
-        sessionStorage.removeItem("token");
-        setUser(null);
+        localStorage.removeItem("token");
+        setUserInfo(null);
         alert("You have been logged out. You will be returned to the homepage");
         navigate("/"); //return to homepage
     };
@@ -41,9 +46,9 @@ function Header({ setUser, user }) {
                                 Rooms
                             </Link>
                         </li>
-                        {user ? (
+                        {userInfo ? (
                             <li className="pages__link">
-                                {user && user.is_owner ? (
+                                {userInfo && userInfo.is_owner ? (
                                     <Link
                                         to="/roomCreate"
                                         className="mobile-menu-pages__link--text"
@@ -74,7 +79,7 @@ function Header({ setUser, user }) {
                     />
                 </Link>
                 <section className="login">
-                    {user ? (
+                    {userInfo ? (
                         <button onClick={handleLogout} className="login__link">
                             log out
                         </button>
@@ -85,8 +90,8 @@ function Header({ setUser, user }) {
                     )}
 
                     <div className="login__profile">
-                        {user ? (
-                            <p className="login__link">{`${user.username}`}</p>
+                        {userInfo ? (
+                            <p className="login__link">{`${userInfo.username}`}</p>
                         ) : (
                             <p className="login__link"></p>
                         )}
@@ -112,9 +117,9 @@ function Header({ setUser, user }) {
                             Rooms
                         </Link>
                     </li>
-                    {user ? (
+                    {userInfo ? (
                         <li className="mobile-menu-pages__link">
-                            {user && user.is_owner ? (
+                            {userInfo && userInfo.is_owner ? (
                                 <Link
                                     to="/roomCreate"
                                     className="mobile-menu-pages__link--text"
