@@ -54,7 +54,9 @@ const CreateAccountPage = ({ setUser }) => {
                     },
                 });
 
+                sessionStorage.setItem("token", response.data.token);
                 await setUser(userResponse.data);
+                
                 await navigate("/");
             } else {
                 setSuccess(false);

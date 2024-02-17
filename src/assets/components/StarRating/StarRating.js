@@ -23,7 +23,7 @@ function StarRating({ roomId, targetRating }) {
   }, [roomId, ratingType]);
 
   const rating = allRatings[`${ratingType}`];
-  console.log(`rating type: ${ratingType} rating value: ${rating}`);
+//   console.log(`rating type: ${ratingType} rating value: ${rating}`);
 
   // Convert rating to a percentage
   const percentageRating = (rating / 5) * 100;
