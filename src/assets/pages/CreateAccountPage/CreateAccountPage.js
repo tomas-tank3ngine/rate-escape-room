@@ -10,7 +10,8 @@ import { useContext } from "react";
 
 
 const CreateAccountPage = () => {
-    const [userInfo, setUserInfo] = useContext(Context)
+    const { userInfoContext } = useContext(Context);
+    const [userInfo, setUserInfo] = userInfoContext;
     const navigate = useNavigate();
     const [error, setError] = useState("");
     const [success, setSuccess] = useState(false);

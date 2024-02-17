@@ -9,7 +9,8 @@ import { useContext } from "react";
 
 
 function Header() {
-    const [userInfo, setUserInfo] = useContext(Context)
+    const { userInfoContext } = useContext(Context);
+    const [userInfo, setUserInfo] = userInfoContext;
     const navigate = useNavigate();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 

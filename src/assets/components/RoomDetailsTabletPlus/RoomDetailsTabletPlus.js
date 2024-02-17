@@ -10,7 +10,8 @@ import { useContext } from "react";
 
 
 function RoomDetailsTabletPlus({ room }) {
-    const [userInfo, setUserInfo] = useContext(Context)
+    const { userInfoContext } = useContext(Context);
+    const [userInfo, setUserInfo] = userInfoContext;
     const location = useLocation();
 
     const { roomId } = useParams();

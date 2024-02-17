@@ -8,7 +8,8 @@ import { useContext } from "react";
 
 const LoginForm = () => {
     const navigate = useNavigate();
-    const [userInfo, setUserInfo] = useContext(Context)
+    const { userInfoContext } = useContext(Context);
+    const [userInfo, setUserInfo] = userInfoContext;
 
     const handleSubmit = async (event) => {
         event.preventDefault();

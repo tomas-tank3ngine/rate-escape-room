@@ -6,7 +6,6 @@ import { currentUserEndpoint, singleUserFavoriteRoomsEndpoint } from "../../util
 
 function FavRoomButton({ room }) {
     const [allFavorites, setAllFavorites] = useState(false);
-    const [user, setUser] = useState({})
 
     // useEffect(() => {
     //     const fetchData = async () => {

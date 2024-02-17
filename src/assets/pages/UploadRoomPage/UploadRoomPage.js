@@ -8,7 +8,8 @@ import { Context } from "../../utils/context-utils";
 import { useContext } from "react";
 
 function UploadRoomPage() {
-    const [userInfo, setUserInfo] = useContext(Context)
+    const { userInfoContext } = useContext(Context);
+    const [userInfo, setUserInfo] = userInfoContext;
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
         name: "",
