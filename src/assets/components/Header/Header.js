@@ -22,7 +22,7 @@ function Header() {
     const handleLogout = () => {
         localStorage.removeItem("token");
         setUserInfo(null);
-        
+
         alert("You have been logged out. You will be returned to the homepage");
         navigate("/"); //return to homepage
     };
@@ -63,7 +63,7 @@ function Header() {
                                         to="/rooms"
                                         className="mobile-menu-pages__link--text"
                                     >
-                                        My Favorites
+                                        
                                     </Link>
                                 )}
                             </li>
@@ -134,7 +134,7 @@ function Header() {
                                     to="/"
                                     className="mobile-menu-pages__link--text"
                                 >
-                                    My Favorites
+                                    
                                 </Link>
                             )}
                         </li>
