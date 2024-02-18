@@ -40,7 +40,7 @@ function RoomItemMobile({ room }) {
             />
             <section className="item-container-top">
                 <div className="item-container-top__left">
-                    <FavRoomButton />
+                    <FavRoomButton room={room}/>
                     <p className="item-name">{`${room.name}`}</p>
                 </div>
                 <StarRating roomId={room.id} targetRating="overall_rating" />

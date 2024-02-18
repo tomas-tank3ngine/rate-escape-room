@@ -5,8 +5,14 @@ import { Link, useLocation, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import ModalReviewQA from "../ModalReviewQA/ModalReviewQA";
 import thumbnail from "../../images/placeholder2.png";
+import { Context } from "../../utils/context-utils";
+import { useContext } from "react";
+import FavRoomButton from "../FavRoomButton/FavRoomButton";
 
-function RoomDetailsTabletPlus({ room, user }) {
+
+function RoomDetailsTabletPlus({ room }) {
+    const { userInfoContext } = useContext(Context);
+    const [userInfo, setUserInfo] = userInfoContext;
     const location = useLocation();
 
     const { roomId } = useParams();
@@ -46,12 +52,12 @@ function RoomDetailsTabletPlus({ room, user }) {
     return (
         <>
             <section className="room-details-tablet-plus">
-                {user ? (
+                {userInfo ? (
                     <ModalReviewQA
                         isOpen={isModalOpen}
                         onClose={handleCloseModal}
                         roomId={room.id}
-                        user={user}
+                        user={userInfo}
                     />
                 ) : (
                     <></>
@@ -65,8 +71,8 @@ function RoomDetailsTabletPlus({ room, user }) {
                     />
                     <p className="left-wrapper__theme">{`${room.theme}`}</p>
                     <p className="left-wrapper__address">{`${room.address}`}</p>
-                    {user ? (
-                        user.is_owner ? (
+                    {userInfo ? (
+                        userInfo.is_owner ? (
                             <button
                                 onClick={handleOwnerWarning}
                                 className="left-wrapper__review-room-button"
@@ -98,14 +104,9 @@ function RoomDetailsTabletPlus({ room, user }) {
                 <section className="right-wrapper">
                     <section className="right-wrapper__header-section">
                         <h2 className="room-name">{`${room.name}`}</h2>
-                        <button className="fav-button">
-                            <p className="fav-button__p">Add to Favourites</p>
-                            <img
-                                src={Icons().HeartEmptyIcon}
-                                alt="Favourite Icon"
-                                className="fav-button__icon"
-                            />
-                        </button>
+                        <p className="fav-button__p">Add to Favourites </p>
+                        <FavRoomButton room={room} />
+                        
                     </section>
                     <p className="right-wrapper__description">{`${room.description}`}</p>
                     <section className="right-wrapper__room-details">

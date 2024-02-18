@@ -4,12 +4,16 @@ import { Link } from "react-router-dom";
 import { allRoomsEndpoint } from "../../utils/api-utils";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { Context } from "../../utils/context-utils";
+import { useContext } from "react";
 
-function UploadRoomPage({ user }) {
+function UploadRoomPage() {
+    const { userInfoContext } = useContext(Context);
+    const [userInfo, setUserInfo] = userInfoContext;
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
         name: "",
-        user_id: user ? user.id : "",
+        user_id: userInfo ? userInfo.id : "",
         description: "",
         theme: "",
         group_size: 0,
@@ -54,7 +58,7 @@ function UploadRoomPage({ user }) {
 
     return (
         <>
-            {user ? (
+            {userInfo ? (
                 <section className="upload-page">
                     <h1 className="upload-page__header">Upload Room</h1>
                     <form onSubmit={handleSubmit} className="upload-form">
