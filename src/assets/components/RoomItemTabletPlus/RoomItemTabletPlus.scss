@@ -19,14 +19,13 @@
     &:hover{
         overflow: hidden;
         outline: 1px solid $color-black;
-        background-color: $color-light-red;
+        filter: brightness(120%);
         cursor: pointer;
     }
     &:active{
         color: $color-black;
         background-color: $color-eggshell;
     }
-
     
     &__label{
         display: flex;
@@ -40,16 +39,28 @@
         }
     }
 
+    & .theme-label{
+        padding: 2px;
+        display: flex;
+        justify-content: center;
+    }
+
     & .fav-label{
         justify-content: center;
         flex: 0.5;
     }
+    
     & .rating-label{
-        justify-content: flex-start;
+        display: flex;
+        justify-content: center;
         flex: 1.2;
     }
+
     & .completion-label{
-        justify-content: flex-start;
+        display: flex;
         flex: 0.8;
+        margin-right: 4px;
+        justify-content: center;
+        align-items: center;
     }
 }

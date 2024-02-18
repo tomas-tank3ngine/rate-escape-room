@@ -4,6 +4,16 @@
 
 .room-details-page{
     display: flex;
+    gap: 16px;
     flex-direction: column;
+    min-height: 90vh;
     @extend .format-padding;
+    background-color: $color-dark-shade;
+    padding-top: 16px;
+    
+    .comments-section__title{
+        color: $color-text-light;
+        @extend .section-header;
+        padding-left: 8px;
+    }
 }

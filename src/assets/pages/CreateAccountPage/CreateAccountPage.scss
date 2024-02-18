@@ -3,7 +3,7 @@
 @use "../../styles/partials/mixins.scss" as *;
 
 .create-user-page {
-    background-color: $color-black;
+    background-color: $color-dark-shade;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -14,15 +14,16 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: $color-eggshell;
+    background-color: $color-light-shade;
     width: 300px;
     padding: 24px;
-    border: 1px solid $color-eggshell;
+    border: 1px solid $color-light-shade;
     border-radius: 6px;
 
     &__title {
         font-size: 1.5rem;
         margin-bottom: 20px;
+        color: $color-text-dark;
     }
 
     &__input-group {
@@ -32,23 +33,13 @@
 
         &--label {
             margin-bottom: 5px;
+            color: $color-text-dark;
         }
 
         &--input {
             padding: 8px;
             margin-top: 5px;
-            border: 1px solid #ccc;
-            border-radius: 3px;
-        }
-
-        &__label {
-            margin-bottom: 5px;
-        }
-
-        &__input {
-            padding: 8px;
-            margin-top: 5px;
-            border: 1px solid #ccc;
+            border: 1px solid $color-dark-shade;
             border-radius: 3px;
         }
 
@@ -58,8 +49,8 @@
     }
 
     &__button {
-        background-color: $color-light-red;
-        color: white;
+        background-color: $color-dark-primary;
+        color: $color-text-light;
         padding: 10px 15px;
         border: none;
         border-radius: 3px;
@@ -67,13 +58,13 @@
         transition: background-color 0.3s;
 
         &:hover {
-            background-color: $color-dark-red;
+            background-color: $color-dark-accent;
         }
     }
 
     &__link {
         margin-top: 15px;
-        color: #3498db;
+        color: $color-link;
         text-decoration: none;
         cursor: pointer;
 

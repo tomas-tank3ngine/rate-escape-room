@@ -1,21 +1,23 @@
 import "./Banner.scss";
 import { Link } from "react-router-dom";
-import { singleRoomEndpoint } from "../../utils/api-utils";
+import { allRoomsEndpoint } from "../../utils/api-utils";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-function Banner({ allRooms }) {
+function Banner() {
     const [randomRoom, setRandomRoom] = useState(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const randomIndex = Math.floor(Math.random() * allRooms.length);
-                const rollRoom = allRooms[randomIndex];
+                const response = await axios.get(allRoomsEndpoint());
 
-                const response = await axios.get(singleRoomEndpoint(rollRoom.id));
-                setRandomRoom(response.data);
+                const randomIndex = Math.floor(
+                    Math.random() * response.data.length
+                );
+                const randomRoom = response.data[randomIndex];
+                setRandomRoom(randomRoom);
             } catch (error) {
                 console.error("Error fetching data: ", error);
             } finally {
@@ -24,12 +26,12 @@ function Banner({ allRooms }) {
         };
 
         fetchData();
-    }, [allRooms]);
+    }, []);
 
     return (
         <>
             {loading ? (
-                <p>Loading...</p>
+                <p className="loading">Loading...</p>
             ) : (
                 <section className="banner">
                     {randomRoom && (

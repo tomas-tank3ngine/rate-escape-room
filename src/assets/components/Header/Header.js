@@ -1,22 +1,30 @@
-import Headshot from "../Headshot/Headshot";
 import "./Header.scss";
-import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
 import menuIcon from "../../icons/menu_fill.svg";
 import closeIcon from "../../icons/close_fill.svg";
+import { Context } from "../../utils/context-utils";
+import { useContext } from "react";
 
-function Header({ setUser, user }) {
+
+
+function Header() {
+    const { userInfoContext,  userFavoritesContext } = useContext(Context);
+    const [userInfo, setUserInfo] = userInfoContext;
+    const [userFavorites, setUserFavorites] = userFavoritesContext;
+    const navigate = useNavigate();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [ownerLoggedIn, setOwnerLoggedIn] = useState(false);
 
     const menuHandler = () => {
         setIsMenuOpen(!isMenuOpen);
     };
 
     const handleLogout = () => {
-        sessionStorage.removeItem("token");
-        setUser(null);
-        alert("You have been logged out");
+        localStorage.removeItem("token");
+        setUserInfo(null);
+
+        alert("You have been logged out. You will be returned to the homepage");
+        navigate("/"); //return to homepage
     };
 
     return (
@@ -41,22 +49,40 @@ function Header({ setUser, user }) {
                                 Rooms
                             </Link>
                         </li>
-                        <li className="pages__link">
-                            <Link to="/" className="pages__link--text">
-                                My Favourites
-                            </Link>
-                        </li>
+                        {userInfo ? (
+                            <li className="pages__link">
+                                {userInfo && userInfo.is_owner ? (
+                                    <Link
+                                        to="/roomCreate"
+                                        className="mobile-menu-pages__link--text"
+                                    >
+                                        Upload Room
+                                    </Link>
+                                ) : (
+                                    <Link
+                                        to="/rooms"
+                                        className="mobile-menu-pages__link--text"
+                                    >
+                                        
+                                    </Link>
+                                )}
+                            </li>
+                        ) : (
+                            <li className="pages_link"></li>
+                        )}
                     </ul>
                 </nav>
                 <Link to="/" className="logo">
                     <img
-                        src={require("../../images/BrainFlix-logo.svg").default}
+                        src={
+                            require("../../images/rate-escape-logo.svg").default
+                        }
                         alt="Rate Escape Rooms"
                         className="logo__image"
                     />
                 </Link>
                 <section className="login">
-                    {user ? (
+                    {userInfo ? (
                         <button onClick={handleLogout} className="login__link">
                             log out
                         </button>
@@ -67,8 +93,8 @@ function Header({ setUser, user }) {
                     )}
 
                     <div className="login__profile">
-                        {user ? (
-                            <p className="login__link">{`${user.username}`}</p>
+                        {userInfo ? (
+                            <p className="login__link">{`${userInfo.username}`}</p>
                         ) : (
                             <p className="login__link"></p>
                         )}
@@ -94,23 +120,27 @@ function Header({ setUser, user }) {
                             Rooms
                         </Link>
                     </li>
-                    <li className="mobile-menu-pages__link">
-                        {user && user.isOwner ? (
-                            <Link
-                                to="/roomCreate"
-                                className="mobile-menu-pages__link--text"
-                            >
-                                Upload Room
-                            </Link>
-                        ) : (
-                            <Link
-                                to="/"
-                                className="mobile-menu-pages__link--text"
-                            >
-                                My Favorites
-                            </Link>
-                        )}
-                    </li>
+                    {userInfo ? (
+                        <li className="mobile-menu-pages__link">
+                            {userInfo && userInfo.is_owner ? (
+                                <Link
+                                    to="/roomCreate"
+                                    className="mobile-menu-pages__link--text"
+                                >
+                                    Upload Room
+                                </Link>
+                            ) : (
+                                <Link
+                                    to="/"
+                                    className="mobile-menu-pages__link--text"
+                                >
+                                    
+                                </Link>
+                            )}
+                        </li>
+                    ) : (
+                        <li className="mobile-menu-pages__link"></li>
+                    )}
                 </ul>
             </section>
         </>

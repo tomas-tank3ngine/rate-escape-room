@@ -5,14 +5,15 @@
 
 .rooms-page{
     @extend .format-padding;
-    // background-color: $color-light-red;
     background-color: $color-black;
     min-height: 90vh;
+    padding-top: 16px;
 
     &__line-break{
         display: none;
-        border: 2px solid $color-eggshell;
+        border: 2px solid $color-attention;
         border-radius: 20px;
+
         @include tablet{
             display: block;
         }

@@ -24,14 +24,20 @@
     font-weight: 700;
 }
 
+body{
+    font-family: 'Avenir';
+    @extend .body-copy;
+    color: $color-text-dark;
+}
+
 .page-header{
-    font-size: 1.5rem;
+    font-size: 24px;
     line-height: 2rem;
     font-family: 'Avenir', Arial, sans-serif;
     font-weight: 700;
 
     @include tablet{
-        font-size: 2.0625rem;
+        font-size: 33px;
         line-height: 2.75rem;
         font-family: 'Avenir', Arial, sans-serif;
         font-weight: 700;
@@ -39,13 +45,13 @@
 }
 
 .section-header{
-    font-size: 0.75rem;
+    font-size: 16px;
     line-height: 1.25rem;
     font-family: 'Avenir', Arial, sans-serif;
     font-weight: 700;
 
     @include tablet{
-        font-size: 0.75rem;
+        font-size: 22px;
         line-height: 1.25rem;
         font-family: 'Avenir', Arial, sans-serif;
         font-weight: 700;
@@ -53,13 +59,13 @@
 }
 
 .subheader{
-    font-size: 0.8125rem;
+    font-size: 14px;
     line-height: 1.125rem;
     font-family: 'Avenir', Arial, sans-serif;
     font-weight: 700;
 
     @include tablet{
-        font-size: 0.875rem;
+        font-size: 18px;
         line-height: 1.375rem;
         font-family: 'Avenir', Arial, sans-serif;
         font-weight: 700;
@@ -67,13 +73,13 @@
 }
 
 .body-copy{
-    font-size: 0.875rem;
+    font-size: 14px;
     line-height: 1.125rem;
     font-family: 'Avenir', Arial, sans-serif;
     font-weight: 400;
     
     @include tablet{
-        font-size: 0.875rem;
+        font-size: 16px;
         line-height: 1.375rem;
         font-family: 'Avenir', Arial, sans-serif;
         font-weight: 400;
@@ -82,13 +88,13 @@
 
 
 .label{
-    font-size: 0.625rem;
+    font-size: 14px;
     line-height: 1.25rem;
     font-family: 'Avenir', Arial, sans-serif;
     font-weight: 500;    
     
     @include tablet{
-    font-size: 0.75rem;
+    font-size: 16px;
     line-height: 1.25rem;
     font-family: 'Avenir', Arial, sans-serif;
     font-weight: 500;

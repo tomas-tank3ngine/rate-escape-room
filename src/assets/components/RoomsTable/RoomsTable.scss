@@ -12,11 +12,15 @@
         gap: 16px;
     }
     .filter-section{
+        display: none;
         min-width: 100%;
         border: 1px solid $color-black;
+        border-bottom-left-radius: 20px;
+        
         .filter{
             display: flex;
             align-items: center;
+            
         }
         @include tablet{
             flex-direction: row;
@@ -31,16 +35,22 @@
         }
         .table-header{
             display: flex;
+            align-items: center;
             border: 1px solid $color-black;
-            background-color: grey;
+            min-height: 36px;
+            background-color: $color-light-primary;
+            
 
             .sort-label{
                 display: flex;
                 align-items: center;
-                justify-content: flex-start;
+                justify-content: center;
                 flex: 1;
                 max-height: 24px;
 
+                &.sort-name{
+                    justify-content: flex-start;
+                }
                 &.fav-label{
                     flex: 0.5;
                 }

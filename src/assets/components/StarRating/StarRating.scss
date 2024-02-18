@@ -5,11 +5,13 @@
 .star-rating{
     display: flex;
     &__icon{
-        max-width: 16px;
+        width: 16px;
         
-        width: 20%;
         @include tablet{
-            max-width: 24px;
+            width: 18px;
+        }
+        @include desktop{
+            width: 24px;
         }
     }
 }

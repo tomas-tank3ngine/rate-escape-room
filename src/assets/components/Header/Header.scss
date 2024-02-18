@@ -7,14 +7,10 @@
     justify-content: space-between;
     width: 100%;
     height: 48px;
-    position: sticky;
-    top: 0;
-    z-index: 999;
-
-    @extend .format-padding;
-    
+    position: relative;
+    @extend .format-padding;    
     background-color: black;
-    color: #F8F8FF;
+    color: white;
 
     @include tablet{
         height: 60px;
@@ -36,7 +32,8 @@
                 
             }
         }
-        .menu-active{
+        .mobile-menu-active{
+            
 
         }
 
@@ -65,7 +62,8 @@
         transform: translate(-50%, -50%);
 
         &__image{
-
+            height: 24px;
+            width: 120px
         }
     }
 
@@ -76,7 +74,7 @@
         color: white;
 
         &__link{
-            color: #F8F8FF;
+            color: white;
         }
 
         &__profile{
@@ -88,8 +86,8 @@
 .mobile-menu-active{
     
     display: flex;
-    background-color: gray;
-    color: #F8F8FF;
+    background-color: $color-black;
+    color: white;
     @extend .format-padding;
 
     @include tablet{
