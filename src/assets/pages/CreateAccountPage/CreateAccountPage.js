@@ -1,7 +1,7 @@
 import "./CreateAccountPage.scss";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { currentUserEndpoint } from "../../utils/api-utils";
+import { currentUserEndpoint,registerUserEndpoint } from "../../utils/api-utils";
 import axios from "axios";
 import { useNavigate } from "react-router";
 
@@ -46,7 +46,7 @@ const CreateAccountPage = () => {
             };
 
             const response = await axios.post(
-                "http://localhost:8080/api/users/account/register",
+                registerUserEndpoint(),
                 newUser
             );
 
