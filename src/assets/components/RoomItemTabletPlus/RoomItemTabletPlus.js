@@ -13,7 +13,7 @@ function RoomItemTabletPlus({ room, setSelectedRoom }) {
     return (
         <li onClick={handleSelected} className="table-item-tablet-plus">
             <div className="table-item-tablet-plus__label fav-label">
-                <FavRoomButton />
+                <FavRoomButton room={room}/>
             </div>
             <div className="table-item-tablet-plus__label">
                 <p className="table-item-tablet-plus__text">{`${room.name}`}</p>

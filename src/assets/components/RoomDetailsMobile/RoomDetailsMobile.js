@@ -7,6 +7,7 @@ import ModalReviewQA from "../ModalReviewQA/ModalReviewQA";
 import thumbnail from "../../images/placeholder2.png";
 import { Context } from "../../utils/context-utils";
 import { useContext } from "react";
+import FavRoomButton from "../FavRoomButton/FavRoomButton";
 
 function RoomDetailsMobile({ room }) {
     const { userInfoContext } = useContext(Context);
@@ -67,16 +68,8 @@ function RoomDetailsMobile({ room }) {
             )}
             <section className="section-one">
                 <h2 className="section-one__room-name">{`${room.name}`}</h2>
-                <button className="section-one__fav-button">
-                    <p className="section-one__fav-button--p">
-                        Add to Favourites
-                    </p>
-                    <img
-                        src={Icons().HeartEmptyIcon}
-                        alt="Favourite Icon"
-                        className="section-one__fav-button--icon"
-                    />
-                </button>
+                <p className="fav-button__p">Add to Favourites </p>
+                <FavRoomButton room={room} />
             </section>
             <section className="section-two">
                 <section className="section-two__left-wrapper">

@@ -2,66 +2,123 @@ import "./FavRoomButton.scss";
 import Icons from "../IconHolder/IconHolder";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { currentUserEndpoint, singleUserFavoriteRoomsEndpoint } from "../../utils/api-utils";
+import {
+    currentUserEndpoint,
+    userFavoritesEndpoint,
+    singleUserFavoriteRoomsEndpoint,
+} from "../../utils/api-utils";
+import { Context } from "../../utils/context-utils";
+import { useContext } from "react";
 
 function FavRoomButton({ room }) {
-    const [allFavorites, setAllFavorites] = useState(false);
+    const [isFavorite, setIsFavorite] = useState(false);
+    const { userInfoContext, userFavoritesContext } = useContext(Context);
+    const [userInfo, setUserInfo] = userInfoContext;
+    const [userFavorites, setUserFavorites] = userFavoritesContext;
+    const [roomState, setRoomState] = useState(null);
 
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //         try {
-    //             const response = await axios.get(currentUserEndpoint(), {
-    //                 headers: {
-    //                     Authorization: `Bearer ${localStorage.getItem("token")}`,
-    //                 },
-    //             });
+    useEffect(() => {
+        if (!userInfo || !room) {
+            return;
+        }
+        setRoomState(room);
 
-    //             setUser(response.data);
-    //             console.log(response.data.id)
-                
-    //         } catch (error) {
-    //             console.error("Error fetching data: ", error);
-    //             // alert("you are not logged in")
-    //         }
-    //     };
-
-    //     fetchData();
-    // }, []);
+        const fetchData = async () => {
+            const favoritesResponse = await axios.get(
+                singleUserFavoriteRoomsEndpoint(userInfo),
+                {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem(
+                            "token"
+                        )}`,
+                    },
+                }
+            );
+            console.log(favoritesResponse.data);
+            let foundFavorite = false;
+            favoritesResponse.data.forEach((favoriteRoom) => {
+                if (favoriteRoom.id === room.id) {
+                    setIsFavorite(true);
+                    console.log(`set room ${room.name} to favorite`);
+                    foundFavorite = true;
+                    return;
+                }
+            });
+            if (!foundFavorite) {
+                setIsFavorite(false);
+                console.log(`set room ${room.name} to not favorite`);
+            }
+        };
+        fetchData();
+    }, [userInfo, room]);
 
     const handleFav = async () => {
-        const fetchData = async () =>{
-            try {
-                const response = await axios.get(currentUserEndpoint(), {
-                    headers: {
-                        Authorization: `Bearer ${localStorage.getItem("token")}`,
-                    },
-                });
-                
-
-                // setUser(response.data);
-                console.log(response.data)
-                const userResponse = await axios.get(singleUserFavoriteRoomsEndpoint(response.data.id), {
-                    headers: {
-                        Authorization: `Bearer ${localStorage.getItem("token")}`,
-                    },
-                })
-                console.log("userResponse is: "+userResponse.data)
-            } catch (error) {
-                console.log(error);
-                // alert("you are not logged in")
-                
-            }
+        if (!userInfo) {
+            console.log("User info not available");
+            return;
         }
-        fetchData();
-    }
-    
+        console.log("userInfo is: " + userInfo.id);
+        console.log("room is: " + roomState.id);
+        if (isFavorite) {
+            const deleteFromFavorites = async () => {
+                try {
+                    await axios.delete(userFavoritesEndpoint(), {
+                        headers: {
+                            Authorization: `Bearer ${localStorage.getItem(
+                                "token"
+                            )}`,
+                        },
+                        data: {
+                            user_id: userInfo.id,
+                            room_id: roomState.id,
+                        },
+                    });
+                } catch (error) {
+                    console.log(error);
+                }
+            };
+            deleteFromFavorites();
+            setIsFavorite(false);
+        } else {
+            const addToFavorites = async () => {
+                const data = {
+                    user_id: userInfo.id,
+                    room_id: roomState.id,
+                };
+                try {
+                    const response = await axios.post(
+                        userFavoritesEndpoint(),
+                        data,
+                        {
+                            headers: {
+                                Authorization: `Bearer ${localStorage.getItem(
+                                    "token"
+                                )}`,
+                            },
+                        }
+                    );
+                } catch (error) {
+                    console.log(error);
+                }
+            };
+            addToFavorites();
+            setIsFavorite(true);
+        }
+    };
 
-  
+    const handleNoUser = () => {
+        alert("Please login to add rooms to favorites");
+    };
 
     return (
-        <button onClick={handleFav} className="fav-room-button">
+        <button
+            onClick={userInfo ? handleFav : handleNoUser}
+            className="fav-room-button"
+        >
             <img
-                src={Icons().HeartEmptyIcon}
+                src={
+                    isFavorite ? Icons().HeartFullIcon : Icons().HeartEmptyIcon
+                }
                 alt="Favourite Icon"
                 className="fav-room-button__icon"
             />

@@ -9,8 +9,9 @@ import { useContext } from "react";
 
 
 function Header() {
-    const { userInfoContext } = useContext(Context);
+    const { userInfoContext,  userFavoritesContext } = useContext(Context);
     const [userInfo, setUserInfo] = userInfoContext;
+    const [userFavorites, setUserFavorites] = userFavoritesContext;
     const navigate = useNavigate();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -21,6 +22,7 @@ function Header() {
     const handleLogout = () => {
         localStorage.removeItem("token");
         setUserInfo(null);
+        
         alert("You have been logged out. You will be returned to the homepage");
         navigate("/"); //return to homepage
     };

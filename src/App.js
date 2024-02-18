@@ -20,7 +20,6 @@ import Store from "./assets/utils/context-utils.js";
 
 function App() {
     const [width, setWindowWidth] = useState(0);
-    // const [user, setUser] = useState(null);
 
     const [allRooms, setAllRooms] = useState([]);
     const [loading, setLoading] = useState(true);

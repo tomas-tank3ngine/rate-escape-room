@@ -1,5 +1,5 @@
 import "./LoginPage.scss";
-import { loginUserEndpoint, currentUserEndpoint } from "../../utils/api-utils";
+import { loginUserEndpoint, currentUserEndpoint, singleUserFavoriteRoomsEndpoint } from "../../utils/api-utils";
 import { useNavigate } from "react-router";
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -8,8 +8,9 @@ import { useContext } from "react";
 
 const LoginForm = () => {
     const navigate = useNavigate();
-    const { userInfoContext } = useContext(Context);
+    const { userInfoContext, userFavoritesContext } = useContext(Context);
     const [userInfo, setUserInfo] = userInfoContext;
+    const [userFavorites, setUserFavorites] = userFavoritesContext;
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -19,7 +20,7 @@ const LoginForm = () => {
                 identifier: event.target.identifier.value,
                 password: event.target.password.value,
             });
-            console.log('response is:' + response.data.token);
+            console.log('response is: ' + response.data.token);
             localStorage.setItem("token", response.data.token);
 
             const userResponse = await axios.get(currentUserEndpoint(), {
@@ -28,7 +29,15 @@ const LoginForm = () => {
                 },
             });
 
+            // const userFavoritesResponse = await axios.get(singleUserFavoriteRoomsEndpoint(response.data), {
+            //     headers: {
+            //         Authorization: `Bearer ${response.data.token}`,
+            //     },
+            // })
+
             setUserInfo(userResponse.data);
+            // setUserFavorites(userFavoritesResponse)
+            
 
             setTimeout(() => {
                 navigate("/");

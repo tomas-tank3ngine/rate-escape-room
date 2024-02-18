@@ -5,8 +5,13 @@ import FavRoomButton from "../FavRoomButton/FavRoomButton";
 import Icons from "../IconHolder/IconHolder";
 import thumbnail from '../../images/placeholder2.png'
 import { useEffect } from "react";
+import { Context } from "../../utils/context-utils";
+import { useContext } from "react";
+
 
 function RoomOverview({ room }) {
+    const { userInfoContext } = useContext(Context);
+    const [userInfo, setUserInfo] = userInfoContext;
 
     useEffect(()=>{
         if (!room){
@@ -29,7 +34,6 @@ function RoomOverview({ room }) {
             </Link>
             <section className="selected-info">
                 <section className="selected-info__top-section">
-                    <FavRoomButton room={room}/>
                     <h2 className="selected-info__name">{`${room.name}`}</h2>
                     <StarRating roomId={room.id} targetRating="overall_rating" />
                 </section>

@@ -7,6 +7,7 @@ import ModalReviewQA from "../ModalReviewQA/ModalReviewQA";
 import thumbnail from "../../images/placeholder2.png";
 import { Context } from "../../utils/context-utils";
 import { useContext } from "react";
+import FavRoomButton from "../FavRoomButton/FavRoomButton";
 
 
 function RoomDetailsTabletPlus({ room }) {
@@ -103,14 +104,9 @@ function RoomDetailsTabletPlus({ room }) {
                 <section className="right-wrapper">
                     <section className="right-wrapper__header-section">
                         <h2 className="room-name">{`${room.name}`}</h2>
-                        <button className="fav-button">
-                            <p className="fav-button__p">Add to Favourites</p>
-                            <img
-                                src={Icons().HeartEmptyIcon}
-                                alt="Favourite Icon"
-                                className="fav-button__icon"
-                            />
-                        </button>
+                        <p className="fav-button__p">Add to Favourites </p>
+                        <FavRoomButton room={room} />
+                        
                     </section>
                     <p className="right-wrapper__description">{`${room.description}`}</p>
                     <section className="right-wrapper__room-details">

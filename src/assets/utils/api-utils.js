@@ -12,9 +12,7 @@ export const singleUserEndpoint = (userId) => API_URL + "/users/" + userId;
 
 export const singleUserFavoriteRoomsEndpoint = (userId) => API_URL + "/users/" + userId + "/favorites";
 
-export const addToFavoritesEndpoint = () => API_URL + "/favorites";
-
-export const removeFromFavoritesEndpoint = (favId) => API_URL + "/favorites/" + favId;
+export const userFavoritesEndpoint = () => API_URL + "/favorites";
 
 export const currentUserEndpoint = () => API_URL + "/users/account/current"
 
