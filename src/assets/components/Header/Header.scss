@@ -60,10 +60,13 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+        overflow-x: visible;
+        height: 100%;
 
         &__image{
-            height: 24px;
-            width: 120px
+            height: 100%;
+            // width: 120px;
+            // overflow: visible;
         }
     }
 
