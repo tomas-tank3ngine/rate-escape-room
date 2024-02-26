@@ -5,6 +5,7 @@ import menuIcon from "../../icons/menu_fill.svg";
 import closeIcon from "../../icons/close_fill.svg";
 import { Context } from "../../utils/context-utils";
 import { useContext } from "react";
+import logo from "../../images/RATE-ESCAPE-logo.png"
 
 
 
@@ -74,9 +75,7 @@ function Header() {
                 </nav>
                 <Link to="/" className="logo">
                     <img
-                        src={
-                            require("../../images/rate-escape-logo.svg").default
-                        }
+                        src={ logo }
                         alt="Rate Escape Rooms"
                         className="logo__image"
                     />
